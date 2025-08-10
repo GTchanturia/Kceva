@@ -19,7 +19,8 @@
 	const calculatorComponents = {
 		'loan-calculator': LoanCalculator,
 		'bmi-calculator': BMICalculator,
-		'mortgage-calculator': MortgageCalculator
+		'mortgage-calculator': MortgageCalculator,
+		'currency-converter': CurrencyConverter
 		// Add more calculator components as they are created
 	};
 	

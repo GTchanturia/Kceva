@@ -7,6 +7,7 @@
 	// Import calculator components
 	import LoanCalculator from '$lib/calculators/LoanCalculator.svelte';
 	import BMICalculator from '$lib/calculators/BMICalculator.svelte';
+	import MortgageCalculator from '$lib/calculators/MortgageCalculator.svelte';
 	
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;

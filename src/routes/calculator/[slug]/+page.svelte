@@ -17,7 +17,8 @@
 	// Component mapping
 	const calculatorComponents = {
 		'loan-calculator': LoanCalculator,
-		'bmi-calculator': BMICalculator
+		'bmi-calculator': BMICalculator,
+		'mortgage-calculator': MortgageCalculator
 		// Add more calculator components as they are created
 	};
 	

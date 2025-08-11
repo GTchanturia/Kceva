@@ -265,6 +265,7 @@
                                 class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                             />
                             <span class="text-gray-700">Exclude Ambiguous Characters ({ } [ ] ( ) / \ ' " ` ~ , ; . < >)</span>
+                            )
                         </label>
                     </div>
                 </div>

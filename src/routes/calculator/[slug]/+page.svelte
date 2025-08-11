@@ -9,6 +9,11 @@
 	import BMICalculator from '$lib/calculators/BMICalculator.svelte';
 	import MortgageCalculator from '$lib/calculators/MortgageCalculator.svelte';
 	import CurrencyConverter from '$lib/calculators/CurrencyConverter.svelte';
+	import PercentageCalculator from '$lib/calculators/PercentageCalculator.svelte';
+	import TemperatureConverter from '$lib/calculators/TemperatureConverter.svelte';
+	import AgeCalculator from '$lib/calculators/AgeCalculator.svelte';
+	import TipCalculator from '$lib/calculators/TipCalculator.svelte';
+	import RandomPasswordGenerator from '$lib/calculators/RandomPasswordGenerator.svelte';
 	
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;
@@ -20,7 +25,12 @@
 		'loan-calculator': LoanCalculator,
 		'bmi-calculator': BMICalculator,
 		'mortgage-calculator': MortgageCalculator,
-		'currency-converter': CurrencyConverter
+		'currency-converter': CurrencyConverter,
+		'percentage-calculator': PercentageCalculator,
+		'temperature-converter': TemperatureConverter,
+		'age-calculator': AgeCalculator,
+		'tip-calculator': TipCalculator,
+		'random-password-generator': RandomPasswordGenerator
 		// Add more calculator components as they are created
 	};
 	

@@ -176,6 +176,7 @@
                         <div class="flex justify-between">
                             <span class="text-gray-600">Height:</span>
                             <span class="font-semibold">{height} cm ({Math.floor(height / 30.48)}'{Math.round((height % 30.48) / 2.54)}")</span>
+                            )
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Age:</span>

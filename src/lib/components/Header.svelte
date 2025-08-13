@@ -41,7 +41,7 @@
             <span class="text-white font-bold text-lg">🧮</span>
           </div>
           <span class="text-xl font-bold text-gray-900 hidden sm:block">
-            CalcHub
+            Kceva
           </span>
         </a>
       </div>

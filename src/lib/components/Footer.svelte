@@ -44,6 +44,7 @@
             <span class="text-white font-bold text-lg">🧮</span>
           </div>
           <span class="text-xl font-bold text-gray-900">CalcHub</span>
+          <span class="text-xl font-bold text-gray-900">Kceva</span>
         </div>
         
         <p class="text-gray-600 mb-6 max-w-md">
@@ -134,7 +135,7 @@
       <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
         <!-- Copyright -->
         <p class="text-gray-500 text-sm">
-          © {currentYear} CalcHub. All rights reserved.
+          © {currentYear} Kceva. All rights reserved.
         </p>
         
         <!-- Social Links -->

@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-	<title>Calculator Categories - CalcHub</title>
+	<title>Calculator Categories - Kceva</title>
 	<meta name="description" content="Browse all calculator categories including finance, health, math, unit conversion, and more. Find the perfect tool for your needs." />
 </svelte:head>
 

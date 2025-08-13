@@ -7,8 +7,13 @@
 	// Import calculator components
 	import LoanCalculator from '$lib/calculators/LoanCalculator.svelte';
 	import BMICalculator from '$lib/calculators/BMICalculator.svelte';
+	import BMRCalculator from '$lib/calculators/BMRCalculator.svelte';
+	import CalorieIntakeCalculator from '$lib/calculators/CalorieIntakeCalculator.svelte';
 	import MortgageCalculator from '$lib/calculators/MortgageCalculator.svelte';
 	import CurrencyConverter from '$lib/calculators/CurrencyConverter.svelte';
+	import CompoundInterestCalculator from '$lib/calculators/CompoundInterestCalculator.svelte';
+	import SimpleInterestCalculator from '$lib/calculators/SimpleInterestCalculator.svelte';
+	import SavingsGoalCalculator from '$lib/calculators/SavingsGoalCalculator.svelte';
 	import PercentageCalculator from '$lib/calculators/PercentageCalculator.svelte';
 	import TemperatureConverter from '$lib/calculators/TemperatureConverter.svelte';
 	import AgeCalculator from '$lib/calculators/AgeCalculator.svelte';
@@ -24,8 +29,13 @@
 	const calculatorComponents = {
 		'loan-calculator': LoanCalculator,
 		'bmi-calculator': BMICalculator,
+		'bmr-calculator': BMRCalculator,
+		'calorie-intake': CalorieIntakeCalculator,
 		'mortgage-calculator': MortgageCalculator,
 		'currency-converter': CurrencyConverter,
+		'compound-interest': CompoundInterestCalculator,
+		'simple-interest': SimpleInterestCalculator,
+		'savings-goal': SavingsGoalCalculator,
 		'percentage-calculator': PercentageCalculator,
 		'temperature-converter': TemperatureConverter,
 		'age-calculator': AgeCalculator,
@@ -39,11 +49,11 @@
 
 <svelte:head>
 	{#if calculator}
-		<title>{calculator.name} - CalcHub</title>
+		<title>{calculator.name} - Kceva</title>
 		<meta name="description" content="{calculator.description}. Free online calculator with instant results." />
 		<meta name="keywords" content="{calculator.keywords.join(', ')}, calculator, free, online" />
 	{:else}
-		<title>Calculator Not Found - CalcHub</title>
+		<title>Calculator Not Found - Kceva</title>
 	{/if}
 </svelte:head>
 

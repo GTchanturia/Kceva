@@ -27,10 +27,10 @@
 
 <svelte:head>
 	{#if category}
-		<title>{category.name} - CalcHub</title>
+		<title>{category.name} - Kceva</title>
 		<meta name="description" content="{category.description}. Browse {calculators.length} calculators in the {category.name} category." />
 	{:else}
-		<title>Category Not Found - CalcHub</title>
+		<title>Category Not Found - Kceva</title>
 	{/if}
 </svelte:head>
 

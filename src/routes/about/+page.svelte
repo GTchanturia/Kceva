@@ -4,8 +4,8 @@
 </script>
 
 <svelte:head>
-	<title>About CalcHub - Free Online Calculators</title>
-	<meta name="description" content="Learn about CalcHub, your trusted source for 100+ free online calculators and converters. Fast, accurate, and privacy-focused tools for everyday use." />
+	<title>About Kceva - Free Online Calculators</title>
+	<meta name="description" content="Learn about Kceva, your trusted source for 100+ free online calculators and converters. Fast, accurate, and privacy-focused tools for everyday use." />
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50">
@@ -13,7 +13,7 @@
 	<section class="bg-gradient-to-br from-blue-50 to-indigo-50 py-16">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 			<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-				About CalcHub
+				About Kceva
 			</h1>
 			<p class="text-xl text-gray-600 max-w-3xl mx-auto">
 				Your trusted companion for accurate calculations and conversions. 
@@ -78,7 +78,7 @@
 			
 			<div class="prose prose-lg mx-auto text-gray-600">
 				<p>
-					CalcHub was born from a simple frustration: finding reliable, free calculators online 
+					Kceva was born from a simple frustration: finding reliable, free calculators online 
 					shouldn't be a treasure hunt through ad-filled websites and questionable results.
 				</p>
 				
@@ -89,13 +89,13 @@
 				</p>
 				
 				<p>
-					So we built CalcHub - a clean, fast, and comprehensive collection of calculators 
+					So we built Kceva - a clean, fast, and comprehensive collection of calculators 
 					that puts user experience first. No ads, no tracking, no nonsense. Just the tools 
 					you need, when you need them.
 				</p>
 				
 				<p>
-					Today, CalcHub serves thousands of users daily, from students solving math problems 
+					Today, Kceva serves thousands of users daily, from students solving math problems 
 					to professionals making financial decisions. We're proud to be a trusted resource 
 					for accurate calculations across 10 different categories.
 				</p>
@@ -201,7 +201,7 @@
 	<!-- Stats Section -->
 	<section class="py-16 bg-blue-600">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-			<h2 class="text-3xl font-bold text-white mb-12">CalcHub by the Numbers</h2>
+			<h2 class="text-3xl font-bold text-white mb-12">Kceva by the Numbers</h2>
 			
 			<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
 				<div>

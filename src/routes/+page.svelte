@@ -18,7 +18,7 @@
 </script>
 
 <svelte:head>
-	<title>CalcHub - 100+ Free Calculators and Converters</title>
+	<title>Kceva - 100+ Free Calculators and Converters</title>
 	<meta name="description" content="Access 100+ free calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, and easy to use tools for everyday calculations." />
 	<meta name="keywords" content="calculator, converter, finance, health, math, unit conversion, free tools" />
 </svelte:head>
@@ -191,6 +191,7 @@
 		</h2>
 		<p class="text-xl text-blue-100 mb-8">
 			Join thousands of users who trust CalcHub for their daily calculations
+			Join thousands of users who trust Kceva for their daily calculations
 		</p>
 		<div class="flex flex-col sm:flex-row gap-4 justify-center">
 			<Button variant="secondary" size="lg" href="/categories">

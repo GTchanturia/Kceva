@@ -25,6 +25,9 @@
 	import HourlyToSalaryCalculator from "$lib/calculators/HourlyToSalaryCalculator.svelte";
 	import QrCodeGenerator from "$lib/calculators/QRCodeGenerator.svelte";
 	import RandomNumberGenerator from "$lib/calculators/RandomNumberGenerator.svelte";
+	import MemeTextGenerator from "$lib/calculators/MemeTextGenerator.svelte";
+	import NameCompatibility from "$lib/calculators/NameCompatibility.svelte";
+	import BarCodeGenerator from "$lib/calculators/BarCodeGenerator.svelte";
 
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;
@@ -55,6 +58,9 @@
 		"hourly-to-salary": HourlyToSalaryCalculator,
 		"qr-code-generator": QrCodeGenerator,
 		"random-number-generator": RandomNumberGenerator,
+		"meme-text-generator": MemeTextGenerator,
+		"name-compatibility": NameCompatibility,
+		"barcode-generator": BarCodeGenerator,
 		// Add more calculator components as they are created
 	};
 

@@ -984,13 +984,12 @@ export const CALCULATORS = [
     requiresApi: false
   },
   {
-    id: 'qr-code-generator',
-    name: 'QR Code Generator',
-    description: 'Generate QR codes for text, URLs, and data',
-    category: 'fun',
-    keywords: ['qr', 'code', 'generator', 'text', 'url'],
-    icon: '📱',
-    featured: false,
+    id: "qr-code-generator",
+    name: "QR Code Generator",
+    description: "Generate QR codes from text or URLs.",
+    category: "fun",
+    icon: "🔳",
+    keywords: ["qr", "code", "generator", "url", "text"],
     requiresApi: false
   },
   {
@@ -1049,9 +1048,9 @@ export function getFeaturedCalculators() {
  */
 export function searchCalculators(query) {
   if (!query) return [];
-  
+
   const searchTerm = query.toLowerCase();
-  return CALCULATORS.filter(calc => 
+  return CALCULATORS.filter(calc =>
     calc.name.toLowerCase().includes(searchTerm) ||
     calc.description.toLowerCase().includes(searchTerm) ||
     calc.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm))

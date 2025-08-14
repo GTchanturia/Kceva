@@ -19,6 +19,10 @@
 	import AgeCalculator from '$lib/calculators/AgeCalculator.svelte';
 	import TipCalculator from '$lib/calculators/TipCalculator.svelte';
 	import RandomPasswordGenerator from '$lib/calculators/RandomPasswordGenerator.svelte';
+	import CreditCardPayoffCalculator from '$lib/calculators/CreditCardPayoffCalculator.svelte';
+	import RetirementSavingsCalculator from '$lib/calculators/RetirementSavingsCalculator.svelte';
+	import SalaryToHourlyCalculator from '$lib/calculators/SalaryToHourlyCalculator.svelte';
+	import HourlyToSalaryCalculator from '$lib/calculators/HourlyToSalaryCalculator.svelte';
 	
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;
@@ -40,7 +44,11 @@
 		'temperature-converter': TemperatureConverter,
 		'age-calculator': AgeCalculator,
 		'tip-calculator': TipCalculator,
-		'random-password-generator': RandomPasswordGenerator
+		'random-password-generator': RandomPasswordGenerator,
+		'credit-card-payoff': CreditCardPayoffCalculator,
+		'retirement-savings': RetirementSavingsCalculator,
+		'salary-to-hourly': SalaryToHourlyCalculator,
+		'hourly-to-salary': HourlyToSalaryCalculator
 		// Add more calculator components as they are created
 	};
 	

@@ -183,7 +183,6 @@
                 </div>
             </div>
             </Card>
-        </Card>
 
         <!-- Compatibility Meter -->
         <Card>

@@ -328,7 +328,7 @@
   }
 </script>
 
-<aside class="w-64 bg-white border-r border-gray-100 h-screen overflow-y-auto sticky top-0 shadow-sm" role="complementary" aria-label="Sidebar widgets">
+<aside class="w-64 bg-white border-r border-gray-100 h-screen overflow-y-auto sticky top-0 shadow-sm" aria-label="Sidebar widgets">
   <div class="p-3 space-y-3">
     <!-- Time & Date Widget -->
     <Card>
@@ -444,7 +444,7 @@
     
     <!-- Quick Calculator Links -->
     <Card>
-      <nav class="p-3" role="navigation" aria-label="Quick access to popular calculators">
+      <nav class="p-3" aria-label="Quick access to popular calculators">
         <div class="space-y-1">
           <a 
             href="/calculator/bmi-calculator" 

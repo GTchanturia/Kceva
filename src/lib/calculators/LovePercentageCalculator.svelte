@@ -170,6 +170,7 @@
                 <div class="text-xl font-semibold text-pink-700">
                     {compatibilityLevel}
                 </div>
+            </div>
             </Card>
 
         <!-- Names Display -->

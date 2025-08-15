@@ -138,6 +138,7 @@
             <p class="text-gray-600 mb-6">
                 Calculate triangle area using different methods: base and height, 
                 three sides (Heron's formula), two sides with angle, or coordinates.
+                )
             </p>
 
             <div class="space-y-6">

@@ -1,7 +1,7 @@
 <script>
     /**
      * Length Converter Component
-     * Convert between different units of length and distance
+     * Convert between different length units
      */
 
     import Card from "$lib/components/ui/Card.svelte";
@@ -11,7 +11,7 @@
     import { formatNumber } from "$lib/utils/helpers.js";
 
     // Input values
-    let value = 1;
+    let inputValue = 1;
     let fromUnit = 'm';
     let toUnit = 'ft';
 
@@ -21,13 +21,13 @@
 
     // Length units with conversion factors to meters
     const lengthUnits = [
-        // Metric units
+        // Metric
         { value: 'mm', label: 'Millimeters (mm)', factor: 0.001, category: 'Metric' },
         { value: 'cm', label: 'Centimeters (cm)', factor: 0.01, category: 'Metric' },
         { value: 'm', label: 'Meters (m)', factor: 1, category: 'Metric' },
         { value: 'km', label: 'Kilometers (km)', factor: 1000, category: 'Metric' },
         
-        // Imperial units
+        // Imperial/US
         { value: 'in', label: 'Inches (in)', factor: 0.0254, category: 'Imperial' },
         { value: 'ft', label: 'Feet (ft)', factor: 0.3048, category: 'Imperial' },
         { value: 'yd', label: 'Yards (yd)', factor: 0.9144, category: 'Imperial' },
@@ -35,28 +35,30 @@
         
         // Nautical
         { value: 'nmi', label: 'Nautical Miles (nmi)', factor: 1852, category: 'Nautical' },
+        { value: 'fathom', label: 'Fathoms', factor: 1.8288, category: 'Nautical' },
         
-        // Other units
-        { value: 'μm', label: 'Micrometers (μm)', factor: 0.000001, category: 'Scientific' },
-        { value: 'nm', label: 'Nanometers (nm)', factor: 0.000000001, category: 'Scientific' },
-        { value: 'ly', label: 'Light Years (ly)', factor: 9.461e15, category: 'Astronomical' },
+        // Other
+        { value: 'mil', label: 'Mils (thou)', factor: 0.0000254, category: 'Other' },
+        { value: 'μm', label: 'Micrometers (μm)', factor: 0.000001, category: 'Other' },
+        { value: 'nm', label: 'Nanometers (nm)', factor: 0.000000001, category: 'Other' },
+        { value: 'ly', label: 'Light Years', factor: 9.461e15, category: 'Astronomical' },
         { value: 'au', label: 'Astronomical Units (AU)', factor: 1.496e11, category: 'Astronomical' }
     ];
 
     // Convert length
     function convertLength() {
-        if (value === null || value === undefined) {
+        if (inputValue === null || inputValue === undefined) {
             showResults = false;
             return;
         }
 
         const fromFactor = lengthUnits.find(unit => unit.value === fromUnit)?.factor || 1;
         const toFactor = lengthUnits.find(unit => unit.value === toUnit)?.factor || 1;
-
+        
         // Convert to meters first, then to target unit
-        const meters = value * fromFactor;
+        const meters = inputValue * fromFactor;
         convertedValue = meters / toFactor;
-
+        
         showResults = true;
     }
 
@@ -69,37 +71,35 @@
     }
 
     // Auto-convert when inputs change
-    $: if (value !== null && fromUnit && toUnit) {
+    $: if (inputValue !== null && fromUnit && toUnit) {
         convertLength();
     }
 
-    // Get unit category
-    function getUnitCategory(unitValue) {
-        return lengthUnits.find(unit => unit.value === unitValue)?.category || 'Other';
+    // Get unit label
+    function getUnitLabel(unitValue) {
+        return lengthUnits.find(unit => unit.value === unitValue)?.label || unitValue;
     }
 
     // Get common conversions
     function getCommonConversions() {
         const fromFactor = lengthUnits.find(unit => unit.value === fromUnit)?.factor || 1;
-        const commonValues = [1, 5, 10, 25, 50, 100];
+        const commonUnits = ['mm', 'cm', 'm', 'km', 'in', 'ft', 'yd', 'mi'];
         
-        return commonValues.map(val => {
-            const meters = val * fromFactor;
-            return {
-                input: val,
-                conversions: lengthUnits
-                    .filter(unit => unit.value !== fromUnit)
-                    .slice(0, 6)
-                    .map(unit => ({
-                        unit: unit.value,
-                        label: unit.label,
-                        value: meters / unit.factor
-                    }))
-            };
-        });
+        return commonUnits
+            .filter(unit => unit !== fromUnit)
+            .map(unit => {
+                const toFactor = lengthUnits.find(u => u.value === unit)?.factor || 1;
+                const meters = inputValue * fromFactor;
+                const converted = meters / toFactor;
+                return {
+                    unit,
+                    label: lengthUnits.find(u => u.value === unit)?.label || unit,
+                    value: converted
+                };
+            });
     }
 
-    $: commonConversions = getCommonConversions();
+    $: commonConversions = showResults ? getCommonConversions() : [];
 </script>
 
 <div class="max-w-4xl mx-auto space-y-6">
@@ -110,8 +110,8 @@
                 Length Converter
             </h2>
             <p class="text-gray-600 mb-6">
-                Convert between different units of length and distance. Supports metric, 
-                imperial, nautical, and scientific units with high precision.
+                Convert between metric, imperial, nautical, and other length units. 
+                Supports everything from nanometers to light years.
             </p>
 
             <div class="space-y-6">
@@ -119,10 +119,10 @@
                 <div>
                     <Input
                         type="number"
-                        label="Value"
-                        bind:value
+                        label="Length Value"
+                        bind:value={inputValue}
                         placeholder="1"
-                        step="0.001"
+                        step="0.000001"
                     />
                 </div>
 
@@ -163,16 +163,17 @@
             <div class="p-6 text-center">
                 <div class="mb-4">
                     <div class="text-2xl text-gray-600 mb-2">
-                        {formatNumber(value, 6)} {fromUnit}
+                        {formatNumber(inputValue, 6)} {fromUnit}
                     </div>
                     <div class="text-5xl font-bold text-blue-600 mb-2">
-                        {formatNumber(convertedValue, 6)} {toUnit}
+                        {formatNumber(convertedValue, 8)} {toUnit}
                     </div>
                 </div>
 
                 <div class="text-gray-600">
-                    <div class="text-sm">
-                        {getUnitCategory(fromUnit)} → {getUnitCategory(toUnit)}
+                    <div class="text-sm">Conversion</div>
+                    <div class="text-lg font-semibold">
+                        1 {fromUnit} = {formatNumber(convertedValue / inputValue, 8)} {toUnit}
                     </div>
                 </div>
             </div>
@@ -188,122 +189,52 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-3">
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Input Value:</span>
-                            <span class="font-semibold">{formatNumber(value, 6)} {fromUnit}</span>
+                            <span class="text-gray-600">From:</span>
+                            <span class="font-semibold">{formatNumber(inputValue, 6)} {getUnitLabel(fromUnit)}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">From Category:</span>
-                            <span class="font-semibold">{getUnitCategory(fromUnit)}</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">To Category:</span>
-                            <span class="font-semibold">{getUnitCategory(toUnit)}</span>
+                            <span class="text-gray-600">To:</span>
+                            <span class="font-semibold text-blue-600">{formatNumber(convertedValue, 8)} {getUnitLabel(toUnit)}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Conversion Factor:</span>
-                            <span class="font-semibold">
-                                {formatNumber(convertedValue / value, 8)}
-                            </span>
+                            <span class="font-semibold">1 {fromUnit} = {formatNumber(convertedValue / inputValue, 8)} {toUnit}</span>
                         </div>
                     </div>
 
                     <div class="space-y-3">
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Result:</span>
-                            <span class="font-semibold text-blue-600">{formatNumber(convertedValue, 6)} {toUnit}</span>
+                            <span class="text-gray-600">Reverse Factor:</span>
+                            <span class="font-semibold">1 {toUnit} = {formatNumber(inputValue / convertedValue, 8)} {fromUnit}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Scientific Notation:</span>
-                            <span class="font-semibold">{convertedValue.toExponential(3)}</span>
+                            <span class="font-semibold">{convertedValue.toExponential(3)} {toUnit}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Rounded (2 decimals):</span>
-                            <span class="font-semibold">{formatNumber(convertedValue, 2)} {toUnit}</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">In Meters:</span>
-                            <span class="font-semibold">
-                                {formatNumber(value * (lengthUnits.find(u => u.value === fromUnit)?.factor || 1), 6)} m
-                            </span>
+                            <span class="text-gray-600">Precision:</span>
+                            <span class="font-semibold">{convertedValue.toString().split('.')[1]?.length || 0} decimal places</span>
                         </div>
                     </div>
                 </div>
             </div>
         </Card>
 
-        <!-- Multiple Unit Conversions -->
+        <!-- Common Conversions -->
         <Card>
             <div class="p-6">
                 <h3 class="text-xl font-semibold text-gray-900 mb-4">
-                    Convert to Multiple Units
+                    {formatNumber(inputValue, 3)} {fromUnit} in Other Units
                 </h3>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {#each lengthUnits.filter(unit => unit.value !== fromUnit).slice(0, 8) as unit}
-                        {@const meters = value * (lengthUnits.find(u => u.value === fromUnit)?.factor || 1)}
-                        {@const converted = meters / unit.factor}
-                        <div class="text-center p-3 bg-gray-50 rounded-lg">
-                            <div class="text-lg font-bold text-gray-900 mb-1">
-                                {formatNumber(converted, 4)}
-                            </div>
-                            <div class="text-sm text-gray-600">{unit.value}</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {#each commonConversions as conversion}
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <div class="font-semibold text-gray-900">{conversion.unit}</div>
+                            <div class="text-lg text-blue-600">{formatNumber(conversion.value, 6)}</div>
+                            <div class="text-xs text-gray-500">{conversion.label}</div>
                         </div>
                     {/each}
-                </div>
-            </div>
-        </Card>
-
-        <!-- Common Conversions Reference -->
-        <Card>
-            <div class="p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">
-                    Common Length Conversions
-                </h3>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="font-semibold text-gray-800 mb-3">Metric System</h4>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between">
-                                <span>1 kilometer (km)</span>
-                                <span class="font-medium">1,000 meters</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>1 meter (m)</span>
-                                <span class="font-medium">100 centimeters</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>1 centimeter (cm)</span>
-                                <span class="font-medium">10 millimeters</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>1 millimeter (mm)</span>
-                                <span class="font-medium">1,000 micrometers</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 class="font-semibold text-gray-800 mb-3">Imperial System</h4>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between">
-                                <span>1 mile (mi)</span>
-                                <span class="font-medium">5,280 feet</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>1 yard (yd)</span>
-                                <span class="font-medium">3 feet</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>1 foot (ft)</span>
-                                <span class="font-medium">12 inches</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>1 inch (in)</span>
-                                <span class="font-medium">2.54 centimeters</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </Card>
@@ -315,45 +246,139 @@
                     Length Unit Categories
                 </h3>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                        <h4 class="font-semibold text-blue-900 mb-2">
-                            📏 Metric
-                        </h4>
-                        <p class="text-blue-800 text-sm">
-                            International standard system based on powers of 10. 
-                            Used worldwide for scientific and everyday measurements.
-                        </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="space-y-3">
+                        <h4 class="font-semibold text-blue-900">Metric System</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span>Nanometer (nm):</span>
+                                <span class="font-medium">10⁻⁹ m</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Micrometer (μm):</span>
+                                <span class="font-medium">10⁻⁶ m</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Millimeter (mm):</span>
+                                <span class="font-medium">10⁻³ m</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Centimeter (cm):</span>
+                                <span class="font-medium">10⁻² m</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Meter (m):</span>
+                                <span class="font-medium">Base unit</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Kilometer (km):</span>
+                                <span class="font-medium">10³ m</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-                        <h4 class="font-semibold text-green-900 mb-2">
-                            🇺🇸 Imperial
-                        </h4>
-                        <p class="text-green-800 text-sm">
-                            Traditional system used primarily in the United States. 
-                            Based on historical measurements and fractions.
-                        </p>
+                    <div class="space-y-3">
+                        <h4 class="font-semibold text-green-900">Imperial System</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span>Mil (thou):</span>
+                                <span class="font-medium">0.001 in</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Inch (in):</span>
+                                <span class="font-medium">2.54 cm</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Foot (ft):</span>
+                                <span class="font-medium">12 in</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Yard (yd):</span>
+                                <span class="font-medium">3 ft</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Mile (mi):</span>
+                                <span class="font-medium">5,280 ft</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                        <h4 class="font-semibold text-purple-900 mb-2">
-                            🔬 Scientific
-                        </h4>
-                        <p class="text-purple-800 text-sm">
-                            Very small units used in scientific research, 
-                            including micrometers and nanometers.
-                        </p>
+                    <div class="space-y-3">
+                        <h4 class="font-semibold text-purple-900">Specialized Units</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span>Nautical Mile:</span>
+                                <span class="font-medium">1,852 m</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Fathom:</span>
+                                <span class="font-medium">6 ft</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Astronomical Unit:</span>
+                                <span class="font-medium">~150M km</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Light Year:</span>
+                                <span class="font-medium">~9.5T km</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Card>
+
+        <!-- Conversion Examples -->
+        <Card>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                    Common Length Comparisons
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                            <h4 class="font-semibold text-blue-900 mb-2">Everyday Objects</h4>
+                            <div class="text-blue-800 text-sm space-y-1">
+                                <div>• Credit card: ~85mm × 54mm</div>
+                                <div>• US Letter paper: 8.5" × 11"</div>
+                                <div>• Standard door: ~80" (2m) tall</div>
+                                <div>• Football field: 100 yards</div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
+                            <h4 class="font-semibold text-green-900 mb-2">Human Scale</h4>
+                            <div class="text-green-800 text-sm space-y-1">
+                                <div>• Human hair: ~70 micrometers</div>
+                                <div>• Average height: ~1.7m (5'7")</div>
+                                )
+                                <div>• Arm span ≈ height</div>
+                                <div>• Walking pace: ~5 km/h</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                        <h4 class="font-semibold text-orange-900 mb-2">
-                            🌌 Astronomical
-                        </h4>
-                        <p class="text-orange-800 text-sm">
-                            Extremely large units for measuring distances 
-                            in space, like light years and AU.
-                        </p>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                            <h4 class="font-semibold text-purple-900 mb-2">Large Distances</h4>
+                            <div class="text-purple-800 text-sm space-y-1">
+                                <div>• Earth circumference: ~40,000 km</div>
+                                <div>• Moon distance: ~384,400 km</div>
+                                <div>• Sun distance: ~150M km (1 AU)</div>
+                                <div>• Nearest star: ~4.2 light years</div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-orange-50 border border-orange-200 rounded-lg">
+                            <h4 class="font-semibold text-orange-900 mb-2">Small Scales</h4>
+                            <div class="text-orange-800 text-sm space-y-1">
+                                <div>• Red blood cell: ~7 micrometers</div>
+                                <div>• Bacteria: ~1-5 micrometers</div>
+                                <div>• Virus: ~100 nanometers</div>
+                                <div>• Atom: ~0.1 nanometers</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

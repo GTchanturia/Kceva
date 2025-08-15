@@ -282,6 +282,7 @@
                             <div class="text-blue-800">
                                 <div class="font-mono text-lg">r = ∛(3V/4π)</div>
                                 <div class="text-sm mt-1">r = ∛(3×{formatNumber(volume, 2)}/4π) = {formatNumber(radius, 3)}</div>
+                                )
                             </div>
                         </div>
 

@@ -401,6 +401,12 @@
                                 <div>• Walking 1 mile: ~300 kJ</div>
                                 <div>• Running 1 mile: ~400 kJ</div>
                                 <div>• Lifting 50 lbs 1 foot: ~68 J</div>
-                                <div>• One heartbeat: ~Let me create all the missing calculators systematically. I'll start by implementing the missing calculators from the data file, ensuring they follow the same patterns as the existing ones.
-
-<boltArtifact id="add-missing-calculators" title="Add All Missing Calculators with SEO Optimization">
+                                <div>• One heartbeat: ~1 J</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Card>
+    {/if}
+</div>

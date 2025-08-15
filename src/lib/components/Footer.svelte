@@ -43,12 +43,11 @@
           <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
             <span class="text-white font-bold text-lg">🧮</span>
           </div>
-          <span class="text-xl font-bold text-gray-900">CalcHub</span>
           <span class="text-xl font-bold text-gray-900">Kceva</span>
         </div>
         
         <p class="text-gray-600 mb-6 max-w-md">
-          Your one-stop destination for 100+ calculators and converters. 
+          Your trusted destination for 100+ free calculators and converters. 
           From financial planning to health metrics, we've got you covered 
           with accurate, easy-to-use tools.
         </p>

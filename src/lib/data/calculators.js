@@ -536,30 +536,30 @@ export const CALCULATORS = [
     requiresApi: false
   },
   {
-    id: 'tip-calculator',
-    name: 'Tip Calculator',
-    description: 'Calculate tips and split bills for restaurants',
-    category: 'education',
-    keywords: ['tip', 'restaurant', 'bill', 'gratuity', 'service'],
-    icon: '🍽️',
-    featured: true,
-    requiresApi: false
-  },
-  {
     id: 'split-bill-calculator',
     name: 'Split Bill Calculator',
     description: 'Split restaurant bills and expenses among friends',
-    category: 'education',
+    category: 'lifestyle',
     keywords: ['split', 'bill', 'expense', 'friends', 'divide'],
     icon: '🧾',
     featured: false,
     requiresApi: false
   },
   {
+    id: 'tip-split-bill',
+    name: 'Tip Calculator',
+    description: 'Calculate tips and split bills for restaurants',
+    category: 'lifestyle',
+    keywords: ['tip', 'restaurant', 'bill', 'gratuity', 'service'],
+    icon: '🍽️',
+    featured: true,
+    requiresApi: false
+  },
+  {
     id: 'markup-markdown',
     name: 'Markup/Markdown Calculator',
     description: 'Calculate markup and markdown percentages for pricing',
-    category: 'education',
+    category: 'finance',
     keywords: ['markup', 'markdown', 'pricing', 'profit', 'margin'],
     icon: '🏷️',
     featured: false,
@@ -569,7 +569,7 @@ export const CALCULATORS = [
     id: 'loan-to-value',
     name: 'Loan-to-Value Calculator',
     description: 'Calculate loan-to-value ratio for mortgages',
-    category: 'education',
+    category: 'finance',
     keywords: ['loan', 'value', 'mortgage', 'ratio', 'property'],
     icon: '🏡',
     featured: false,
@@ -615,8 +615,6 @@ export const CALCULATORS = [
     featured: false,
     requiresApi: false
   },
-
-  // Technical/IT (61-70)
   {
     id: 'ip-address-lookup',
     name: 'IP Address Lookup',
@@ -627,6 +625,8 @@ export const CALCULATORS = [
     featured: false,
     requiresApi: true
   },
+
+  // Technical/IT (61-70)
   {
     id: 'base64-encoder-decoder',
     name: 'Base64 Encoder/Decoder',
@@ -842,16 +842,6 @@ export const CALCULATORS = [
     requiresApi: false
   },
   {
-    id: 'tip-split-bill',
-    name: 'Tip & Split Bill Calculator',
-    description: 'Calculate tips and split bills with friends',
-    category: 'lifestyle',
-    keywords: ['tip', 'split', 'bill', 'restaurant', 'friends'],
-    icon: '🍽️',
-    featured: false,
-    requiresApi: false
-  },
-  {
     id: 'fuel-cost-calculator',
     name: 'Fuel Cost Calculator',
     description: 'Calculate fuel costs for trips and daily commuting',
@@ -987,9 +977,10 @@ export const CALCULATORS = [
     id: "qr-code-generator",
     name: "QR Code Generator",
     description: "Generate QR codes from text or URLs.",
-    category: "fun",
+    category: 'fun',
     icon: "🔳",
     keywords: ["qr", "code", "generator", "url", "text"],
+    featured: false,
     requiresApi: false
   },
   {

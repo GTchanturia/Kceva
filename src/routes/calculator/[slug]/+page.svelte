@@ -35,6 +35,27 @@
 	import GpaCalculator from "$lib/calculators/GpaCalculator.svelte";
 	import LengthConverter from "$lib/calculators/LengthConverter.svelte";
 	import WeightConverter from "$lib/calculators/WeightConverter.svelte";
+	import PressureConverter from "$lib/calculators/PressureConverter.svelte";
+	import VolumeConverter from "$lib/calculators/VolumeConverter.svelte";
+	import DataStorageConverter from "$lib/calculators/DataStorageConverter.svelte";
+	import DaysBetweenDatesCalculator from "$lib/calculators/DaysBetweenDatesCalculator.svelte";
+	import GradePercentageCalculator from "$lib/calculators/GradePercentageCalculator.svelte";
+	import FuelEfficiencyConverter from "$lib/calculators/FuelEfficiencyConverter.svelte";
+	import PasswordStrengthChecker from "$lib/calculators/PasswordStrengthChecker.svelte";
+	import Base64EncoderDecoder from "$lib/calculators/Base64EncoderDecoder.svelte";
+	import UrlEncoderDecoder from "$lib/calculators/UrlEncoderDecoder.svelte";
+	import HexToRgbConverter from "$lib/calculators/HexToRgbConverter.svelte";
+	import RgbToHexConverter from "$lib/calculators/RgbToHexConverter.svelte";
+	import BinaryToDecimalConverter from "$lib/calculators/BinaryToDecimalConverter.svelte";
+	import DecimalToBinaryConverter from "$lib/calculators/DecimalToBinaryConverter.svelte";
+	import RectangleAreaCalculator from "$lib/calculators/RectangleAreaCalculator.svelte";
+	import SphereVolumeCalculator from "$lib/calculators/SphereVolumeCalculator.svelte";
+	import CylinderVolumeCalculator from "$lib/calculators/CylinderVolumeCalculator.svelte";
+	import PythagoreanTheoremCalculator from "$lib/calculators/PythagoreanTheoremCalculator.svelte";
+	import SquareRootCalculator from "$lib/calculators/SquareRootCalculator.svelte";
+	import SpeedConverter from "$lib/calculators/SpeedConverter.svelte";
+	import TimeConverter from "$lib/calculators/TimeConverter.svelte";
+	import EnergyConverter from "$lib/calculators/EnergyConverter.svelte";
 
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;
@@ -75,6 +96,48 @@
 		"gpa-calculator": GpaCalculator,
 		"length-converter": LengthConverter,
 		"weight-converter": WeightConverter,
+		"pressure-converter": PressureConverter,
+		"volume-converter": VolumeConverter,
+		"data-storage-converter": DataStorageConverter,
+		"days-between-dates": DaysBetweenDatesCalculator,
+		"grade-percentage": GradePercentageCalculator,
+		"fuel-efficiency-converter": FuelEfficiencyConverter,
+		"password-strength-checker": PasswordStrengthChecker,
+		"base64-encoder-decoder": Base64EncoderDecoder,
+		"url-encoder-decoder": UrlEncoderDecoder,
+		"hex-to-rgb": HexToRgbConverter,
+		"rgb-to-hex": RgbToHexConverter,
+		"binary-to-decimal": BinaryToDecimalConverter,
+		"decimal-to-binary": DecimalToBinaryConverter,
+		"rectangle-area": RectangleAreaCalculator,
+		"sphere-volume": SphereVolumeCalculator,
+		"cylinder-volume": CylinderVolumeCalculator,
+		"pythagorean-theorem": PythagoreanTheoremCalculator,
+		"square-root": SquareRootCalculator,
+		"speed-converter": SpeedConverter,
+		"time-converter": TimeConverter,
+		"energy-converter": EnergyConverter,
+		"pressure-converter": PressureConverter,
+		"volume-converter": VolumeConverter,
+		"data-storage-converter": DataStorageConverter,
+		"days-between-dates": DaysBetweenDatesCalculator,
+		"grade-percentage": GradePercentageCalculator,
+		"fuel-efficiency-converter": FuelEfficiencyConverter,
+		"password-strength-checker": PasswordStrengthChecker,
+		"base64-encoder-decoder": Base64EncoderDecoder,
+		"url-encoder-decoder": UrlEncoderDecoder,
+		"hex-to-rgb": HexToRgbConverter,
+		"rgb-to-hex": RgbToHexConverter,
+		"binary-to-decimal": BinaryToDecimalConverter,
+		"decimal-to-binary": DecimalToBinaryConverter,
+		"rectangle-area": RectangleAreaCalculator,
+		"sphere-volume": SphereVolumeCalculator,
+		"cylinder-volume": CylinderVolumeCalculator,
+		"pythagorean-theorem": PythagoreanTheoremCalculator,
+		"square-root": SquareRootCalculator,
+		"speed-converter": SpeedConverter,
+		"time-converter": TimeConverter,
+		"energy-converter": EnergyConverter,
 		// Add more calculator components as they are created
 	};
 

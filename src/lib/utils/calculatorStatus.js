@@ -103,7 +103,7 @@ const WORKING_CALCULATORS = [
   'solar-panel-output',
   'ascii-to-text',
   'text-to-ascii',
-  'ip-address-lookup'
+  'ip-address-lookup',
   
   // Lifestyle & Practical
   'tip-calculator',

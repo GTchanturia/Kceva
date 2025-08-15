@@ -216,7 +216,7 @@
 
                 <div class="space-y-3">
                     <div class="flex items-center justify-between p-3 rounded-lg {bmiCategory === 'Underweight' ? 'bg-blue-50 border border-blue-200' : 'bg-gray-50'}">
-                        <span class="font-medium">Underweight (BMI < 18.5)</span>
+                        <span class="font-medium">Underweight (BMI &lt; 18.5)</span>
                         <span class="text-sm">12.5-18 kg (28-40 lbs)</span>
                     </div>
                     <div class="flex items-center justify-between p-3 rounded-lg {bmiCategory === 'Normal weight' ? 'bg-green-50 border border-green-200' : 'bg-gray-50'}">

@@ -49,6 +49,9 @@
     // Custom breakpoint
     let customWidth = 1200;
 
+    // Get device category for custom width
+    $: deviceInfo = getDeviceCategory(customWidth);
+
     // Get device category for width
     function getDeviceCategory(width) {
         if (width < 576) return { category: 'Mobile', color: 'text-blue-600' };
@@ -82,7 +85,6 @@
                     step="1"
                 />
                 
-                {@const deviceInfo = getDeviceCategory(customWidth)}
                 <div class="mt-2 text-sm {deviceInfo.color}">
                     Device Category: {deviceInfo.category}
                 </div>

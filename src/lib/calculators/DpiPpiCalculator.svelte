@@ -219,7 +219,7 @@
                             </div>
                             <div class="flex justify-between">
                                 <span>Low Resolution:</span>
-                                <span class="font-medium">< 100 PPI</span>
+                                <span class="font-medium">&lt; 100 PPI</span>
                             </div>
                         </div>
                     </div>

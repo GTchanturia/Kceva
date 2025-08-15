@@ -513,6 +513,86 @@ export const CALCULATORS = [
     featured: false,
     requiresApi: false
   },
+  {
+    id: 'date-add-subtract',
+    name: 'Date Add/Subtract Calculator',
+    description: 'Add or subtract days, months, years from a date',
+    category: 'datetime',
+    keywords: ['date', 'add', 'subtract', 'calculate', 'future', 'past'],
+    icon: '➕',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'countdown-timer',
+    name: 'Countdown Timer',
+    description: 'Create countdown timers for events and deadlines',
+    category: 'datetime',
+    keywords: ['countdown', 'timer', 'event', 'deadline', 'remaining'],
+    icon: '⏳',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'stopwatch',
+    name: 'Stopwatch',
+    description: 'Digital stopwatch with lap times and precision timing',
+    category: 'datetime',
+    keywords: ['stopwatch', 'timer', 'lap', 'precision', 'time'],
+    icon: '⏱️',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'work-days-calculator',
+    name: 'Work Days Calculator',
+    description: 'Calculate working days between dates excluding weekends',
+    category: 'datetime',
+    keywords: ['work', 'business', 'days', 'exclude', 'weekends'],
+    icon: '💼',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'world-clock',
+    name: 'World Clock',
+    description: 'Display time in multiple time zones around the world',
+    category: 'datetime',
+    keywords: ['world', 'clock', 'timezone', 'international', 'time'],
+    icon: '🌍',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'meeting-time-planner',
+    name: 'Meeting Time Planner',
+    description: 'Find optimal meeting times across different time zones',
+    category: 'datetime',
+    keywords: ['meeting', 'time', 'planner', 'timezone', 'schedule'],
+    icon: '🤝',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'time-until-birthday',
+    name: 'Time Until Birthday Calculator',
+    description: 'Calculate exact time remaining until your next birthday',
+    category: 'datetime',
+    keywords: ['birthday', 'countdown', 'remaining', 'celebration'],
+    icon: '🎉',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'leap-year-checker',
+    name: 'Leap Year Checker',
+    description: 'Check if a year is a leap year and find leap years',
+    category: 'datetime',
+    keywords: ['leap', 'year', 'check', 'calendar', 'february'],
+    icon: '📆',
+    featured: false,
+    requiresApi: false
+  },
 
   // Education & Learning (51-60)
   {
@@ -542,6 +622,16 @@ export const CALCULATORS = [
     category: 'lifestyle',
     keywords: ['split', 'bill', 'expense', 'friends', 'divide'],
     icon: '🧾',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'cooking-measurement',
+    name: 'Cooking Measurement Converter',
+    description: 'Convert between cups, ml, grams, and cooking units',
+    category: 'lifestyle',
+    keywords: ['cooking', 'measurement', 'convert', 'cups', 'ml', 'grams'],
+    icon: '🥄',
     featured: false,
     requiresApi: false
   },

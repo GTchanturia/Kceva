@@ -6,6 +6,7 @@
   
   import Card from '$lib/components/ui/Card.svelte';
   import { CALCULATOR_CATEGORIES } from '$lib/types/calculator.js';
+  import { getCalculatorStatus } from '$lib/utils/calculatorStatus.js';
   
   /** @type {Object} */
   export let calculator;
@@ -15,6 +16,9 @@
   
   // Get category info
   $: category = CALCULATOR_CATEGORIES.find(cat => cat.id === calculator.category);
+  
+  // Get calculator status
+  $: status = getCalculatorStatus(calculator.id);
   
   // Get color classes based on category
   $: colorClasses = category ? {
@@ -47,6 +51,11 @@
           <h3 class="text-lg font-semibold text-gray-900 truncate">
             {calculator.name}
           </h3>
+          
+          <!-- Status Indicator -->
+          <div class="flex items-center">
+            <div class="w-2 h-2 rounded-full {status.working ? 'bg-green-500' : 'bg-red-500'}" title="{status.working ? 'Working' : 'Under Development'}"></div>
+          </div>
           
           {#if featured}
             <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">

@@ -75,6 +75,15 @@
 	import LovePercentageCalculator from "$lib/calculators/LovePercentageCalculator.svelte";
 	import ZodiacSignCalculator from "$lib/calculators/ZodiacSignCalculator.svelte";
 	import AspectRatioCalculator from "$lib/calculators/AspectRatioCalculator.svelte";
+	import DateAddSubtractCalculator from "$lib/calculators/DateAddSubtractCalculator.svelte";
+	import CountdownTimer from "$lib/calculators/CountdownTimer.svelte";
+	import Stopwatch from "$lib/calculators/Stopwatch.svelte";
+	import WorkDaysCalculator from "$lib/calculators/WorkDaysCalculator.svelte";
+	import WorldClock from "$lib/calculators/WorldClock.svelte";
+	import MeetingTimePlanner from "$lib/calculators/MeetingTimePlanner.svelte";
+	import TimeUntilBirthdayCalculator from "$lib/calculators/TimeUntilBirthdayCalculator.svelte";
+	import LeapYearChecker from "$lib/calculators/LeapYearChecker.svelte";
+	import CookingMeasurementConverter from "$lib/calculators/CookingMeasurementConverter.svelte";
 
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;
@@ -176,6 +185,15 @@
 		"love-percentage": LovePercentageCalculator,
 		"zodiac-sign": ZodiacSignCalculator,
 		"aspect-ratio": AspectRatioCalculator,
+		"date-add-subtract": DateAddSubtractCalculator,
+		"countdown-timer": CountdownTimer,
+		"stopwatch": Stopwatch,
+		"work-days-calculator": WorkDaysCalculator,
+		"world-clock": WorldClock,
+		"meeting-time-planner": MeetingTimePlanner,
+		"time-until-birthday": TimeUntilBirthdayCalculator,
+		"leap-year-checker": LeapYearChecker,
+		"cooking-measurement": CookingMeasurementConverter,
 		// Add more calculator components as they are created
 	};
 

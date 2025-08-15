@@ -4,9 +4,9 @@
 	import Header from "$lib/components/Header.svelte";
 	import Sidebar from "$lib/components/Sidebar.svelte";
 	import Footer from "$lib/components/Footer.svelte";
-
-	// Inject Vercel Speed Insights
-	injectSpeedInsights();
+	import { dev } from "$app/environment";
+	import { injectAnalytics } from "@vercel/analytics/sveltekit";
+	injectAnalytics({ mode: dev ? "development" : "production" });
 
 	let { children } = $props();
 </script>

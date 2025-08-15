@@ -18,9 +18,10 @@
 </script>
 
 <svelte:head>
-	<title>Kceva - 100+ Free Calculators and Converters</title>
-	<meta name="description" content="Access 100+ free calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, and easy to use tools for everyday calculations." />
-	<meta name="keywords" content="calculator, converter, finance, health, math, unit conversion, free tools" />
+	<title>Kceva - 100+ Free Online Calculators & Converters | Finance, Health, Math Tools</title>
+	<meta name="description" content="Access 100+ free online calculators and converters at Kceva.com. Finance calculators, health tools, math solvers, unit converters, and more. Fast, accurate, mobile-friendly." />
+	<meta name="keywords" content="Kceva, calculator, converter, finance calculator, health calculator, math calculator, unit converter, free tools, online calculator, BMI calculator, loan calculator, percentage calculator" />
+	<link rel="canonical" href="https://kceva.com" />
 </svelte:head>
 
 <!-- Hero Section -->

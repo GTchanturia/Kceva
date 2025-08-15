@@ -27,10 +27,12 @@
 
 <svelte:head>
 	{#if category}
-		<title>{category.name} - Kceva</title>
-		<meta name="description" content="{category.description}. Browse {calculators.length} calculators in the {category.name} category." />
+		<title>{category.name} - {calculators.length} Free Calculators | Kceva</title>
+		<meta name="description" content="{category.description} at Kceva.com. Browse {calculators.length} free calculators in the {category.name} category. Fast, accurate, mobile-friendly tools." />
+		<meta name="keywords" content="Kceva, {category.name.toLowerCase()}, calculators, free tools, online calculator, {category.name.toLowerCase()} calculator" />
+		<link rel="canonical" href="https://kceva.com/category/{category.id}" />
 	{:else}
-		<title>Category Not Found - Kceva</title>
+		<title>Category Not Found | Kceva - Free Online Calculators</title>
 	{/if}
 </svelte:head>
 

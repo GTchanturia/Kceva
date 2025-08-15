@@ -56,6 +56,25 @@
 	import SpeedConverter from "$lib/calculators/SpeedConverter.svelte";
 	import TimeConverter from "$lib/calculators/TimeConverter.svelte";
 	import EnergyConverter from "$lib/calculators/EnergyConverter.svelte";
+	import BodyFatPercentageCalculator from "$lib/calculators/BodyFatPercentageCalculator.svelte";
+	import WaterIntakeCalculator from "$lib/calculators/WaterIntakeCalculator.svelte";
+	import IdealWeightCalculator from "$lib/calculators/IdealWeightCalculator.svelte";
+	import HeartRateZoneCalculator from "$lib/calculators/HeartRateZoneCalculator.svelte";
+	import PregnancyDueDateCalculator from "$lib/calculators/PregnancyDueDateCalculator.svelte";
+	import OvulationCalculator from "$lib/calculators/OvulationCalculator.svelte";
+	import BloodAlcoholCalculator from "$lib/calculators/BloodAlcoholCalculator.svelte";
+	import SplitBillCalculator from "$lib/calculators/SplitBillCalculator.svelte";
+	import MarkupMarkdownCalculator from "$lib/calculators/MarkupMarkdownCalculator.svelte";
+	import LoanToValueCalculator from "$lib/calculators/LoanToValueCalculator.svelte";
+	import PrimeNumberChecker from "$lib/calculators/PrimeNumberChecker.svelte";
+	import FactorialCalculator from "$lib/calculators/FactorialCalculator.svelte";
+	import MeanMedianModeCalculator from "$lib/calculators/MeanMedianModeCalculator.svelte";
+	import StandardDeviationCalculator from "$lib/calculators/StandardDeviationCalculator.svelte";
+	import DiceRoller from "$lib/calculators/DiceRoller.svelte";
+	import CoinFlip from "$lib/calculators/CoinFlip.svelte";
+	import LovePercentageCalculator from "$lib/calculators/LovePercentageCalculator.svelte";
+	import ZodiacSignCalculator from "$lib/calculators/ZodiacSignCalculator.svelte";
+	import AspectRatioCalculator from "$lib/calculators/AspectRatioCalculator.svelte";
 
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;
@@ -138,6 +157,25 @@
 		"speed-converter": SpeedConverter,
 		"time-converter": TimeConverter,
 		"energy-converter": EnergyConverter,
+		"body-fat-percentage": BodyFatPercentageCalculator,
+		"water-intake": WaterIntakeCalculator,
+		"ideal-weight": IdealWeightCalculator,
+		"heart-rate-zone": HeartRateZoneCalculator,
+		"pregnancy-due-date": PregnancyDueDateCalculator,
+		"ovulation-calculator": OvulationCalculator,
+		"blood-alcohol": BloodAlcoholCalculator,
+		"split-bill-calculator": SplitBillCalculator,
+		"markup-markdown": MarkupMarkdownCalculator,
+		"loan-to-value": LoanToValueCalculator,
+		"prime-number-checker": PrimeNumberChecker,
+		"factorial-calculator": FactorialCalculator,
+		"mean-median-mode": MeanMedianModeCalculator,
+		"standard-deviation": StandardDeviationCalculator,
+		"dice-roller": DiceRoller,
+		"coin-flip": CoinFlip,
+		"love-percentage": LovePercentageCalculator,
+		"zodiac-sign": ZodiacSignCalculator,
+		"aspect-ratio": AspectRatioCalculator,
 		// Add more calculator components as they are created
 	};
 
@@ -148,17 +186,41 @@
 
 <svelte:head>
 	{#if calculator}
-		<title>{calculator.name} - Kceva</title>
+		<title>{calculator.name} - Free Online Calculator | Kceva</title>
 		<meta
 			name="description"
-			content="{calculator.description}. Free online calculator with instant results."
+			content="{calculator.description} at Kceva.com. Free online calculator with instant results. Fast, accurate, and mobile-friendly."
 		/>
 		<meta
 			name="keywords"
-			content="{calculator.keywords.join(', ')}, calculator, free, online"
+			content="Kceva, {calculator.keywords.join(', ')}, calculator, free, online, {calculator.name.toLowerCase()}"
 		/>
+		<link rel="canonical" href="https://kceva.com/calculator/{calculator.id}" />
+		
+		<!-- Structured Data for Calculator -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebApplication",
+			"name": "{calculator.name}",
+			"description": "{calculator.description}",
+			"url": "https://kceva.com/calculator/{calculator.id}",
+			"applicationCategory": "UtilityApplication",
+			"operatingSystem": "Any",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Kceva",
+				"url": "https://kceva.com"
+			}
+		}
+		</script>
 	{:else}
-		<title>Calculator Not Found - Kceva</title>
+		<title>Calculator Not Found | Kceva - Free Online Calculators</title>
 	{/if}
 </svelte:head>
 

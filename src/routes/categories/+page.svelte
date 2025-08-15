@@ -15,8 +15,10 @@
 </script>
 
 <svelte:head>
-	<title>Calculator Categories - Kceva</title>
-	<meta name="description" content="Browse all calculator categories including finance, health, math, unit conversion, and more. Find the perfect tool for your needs." />
+	<title>Calculator Categories - Browse 100+ Free Tools | Kceva</title>
+	<meta name="description" content="Browse all calculator categories at Kceva.com including finance, health, math, unit conversion, and more. Find the perfect free calculator tool for your needs." />
+	<meta name="keywords" content="Kceva, calculator categories, finance calculators, health tools, math calculators, unit converters, free online tools" />
+	<link rel="canonical" href="https://kceva.com/categories" />
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50">

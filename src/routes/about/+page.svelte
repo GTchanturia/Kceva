@@ -4,8 +4,10 @@
 </script>
 
 <svelte:head>
-	<title>About Kceva - Free Online Calculators</title>
-	<meta name="description" content="Learn about Kceva, your trusted source for 100+ free online calculators and converters. Fast, accurate, and privacy-focused tools for everyday use." />
+	<title>About Kceva - Your Trusted Source for 100+ Free Online Calculators</title>
+	<meta name="description" content="Learn about Kceva.com, your trusted source for 100+ free online calculators and converters. Fast, accurate, privacy-focused tools for finance, health, math, and more." />
+	<meta name="keywords" content="Kceva, about, free calculators, online tools, finance, health, math, converters, privacy-focused" />
+	<link rel="canonical" href="https://kceva.com/about" />
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50">

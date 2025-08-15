@@ -28,6 +28,13 @@
 	import MemeTextGenerator from "$lib/calculators/MemeTextGenerator.svelte";
 	import NameCompatibility from "$lib/calculators/NameCompatibility.svelte";
 	import BarCodeGenerator from "$lib/calculators/BarCodeGenerator.svelte";
+	import FractionToDecimalConverter from "$lib/calculators/FractionToDecimalConverter.svelte";
+	import DecimalToFractionConverter from "$lib/calculators/DecimalToFractionConverter.svelte";
+	import CircleAreaCalculator from "$lib/calculators/CircleAreaCalculator.svelte";
+	import TriangleAreaCalculator from "$lib/calculators/TriangleAreaCalculator.svelte";
+	import GpaCalculator from "$lib/calculators/GpaCalculator.svelte";
+	import LengthConverter from "$lib/calculators/LengthConverter.svelte";
+	import WeightConverter from "$lib/calculators/WeightConverter.svelte";
 
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;
@@ -61,6 +68,13 @@
 		"meme-text-generator": MemeTextGenerator,
 		"name-compatibility": NameCompatibility,
 		"barcode-generator": BarCodeGenerator,
+		"fraction-to-decimal": FractionToDecimalConverter,
+		"decimal-to-fraction": DecimalToFractionConverter,
+		"circle-area": CircleAreaCalculator,
+		"triangle-area": TriangleAreaCalculator,
+		"gpa-calculator": GpaCalculator,
+		"length-converter": LengthConverter,
+		"weight-converter": WeightConverter,
 		// Add more calculator components as they are created
 	};
 

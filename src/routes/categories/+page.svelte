@@ -58,10 +58,10 @@
 			</header>
 			
 			<div class="grid grid-cols-2 md:grid-cols-5 gap-4 lg:gap-6">
-							Explore All Categories
+				{#each sortedCategories.slice(0, 5) as category}
 					<div class="text-center p-3 lg:p-4 bg-gray-50 rounded-lg" role="group" aria-label="{category.name} category statistics">
 						<div class="text-2xl mb-2">{category.icon}</div>
-							Return to Homepage
+						<div class="text-lg font-bold text-gray-900">{category.calculatorCount}</div>
 						<div class="text-sm text-gray-600">{category.name}</div>
 					</div>
 				{/each}

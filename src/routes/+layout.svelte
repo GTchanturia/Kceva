@@ -19,7 +19,7 @@
 		<Sidebar />
 		
 		<!-- Main Content -->
-		<main class="flex-1 min-w-0 bg-white" role="main" aria-label="Calculator content area">
+		<main class="flex-1 min-w-0 bg-white" aria-label="Calculator content area">
 			{@render children()}
 		</main>
 	</div>

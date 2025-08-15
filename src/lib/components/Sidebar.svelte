@@ -14,6 +14,18 @@
   let userLocation = "";
   let timeInterval;
 
+  let sidebarOpen = false;
+  let sidebarEl;
+
+  function toggleSidebar() {
+    sidebarOpen = !sidebarOpen;
+    if (sidebarOpen) {
+      sidebarEl.classList.remove("-translate-x-full");
+    } else {
+      sidebarEl.classList.add("-translate-x-full");
+    }
+  }
+
   // Currency converter state
   let currencyAmount = 100;
   let fromCurrency = "USD";

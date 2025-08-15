@@ -14,12 +14,12 @@
 <div class="min-h-screen flex flex-col">
 	<Header />
 	
-	<div class="flex flex-1">
+	<div class="flex flex-1 bg-gray-50">
 		<!-- Left Sidebar -->
 		<Sidebar />
 		
 		<!-- Main Content -->
-		<main class="flex-1 min-w-0">
+		<main class="flex-1 min-w-0 bg-white">
 			{@render children()}
 		</main>
 	</div>

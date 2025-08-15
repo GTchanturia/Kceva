@@ -14,8 +14,6 @@
   let currentTime = new Date();
   let userIP = '';
   let userLocation = '';
-  let temperature = null;
-  let weatherDescription = '';
   let timeInterval;
   
   // Currency converter state
@@ -28,7 +26,6 @@
   
   // Loading states
   let loadingIP = true;
-  let loadingWeather = true;
   let loadingCurrency = false;
   
   // Browser-specific info (initialized safely for SSR)
@@ -36,18 +33,40 @@
   let screenResolution = 'Unknown';
   let timezone = 'Unknown';
   
-  // Popular currencies
+  // Extended currencies with flags
   const currencies = [
-    { value: 'USD', label: 'US Dollar', symbol: '$' },
-    { value: 'EUR', label: 'Euro', symbol: '€' },
-    { value: 'GBP', label: 'British Pound', symbol: '£' },
-    { value: 'JPY', label: 'Japanese Yen', symbol: '¥' },
-    { value: 'CHF', label: 'Swiss Franc', symbol: 'CHF' },
-    { value: 'CAD', label: 'Canadian Dollar', symbol: 'C$' },
-    { value: 'AUD', label: 'Australian Dollar', symbol: 'A$' },
-    { value: 'CNY', label: 'Chinese Yuan', symbol: '¥' },
-    { value: 'INR', label: 'Indian Rupee', symbol: '₹' },
-    { value: 'KRW', label: 'South Korean Won', symbol: '₩' }
+    { value: 'USD', label: 'US Dollar', symbol: '$', flag: '🇺🇸' },
+    { value: 'EUR', label: 'Euro', symbol: '€', flag: '🇪🇺' },
+    { value: 'GBP', label: 'British Pound', symbol: '£', flag: '🇬🇧' },
+    { value: 'JPY', label: 'Japanese Yen', symbol: '¥', flag: '🇯🇵' },
+    { value: 'CHF', label: 'Swiss Franc', symbol: 'CHF', flag: '🇨🇭' },
+    { value: 'CAD', label: 'Canadian Dollar', symbol: 'C$', flag: '🇨🇦' },
+    { value: 'AUD', label: 'Australian Dollar', symbol: 'A$', flag: '🇦🇺' },
+    { value: 'CNY', label: 'Chinese Yuan', symbol: '¥', flag: '🇨🇳' },
+    { value: 'INR', label: 'Indian Rupee', symbol: '₹', flag: '🇮🇳' },
+    { value: 'KRW', label: 'South Korean Won', symbol: '₩', flag: '🇰🇷' },
+    { value: 'SGD', label: 'Singapore Dollar', symbol: 'S$', flag: '🇸🇬' },
+    { value: 'HKD', label: 'Hong Kong Dollar', symbol: 'HK$', flag: '🇭🇰' },
+    { value: 'SEK', label: 'Swedish Krona', symbol: 'kr', flag: '🇸🇪' },
+    { value: 'NOK', label: 'Norwegian Krone', symbol: 'kr', flag: '🇳🇴' },
+    { value: 'DKK', label: 'Danish Krone', symbol: 'kr', flag: '🇩🇰' },
+    { value: 'PLN', label: 'Polish Zloty', symbol: 'zł', flag: '🇵🇱' },
+    { value: 'CZK', label: 'Czech Koruna', symbol: 'Kč', flag: '🇨🇿' },
+    { value: 'HUF', label: 'Hungarian Forint', symbol: 'Ft', flag: '🇭🇺' },
+    { value: 'RUB', label: 'Russian Ruble', symbol: '₽', flag: '🇷🇺' },
+    { value: 'BRL', label: 'Brazilian Real', symbol: 'R$', flag: '🇧🇷' },
+    { value: 'MXN', label: 'Mexican Peso', symbol: '$', flag: '🇲🇽' },
+    { value: 'ZAR', label: 'South African Rand', symbol: 'R', flag: '🇿🇦' },
+    { value: 'TRY', label: 'Turkish Lira', symbol: '₺', flag: '🇹🇷' },
+    { value: 'ILS', label: 'Israeli Shekel', symbol: '₪', flag: '🇮🇱' },
+    { value: 'AED', label: 'UAE Dirham', symbol: 'د.إ', flag: '🇦🇪' },
+    { value: 'SAR', label: 'Saudi Riyal', symbol: '﷼', flag: '🇸🇦' },
+    { value: 'EGP', label: 'Egyptian Pound', symbol: 'E£', flag: '🇪🇬' },
+    { value: 'THB', label: 'Thai Baht', symbol: '฿', flag: '🇹🇭' },
+    { value: 'MYR', label: 'Malaysian Ringgit', symbol: 'RM', flag: '🇲🇾' },
+    { value: 'IDR', label: 'Indonesian Rupiah', symbol: 'Rp', flag: '🇮🇩' },
+    { value: 'PHP', label: 'Philippine Peso', symbol: '₱', flag: '🇵🇭' },
+    { value: 'VND', label: 'Vietnamese Dong', symbol: '₫', flag: '🇻🇳' }
   ];
   
   // Update time every second
@@ -66,47 +85,12 @@
         ? `${data.city}, ${data.country_name}` 
         : 'Unknown Location';
       
-      // Get weather for the location
-      if (data.latitude && data.longitude) {
-        await getWeather(data.latitude, data.longitude);
-      }
-      
       loadingIP = false;
     } catch (error) {
       console.error('Failed to get user info:', error);
       userIP = 'Unable to detect';
       userLocation = 'Unknown Location';
       loadingIP = false;
-      loadingWeather = false;
-    }
-  }
-  
-  // Get weather information
-  async function getWeather(lat, lon) {
-    try {
-      // Using OpenWeatherMap API (free tier)
-      const API_KEY = 'demo'; // In production, this would be a real API key
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
-      );
-      
-      if (response.ok) {
-        const data = await response.json();
-        temperature = Math.round(data.main.temp);
-        weatherDescription = data.weather[0].description;
-      } else {
-        // Fallback: simulate temperature based on location
-        temperature = Math.round(Math.random() * 30 + 5); // 5-35°C
-        weatherDescription = 'Current weather';
-      }
-      
-      loadingWeather = false;
-    } catch (error) {
-      console.error('Failed to get weather:', error);
-      // Fallback temperature
-      temperature = Math.round(Math.random() * 30 + 5);
-      weatherDescription = 'Estimated';
-      loadingWeather = false;
     }
   }
   
@@ -188,7 +172,7 @@
     screenResolution = `${screen.width}×${screen.height}`;
     timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     
-    // Get user info and weather
+    // Get user info
     getUserInfo();
     
     // Initial currency conversion
@@ -211,24 +195,19 @@
   }
 </script>
 
-<aside class="w-80 bg-white border-r border-gray-200 h-screen overflow-y-auto sticky top-0">
-  <div class="p-4 space-y-4">
+<aside class="w-64 bg-white border-r border-gray-100 h-screen overflow-y-auto sticky top-0 shadow-sm">
+  <div class="p-3 space-y-3">
     <!-- Time & Date Widget -->
     <Card>
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-          <span class="text-xl mr-2">🕐</span>
-          Current Time
-        </h3>
-        
+      <div class="p-3">
         <div class="text-center">
-          <div class="text-2xl font-mono font-bold text-blue-600 mb-1">
+          <div class="text-xl font-mono font-bold text-blue-600 mb-1">
             {formatTime(currentTime)}
           </div>
-          <div class="text-sm text-gray-600">
+          <div class="text-xs text-gray-600">
             {formatDate(currentTime)}
           </div>
-          <div class="text-xs text-gray-500 mt-1">
+          <div class="text-xs text-gray-400 mt-1">
             Local Time
           </div>
         </div>
@@ -237,24 +216,19 @@
     
     <!-- IP Address Widget -->
     <Card>
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-          <span class="text-xl mr-2">🌐</span>
-          Your IP Address
-        </h3>
-        
+      <div class="p-3">
         {#if loadingIP}
           <div class="text-center">
-            <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto mb-2"></div>
-            <div class="text-sm text-gray-500">Detecting...</div>
+            <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500 mx-auto mb-2"></div>
+            <div class="text-xs text-gray-500">Detecting...</div>
           </div>
         {:else}
-          <div class="space-y-2">
+          <div class="space-y-1">
             <div class="text-center">
-              <div class="text-lg font-mono font-bold text-green-600">
+              <div class="text-sm font-mono font-bold text-green-600">
                 {userIP}
               </div>
-              <div class="text-sm text-gray-600">
+              <div class="text-xs text-gray-600">
                 {userLocation}
               </div>
             </div>
@@ -263,87 +237,54 @@
       </div>
     </Card>
     
-    <!-- Temperature Widget -->
-    <Card>
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-          <span class="text-xl mr-2">🌡️</span>
-          Temperature
-        </h3>
-        
-        {#if loadingWeather}
-          <div class="text-center">
-            <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500 mx-auto mb-2"></div>
-            <div class="text-sm text-gray-500">Loading weather...</div>
-          </div>
-        {:else if temperature !== null}
-          <div class="text-center">
-            <div class="text-3xl font-bold text-orange-600 mb-1">
-              {temperature}°C
-            </div>
-            <div class="text-sm text-gray-600 capitalize">
-              {weatherDescription}
-            </div>
-            <div class="text-xs text-gray-500 mt-1">
-              {userLocation}
-            </div>
-          </div>
-        {:else}
-          <div class="text-center text-gray-500 text-sm">
-            Weather unavailable
-          </div>
-        {/if}
-      </div>
-    </Card>
-    
     <!-- Currency Converter Widget -->
     <Card>
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-          <span class="text-xl mr-2">💱</span>
-          Quick Currency
-        </h3>
-        
-        <div class="space-y-3">
+      <div class="p-3">
+        <div class="space-y-2">
           <Input
             type="number"
-            label="Amount"
             bind:value={currencyAmount}
             placeholder="100"
             min="0.01"
             step="0.01"
           />
           
-          <div class="grid grid-cols-2 gap-2">
-            <Select
-              label="From"
+          <div class="grid grid-cols-2 gap-1">
+            <select
               bind:value={fromCurrency}
-              options={currencies}
-            />
+              class="text-xs px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+            >
+              {#each currencies as currency}
+                <option value={currency.value}>{currency.flag} {currency.value}</option>
+              {/each}
+            </select>
             
-            <Select
-              label="To"
+            <select
               bind:value={toCurrency}
-              options={currencies}
-            />
+              class="text-xs px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+            >
+              {#each currencies as currency}
+                <option value={currency.value}>{currency.flag} {currency.value}</option>
+              {/each}
+            </select>
           </div>
           
           {#if loadingCurrency}
             <div class="text-center">
-              <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500 mx-auto mb-1"></div>
+              <div class="animate-spin rounded-full h-3 w-3 border-b-2 border-blue-500 mx-auto mb-1"></div>
               <div class="text-xs text-gray-500">Converting...</div>
             </div>
           {:else}
-            <div class="text-center p-3 bg-blue-50 border border-blue-200 rounded-lg">
-              <div class="text-lg font-bold text-blue-600">
+            <div class="text-center p-2 bg-blue-50 border border-blue-200 rounded">
+              <div class="text-sm font-bold text-blue-600">
                 {getCurrencySymbol(toCurrency)}{formatNumber(convertedAmount, 2)}
               </div>
               <div class="text-xs text-gray-600">
                 1 {fromCurrency} = {formatNumber(exchangeRate, 4)} {toCurrency}
               </div>
               {#if lastCurrencyUpdate}
-                <div class="text-xs text-gray-500 mt-1">
-                  Updated: {lastCurrencyUpdate}
+                <div class="text-xs text-gray-400 mt-1">
+                  {lastCurrencyUpdate}
                 </div>
               {/if}
             </div>
@@ -354,36 +295,31 @@
     
     <!-- Quick Links -->
     <Card>
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-          <span class="text-xl mr-2">🔗</span>
-          Quick Access
-        </h3>
-        
-        <div class="space-y-2">
+      <div class="p-3">
+        <div class="space-y-1">
           <a 
             href="/calculator/bmi-calculator" 
-            class="block p-2 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors"
+            class="block p-2 text-xs text-gray-700 hover:bg-gray-50 rounded transition-colors"
           >
-            📊 BMI Calculator
+            BMI Calculator
           </a>
           <a 
             href="/calculator/loan-calculator" 
-            class="block p-2 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors"
+            class="block p-2 text-xs text-gray-700 hover:bg-gray-50 rounded transition-colors"
           >
-            💰 Loan Calculator
+            Loan Calculator
           </a>
           <a 
             href="/calculator/percentage-calculator" 
-            class="block p-2 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors"
+            class="block p-2 text-xs text-gray-700 hover:bg-gray-50 rounded transition-colors"
           >
-            % Percentage Calculator
+            Percentage Calculator
           </a>
           <a 
             href="/calculator/tip-calculator" 
-            class="block p-2 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors"
+            class="block p-2 text-xs text-gray-700 hover:bg-gray-50 rounded transition-colors"
           >
-            🍽️ Tip Calculator
+            Tip Calculator
           </a>
         </div>
       </div>
@@ -391,24 +327,19 @@
     
     <!-- System Info -->
     <Card>
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-          <span class="text-xl mr-2">ℹ️</span>
-          System Info
-        </h3>
-        
-        <div class="space-y-2 text-sm">
+      <div class="p-3">
+        <div class="space-y-1 text-xs">
           <div class="flex justify-between">
-            <span class="text-gray-600">Browser:</span>
-            <span class="font-medium text-xs">{browserName}</span>
+            <span class="text-gray-500">Browser:</span>
+            <span class="font-medium text-gray-700">{browserName}</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-gray-600">Screen:</span>
-            <span class="font-medium text-xs">{screenResolution}</span>
+            <span class="text-gray-500">Screen:</span>
+            <span class="font-medium text-gray-700">{screenResolution}</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-gray-600">Timezone:</span>
-            <span class="font-medium text-xs">{timezone}</span>
+            <span class="text-gray-500">Timezone:</span>
+            <span class="font-medium text-gray-700">{timezone.split('/').pop()}</span>
           </div>
         </div>
       </div>

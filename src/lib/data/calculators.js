@@ -636,7 +636,7 @@ export const CALCULATORS = [
     requiresApi: false
   },
   {
-    id: 'tip-split-bill',
+    id: 'tip-calculator',
     name: 'Tip Calculator',
     description: 'Calculate tips and split bills for restaurants',
     category: 'lifestyle',
@@ -705,16 +705,6 @@ export const CALCULATORS = [
     featured: false,
     requiresApi: false
   },
-  {
-    id: 'ip-address-lookup',
-    name: 'IP Address Lookup',
-    description: 'Get location and details for any IP address',
-    category: 'tech',
-    keywords: ['ip', 'address', 'lookup', 'location', 'geolocation'],
-    icon: '🌐',
-    featured: false,
-    requiresApi: true
-  },
 
   // Technical/IT (61-70)
   {
@@ -774,26 +764,6 @@ export const CALCULATORS = [
     category: 'tech',
     keywords: ['decimal', 'binary', 'convert', 'programming', 'math'],
     icon: '1️⃣',
-    featured: false,
-    requiresApi: false
-  },
-  {
-    id: 'ascii-to-text',
-    name: 'ASCII to Text Converter',
-    description: 'Convert ASCII codes to readable text',
-    category: 'tech',
-    keywords: ['ascii', 'text', 'convert', 'character', 'encoding'],
-    icon: '🔤',
-    featured: false,
-    requiresApi: false
-  },
-  {
-    id: 'text-to-ascii',
-    name: 'Text to ASCII Converter',
-    description: 'Convert text to ASCII character codes',
-    category: 'tech',
-    keywords: ['text', 'ascii', 'convert', 'character', 'encoding'],
-    icon: '🔢',
     featured: false,
     requiresApi: false
   },
@@ -975,7 +945,7 @@ export const CALCULATORS = [
     id: 'loan-emi-calculator',
     name: 'Loan EMI Calculator',
     description: 'Calculate Equated Monthly Installments for loans',
-    category: 'lifestyle',
+    category: 'finance',
     keywords: ['loan', 'emi', 'installment', 'monthly', 'payment'],
     icon: '💳',
     featured: false,
@@ -1000,6 +970,36 @@ export const CALCULATORS = [
     icon: '☀️',
     featured: false,
     requiresApi: false
+  },
+  {
+    id: 'ascii-to-text',
+    name: 'ASCII to Text Converter',
+    description: 'Convert ASCII codes to readable text',
+    category: 'tech',
+    keywords: ['ascii', 'text', 'convert', 'character', 'encoding'],
+    icon: '🔤',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'text-to-ascii',
+    name: 'Text to ASCII Converter',
+    description: 'Convert text to ASCII character codes',
+    category: 'tech',
+    keywords: ['text', 'ascii', 'convert', 'character', 'encoding'],
+    icon: '🔢',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'ip-address-lookup',
+    name: 'IP Address Lookup',
+    description: 'Get location and details for any IP address',
+    category: 'tech',
+    keywords: ['ip', 'address', 'lookup', 'location', 'geolocation'],
+    icon: '🌐',
+    featured: false,
+    requiresApi: true
   },
 
   // Fun Tools (91-100)

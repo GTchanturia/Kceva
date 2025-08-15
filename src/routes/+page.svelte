@@ -191,7 +191,6 @@
 			Ready to Calculate?
 		</h2>
 		<p class="text-xl text-blue-100 mb-8">
-			Join thousands of users who trust CalcHub for their daily calculations
 			Join thousands of users who trust Kceva for their daily calculations
 		</p>
 		<div class="flex flex-col sm:flex-row gap-4 justify-center">

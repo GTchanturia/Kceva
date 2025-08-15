@@ -84,6 +84,25 @@
 	import TimeUntilBirthdayCalculator from "$lib/calculators/TimeUntilBirthdayCalculator.svelte";
 	import LeapYearChecker from "$lib/calculators/LeapYearChecker.svelte";
 	import CookingMeasurementConverter from "$lib/calculators/CookingMeasurementConverter.svelte";
+	import GoldenRatioCalculator from "$lib/calculators/GoldenRatioCalculator.svelte";
+	import DpiPpiCalculator from "$lib/calculators/DpiPpiCalculator.svelte";
+	import ColorContrastChecker from "$lib/calculators/ColorContrastChecker.svelte";
+	import CssUnitConverter from "$lib/calculators/CssUnitConverter.svelte";
+	import FileSizeEstimator from "$lib/calculators/FileSizeEstimator.svelte";
+	import ResponsiveBreakpointCalculator from "$lib/calculators/ResponsiveBreakpointCalculator.svelte";
+	import AngleConverter from "$lib/calculators/AngleConverter.svelte";
+	import FontSizeConverter from "$lib/calculators/FontSizeConverter.svelte";
+	import RecipePortionAdjuster from "$lib/calculators/RecipePortionAdjuster.svelte";
+	import FuelCostCalculator from "$lib/calculators/FuelCostCalculator.svelte";
+	import TravelTimeCalculator from "$lib/calculators/TravelTimeCalculator.svelte";
+	import BodySurfaceAreaCalculator from "$lib/calculators/BodySurfaceAreaCalculator.svelte";
+	import PregnancyWeightGainCalculator from "$lib/calculators/PregnancyWeightGainCalculator.svelte";
+	import LoanEmiCalculator from "$lib/calculators/LoanEmiCalculator.svelte";
+	import ElectricityCostCalculator from "$lib/calculators/ElectricityCostCalculator.svelte";
+	import SolarPanelOutputCalculator from "$lib/calculators/SolarPanelOutputCalculator.svelte";
+	import AsciiToTextConverter from "$lib/calculators/AsciiToTextConverter.svelte";
+	import TextToAsciiConverter from "$lib/calculators/TextToAsciiConverter.svelte";
+	import IpAddressLookup from "$lib/calculators/IpAddressLookup.svelte";
 
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;
@@ -194,6 +213,25 @@
 		"time-until-birthday": TimeUntilBirthdayCalculator,
 		"leap-year-checker": LeapYearChecker,
 		"cooking-measurement": CookingMeasurementConverter,
+		"golden-ratio": GoldenRatioCalculator,
+		"dpi-ppi-calculator": DpiPpiCalculator,
+		"color-contrast-checker": ColorContrastChecker,
+		"css-unit-converter": CssUnitConverter,
+		"file-size-estimator": FileSizeEstimator,
+		"responsive-breakpoint": ResponsiveBreakpointCalculator,
+		"angle-converter": AngleConverter,
+		"font-size-converter": FontSizeConverter,
+		"recipe-portion-adjuster": RecipePortionAdjuster,
+		"fuel-cost-calculator": FuelCostCalculator,
+		"travel-time-calculator": TravelTimeCalculator,
+		"body-surface-area": BodySurfaceAreaCalculator,
+		"pregnancy-weight-gain": PregnancyWeightGainCalculator,
+		"loan-emi-calculator": LoanEmiCalculator,
+		"electricity-cost": ElectricityCostCalculator,
+		"solar-panel-output": SolarPanelOutputCalculator,
+		"ascii-to-text": AsciiToTextConverter,
+		"text-to-ascii": TextToAsciiConverter,
+		"ip-address-lookup": IpAddressLookup,
 		// Add more calculator components as they are created
 	};
 

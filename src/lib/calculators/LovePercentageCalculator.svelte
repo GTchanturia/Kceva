@@ -181,6 +181,7 @@
                 <div class="text-lg text-gray-600">
                     {getLoveAdvice(lovePercentage)}
                 </div>
+            </div>
             </Card>
         </Card>
 

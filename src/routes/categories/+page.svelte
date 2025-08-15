@@ -23,7 +23,7 @@
 
 <div class="min-h-screen bg-gray-50">
 	<!-- Header Section -->
-	<section class="bg-white border-b border-gray-200 py-12">
+	<header class="bg-white border-b border-gray-200 py-8 lg:py-12">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center">
 				<h1 class="text-4xl font-bold text-gray-900 mb-4">
@@ -35,31 +35,31 @@
 				</p>
 			</div>
 		</div>
-	</section>
+	</header>
 	
 	<!-- Categories Grid -->
-	<section class="py-12">
+	<main class="py-8 lg:py-12">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
 				{#each sortedCategories as category}
 					<CategoryCard {category} />
 				{/each}
 			</div>
 		</div>
-	</section>
+	</main>
 	
 	<!-- Quick Stats -->
-	<section class="py-12 bg-white">
+	<section class="py-8 lg:py-12 bg-white" aria-label="Calculator statistics by category">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center mb-8">
+			<header class="text-center mb-6 lg:mb-8">
 				<h2 class="text-2xl font-bold text-gray-900 mb-4">
 					Calculator Statistics
 				</h2>
-			</div>
+			</header>
 			
-			<div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+			<div class="grid grid-cols-2 md:grid-cols-5 gap-4 lg:gap-6">
 				{#each sortedCategories.slice(0, 5) as category}
-					<div class="text-center p-4 bg-gray-50 rounded-lg">
+					<div class="text-center p-3 lg:p-4 bg-gray-50 rounded-lg" role="group" aria-label="{category.name} category statistics">
 						<div class="text-2xl mb-2">{category.icon}</div>
 						<div class="text-lg font-semibold text-gray-900">{category.calculatorCount}</div>
 						<div class="text-sm text-gray-600">{category.name}</div>

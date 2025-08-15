@@ -56,14 +56,18 @@
         <div class="space-y-2">
           <h4 class="text-sm font-semibold text-gray-900">Stay Updated</h4>
           <div class="flex space-x-2">
+            <label for="newsletter-email" class="sr-only">Enter your email address for newsletter</label>
             <input
+              id="newsletter-email"
               type="email"
               placeholder="Enter your email"
               class="flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              aria-label="Email address for newsletter subscription"
             />
             <button
               type="button"
               class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200"
+              aria-label="Subscribe to newsletter"
             >
               Subscribe
             </button>
@@ -161,7 +165,12 @@
           >
             🌙
           </button>
-          <select class="text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+          <label for="language-selector" class="sr-only">Select language</label>
+          <select 
+            id="language-selector"
+            class="text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+            aria-label="Choose website language"
+          >
             <option value="en">English</option>
             <option value="es">Español</option>
             <option value="fr">Français</option>

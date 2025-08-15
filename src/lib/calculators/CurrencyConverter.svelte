@@ -30,6 +30,7 @@
         { value: 'EUR', label: 'Euro (EUR)' },
         { value: 'GBP', label: 'British Pound (GBP)' },
         { value: 'JPY', label: 'Japanese Yen (JPY)' },
+        { value: 'GEL', label: 'Georgian Lari (GEL)' },
         { value: 'CHF', label: 'Swiss Franc (CHF)' },
         { value: 'CAD', label: 'Canadian Dollar (CAD)' },
         { value: 'AUD', label: 'Australian Dollar (AUD)' },
@@ -57,7 +58,27 @@
         { value: 'MYR', label: 'Malaysian Ringgit (MYR)' },
         { value: 'IDR', label: 'Indonesian Rupiah (IDR)' },
         { value: 'PHP', label: 'Philippine Peso (PHP)' },
-        { value: 'VND', label: 'Vietnamese Dong (VND)' }
+        { value: 'VND', label: 'Vietnamese Dong (VND)' },
+        { value: 'UAH', label: 'Ukrainian Hryvnia (UAH)' },
+        { value: 'BGN', label: 'Bulgarian Lev (BGN)' },
+        { value: 'RON', label: 'Romanian Leu (RON)' },
+        { value: 'HRK', label: 'Croatian Kuna (HRK)' },
+        { value: 'ISK', label: 'Icelandic Krona (ISK)' },
+        { value: 'NZD', label: 'New Zealand Dollar (NZD)' },
+        { value: 'CLP', label: 'Chilean Peso (CLP)' },
+        { value: 'COP', label: 'Colombian Peso (COP)' },
+        { value: 'PEN', label: 'Peruvian Sol (PEN)' },
+        { value: 'UYU', label: 'Uruguayan Peso (UYU)' },
+        { value: 'ARS', label: 'Argentine Peso (ARS)' },
+        { value: 'BOB', label: 'Bolivian Boliviano (BOB)' },
+        { value: 'PYG', label: 'Paraguayan Guarani (PYG)' },
+        { value: 'LKR', label: 'Sri Lankan Rupee (LKR)' },
+        { value: 'PKR', label: 'Pakistani Rupee (PKR)' },
+        { value: 'BDT', label: 'Bangladeshi Taka (BDT)' },
+        { value: 'NPR', label: 'Nepalese Rupee (NPR)' },
+        { value: 'MMK', label: 'Myanmar Kyat (MMK)' },
+        { value: 'KHR', label: 'Cambodian Riel (KHR)' },
+        { value: 'LAK', label: 'Lao Kip (LAK)' }
     ];
     
     // API endpoint - using exchangerate-api.com (free tier: 1500 requests/month)
@@ -121,14 +142,19 @@
     // Get currency symbol
     function getCurrencySymbol(currency) {
         const symbols = {
-            'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥',
+            'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'GEL': '₾',
             'CHF': 'CHF', 'CAD': 'C$', 'AUD': 'A$', 'CNY': '¥',
             'INR': '₹', 'KRW': '₩', 'SGD': 'S$', 'HKD': 'HK$',
             'SEK': 'kr', 'NOK': 'kr', 'DKK': 'kr', 'PLN': 'zł',
             'CZK': 'Kč', 'HUF': 'Ft', 'RUB': '₽', 'BRL': 'R$',
             'MXN': '$', 'ZAR': 'R', 'TRY': '₺', 'ILS': '₪',
             'AED': 'د.إ', 'SAR': '﷼', 'EGP': 'E£', 'THB': '฿',
-            'MYR': 'RM', 'IDR': 'Rp', 'PHP': '₱', 'VND': '₫'
+            'MYR': 'RM', 'IDR': 'Rp', 'PHP': '₱', 'VND': '₫',
+            'UAH': '₴', 'BGN': 'лв', 'RON': 'lei', 'HRK': 'kn',
+            'ISK': 'kr', 'NZD': 'NZ$', 'CLP': '$', 'COP': '$',
+            'PEN': 'S/', 'UYU': '$U', 'ARS': '$', 'BOB': 'Bs',
+            'PYG': '₲', 'LKR': 'Rs', 'PKR': 'Rs', 'BDT': '৳',
+            'NPR': 'Rs', 'MMK': 'K', 'KHR': '៛', 'LAK': '₭'
         };
         return symbols[currency] || currency;
     }

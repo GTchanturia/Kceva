@@ -237,10 +237,10 @@
 			</p>
 			<div class="flex flex-col sm:flex-row gap-4 justify-center">
 				<Button variant="primary" size="lg" href="/categories">
-					Browse All Calculators
+					Explore Calculator Categories
 				</Button>
 				<Button variant="outline" size="lg" href="/contact">
-					Get in Touch
+					Contact Kceva Support Team
 				</Button>
 			</div>
 		</div>

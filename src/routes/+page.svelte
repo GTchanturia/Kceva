@@ -25,9 +25,9 @@
 </svelte:head>
 
 <!-- Hero Section -->
-<section class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-16">
+<section class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-12 lg:py-16">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center">
+		<header class="text-center">
 			<h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
 				<span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
 					100+ Calculators
@@ -43,7 +43,7 @@
 			
 			<!-- Hero Search -->
 			<div class="max-w-2xl mx-auto mb-8">
-				<SearchBar on:select={handleSearchSelect} />
+				<SearchBar on:select={handleSearchSelect} aria-label="Search for calculators and tools" />
 			</div>
 			
 			<!-- CTA Buttons -->
@@ -52,30 +52,30 @@
 					Browse All Categories
 				</Button>
 				<Button variant="outline" size="lg" href="/featured">
-					View Featured Tools
+					Explore Featured Calculators
 				</Button>
 			</div>
-		</div>
+		</header>
 	</div>
 </section>
 
 <!-- Stats Section -->
-<section class="py-12 bg-white">
+<section class="py-8 lg:py-12 bg-white" aria-label="Website statistics">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-			<div class="text-center">
+		<div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+			<div class="text-center" role="group" aria-label="Number of calculators available">
 				<div class="text-3xl font-bold text-blue-600 mb-2">100+</div>
 				<div class="text-gray-600">Calculators</div>
 			</div>
-			<div class="text-center">
+			<div class="text-center" role="group" aria-label="Number of calculator categories">
 				<div class="text-3xl font-bold text-green-600 mb-2">10</div>
 				<div class="text-gray-600">Categories</div>
 			</div>
-			<div class="text-center">
+			<div class="text-center" role="group" aria-label="All tools are free">
 				<div class="text-3xl font-bold text-purple-600 mb-2">100%</div>
 				<div class="text-gray-600">Free</div>
 			</div>
-			<div class="text-center">
+			<div class="text-center" role="group" aria-label="No advertisements">
 				<div class="text-3xl font-bold text-orange-600 mb-2">0</div>
 				<div class="text-gray-600">Ads</div>
 			</div>
@@ -84,40 +84,40 @@
 </section>
 
 <!-- Featured Calculators -->
-<section class="py-12 bg-gray-50">
+<section class="py-8 lg:py-12 bg-gray-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-12">
+		<header class="text-center mb-8 lg:mb-12">
 			<h2 class="text-3xl font-bold text-gray-900 mb-4">Featured Calculators</h2>
 			<p class="text-lg text-gray-600 max-w-2xl mx-auto">
 				Our most popular and useful calculators, handpicked for everyday use
 			</p>
-		</div>
+		</header>
 		
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-6 lg:mb-8">
 			{#each featuredCalculators as calculator}
 				<CalculatorCard {calculator} featured={true} />
 			{/each}
 		</div>
 		
 		<div class="text-center">
-			<Button variant="outline" href="/featured">
-				View All Featured Tools
+			<Button variant="outline" href="/categories">
+				Browse All Calculator Categories
 			</Button>
 		</div>
 	</div>
 </section>
 
 <!-- Categories Section -->
-<section class="py-16 bg-white">
+<section class="py-8 lg:py-16 bg-white">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-12">
+		<header class="text-center mb-8 lg:mb-12">
 			<h2 class="text-3xl font-bold text-gray-900 mb-4">Browse by Category</h2>
 			<p class="text-lg text-gray-600 max-w-2xl mx-auto">
 				Explore our comprehensive collection of calculators organized by category
 			</p>
-		</div>
+		</header>
 		
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
 			{#each CALCULATOR_CATEGORIES as category}
 				<CategoryCard {category} />
 			{/each}
@@ -126,13 +126,13 @@
 </section>
 
 <!-- Features Section -->
-<section class="py-12 bg-gradient-to-br from-indigo-50 to-blue-50">
+<section class="py-8 lg:py-12 bg-gradient-to-br from-indigo-50 to-blue-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-12">
-			<h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose CalcHub?</h2>
-		</div>
+		<header class="text-center mb-8 lg:mb-12">
+			<h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Kceva?</h2>
+		</header>
 		
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 			<div class="text-center p-6">
 				<div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
 					<span class="text-2xl">⚡</span>
@@ -185,20 +185,20 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-12 bg-blue-600">
+<section class="py-8 lg:py-12 bg-blue-600">
 	<div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
 		<h2 class="text-3xl font-bold text-white mb-4">
 			Ready to Calculate?
 		</h2>
-		<p class="text-xl text-blue-100 mb-8">
+		<p class="text-xl text-blue-200 mb-8">
 			Join thousands of users who trust Kceva for their daily calculations
 		</p>
 		<div class="flex flex-col sm:flex-row gap-4 justify-center">
 			<Button variant="secondary" size="lg" href="/categories">
-				Start Calculating Now
+				Browse Calculator Categories
 			</Button>
 			<Button variant="outline" size="lg" href="/about" className="border-white text-white hover:bg-white hover:text-blue-600">
-				Learn More
+				Learn About Kceva Platform
 			</Button>
 		</div>
 	</div>

@@ -48,9 +48,9 @@ export const CALCULATORS = [
   {
     id: 'currency-converter',
     name: 'Currency Converter',
-    description: 'Convert between different currencies with live rates',
+    description: 'Convert between 50+ world currencies including USD, EUR, GBP, JPY, GEL and more with live exchange rates',
     category: 'finance',
-    keywords: ['currency', 'exchange', 'convert', 'money', 'forex'],
+    keywords: ['currency', 'exchange', 'convert', 'money', 'forex', 'gel', 'georgian', 'lari', 'usd', 'eur'],
     icon: '💱',
     featured: true,
     requiresApi: true

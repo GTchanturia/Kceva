@@ -11,15 +11,15 @@
 	let { children } = $props();
 </script>
 
-<div class="min-h-screen flex flex-col">
+<div class="min-h-screen flex flex-col" role="document">
 	<Header />
 	
-	<div class="flex flex-1 bg-gray-50">
+	<div class="flex flex-1 bg-gray-50" role="main">
 		<!-- Left Sidebar -->
 		<Sidebar />
 		
 		<!-- Main Content -->
-		<main class="flex-1 min-w-0 bg-white">
+		<main class="flex-1 min-w-0 bg-white" role="main" aria-label="Calculator content area">
 			{@render children()}
 		</main>
 	</div>

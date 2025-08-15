@@ -171,5 +171,4 @@
         </div>
       </div>
     {/if}
-  </div>
 </header>

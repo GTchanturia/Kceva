@@ -25,7 +25,7 @@
 </svelte:head>
 
 <!-- Hero Section -->
-<section class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-20">
+<section class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-16">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center">
 			<h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
@@ -60,7 +60,7 @@
 </section>
 
 <!-- Stats Section -->
-<section class="py-16 bg-white">
+<section class="py-12 bg-white">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
 			<div class="text-center">
@@ -84,7 +84,7 @@
 </section>
 
 <!-- Featured Calculators -->
-<section class="py-16 bg-gray-50">
+<section class="py-12 bg-gray-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-12">
 			<h2 class="text-3xl font-bold text-gray-900 mb-4">Featured Calculators</h2>
@@ -126,7 +126,7 @@
 </section>
 
 <!-- Features Section -->
-<section class="py-16 bg-gradient-to-br from-indigo-50 to-blue-50">
+<section class="py-12 bg-gradient-to-br from-indigo-50 to-blue-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-12">
 			<h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose CalcHub?</h2>
@@ -185,7 +185,7 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-16 bg-blue-600">
+<section class="py-12 bg-blue-600">
 	<div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
 		<h2 class="text-3xl font-bold text-white mb-4">
 			Ready to Calculate?

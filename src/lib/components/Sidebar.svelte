@@ -31,6 +31,11 @@
   let loadingWeather = true;
   let loadingCurrency = false;
   
+  // Browser-specific info (initialized safely for SSR)
+  let browserName = 'Unknown';
+  let screenResolution = 'Unknown';
+  let timezone = 'Unknown';
+  
   // Popular currencies
   const currencies = [
     { value: 'USD', label: 'US Dollar', symbol: '$' },
@@ -175,6 +180,13 @@
   onMount(() => {
     // Start time updates
     timeInterval = setInterval(updateTime, 1000);
+    
+    // Initialize browser-specific information
+    browserName = navigator.userAgent.includes('Chrome') ? 'Chrome' : 
+                  navigator.userAgent.includes('Firefox') ? 'Firefox' : 
+                  navigator.userAgent.includes('Safari') ? 'Safari' : 'Other';
+    screenResolution = `${screen.width}×${screen.height}`;
+    timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     
     // Get user info and weather
     getUserInfo();
@@ -388,15 +400,15 @@
         <div class="space-y-2 text-sm">
           <div class="flex justify-between">
             <span class="text-gray-600">Browser:</span>
-            <span class="font-medium text-xs">{navigator.userAgent.includes('Chrome') ? 'Chrome' : navigator.userAgent.includes('Firefox') ? 'Firefox' : navigator.userAgent.includes('Safari') ? 'Safari' : 'Other'}</span>
+            <span class="font-medium text-xs">{browserName}</span>
           </div>
           <div class="flex justify-between">
             <span class="text-gray-600">Screen:</span>
-            <span class="font-medium text-xs">{screen.width}×{screen.height}</span>
+            <span class="font-medium text-xs">{screenResolution}</span>
           </div>
           <div class="flex justify-between">
             <span class="text-gray-600">Timezone:</span>
-            <span class="font-medium text-xs">{Intl.DateTimeFormat().resolvedOptions().timeZone}</span>
+            <span class="font-medium text-xs">{timezone}</span>
           </div>
         </div>
       </div>

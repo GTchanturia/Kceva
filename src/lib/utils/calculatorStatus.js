@@ -94,17 +94,6 @@ const WORKING_CALCULATORS = [
   'coin-flip',
   'love-percentage',
   'zodiac-sign'
-  
-  // Additional calculators
-  'date-add-subtract',
-  'countdown-timer',
-  'stopwatch',
-  'work-days-calculator',
-  'world-clock',
-  'meeting-time-planner',
-  'time-until-birthday',
-  'leap-year-checker',
-  'cooking-measurement'
 ];
 
 /**

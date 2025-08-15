@@ -439,8 +439,8 @@
                         <h4 class="font-semibold text-gray-800">By Angles:</h4>
                         <div class="space-y-2 text-sm">
                             <div><strong>Right:</strong> One 90° angle</div>
-                            <div><strong>Acute:</strong> All angles < 90°</div>
-                            <div><strong>Obtuse:</strong> One angle > 90°</div>
+                            <div><strong>Acute:</strong> All angles &lt; 90°</div>
+                            <div><strong>Obtuse:</strong> One angle &gt; 90°</div>
                         </div>
                     </div>
                 </div>

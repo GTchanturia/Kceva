@@ -171,7 +171,6 @@
                     {compatibilityLevel}
                 </div>
             </Card>
-        </Card>
 
         <!-- Names Display -->
         <Card>

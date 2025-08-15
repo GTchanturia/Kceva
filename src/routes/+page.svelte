@@ -1,205 +1,176 @@
 <script>
-	import { CALCULATOR_CATEGORIES } from '$lib/types/calculator.js';
-	import { getFeaturedCalculators } from '$lib/data/calculators.js';
-	import CategoryCard from '$lib/components/CategoryCard.svelte';
-	import CalculatorCard from '$lib/components/CalculatorCard.svelte';
-	import Button from '$lib/components/ui/Button.svelte';
-	import SearchBar from '$lib/components/SearchBar.svelte';
-	import { goto } from '$app/navigation';
-	
-	// Get featured calculators
-	const featuredCalculators = getFeaturedCalculators();
-	
-	// Handle search selection
-	function handleSearchSelect(event) {
-		const calculator = event.detail;
-		goto(`/calculator/${calculator.id}`);
-	}
+  /**
+   * Main Header Component
+   * @component
+   */
+
+  import { page } from "$app/stores";
+  import SearchBar from "./SearchBar.svelte";
+  import Button from "./ui/Button.svelte";
+  import { goto } from "$app/navigation";
+
+  /** @type {boolean} */
+  let mobileMenuOpen = false;
+
+  // Handle search result selection
+  function handleSearchSelect(event) {
+    const calculator = event.detail;
+    goto(`/calculator/${calculator.id}`);
+  }
+
+  // Toggle mobile menu
+  function toggleMobileMenu() {
+    mobileMenuOpen = !mobileMenuOpen;
+  }
+
+  // Navigation items
+  const navItems = [
+    { href: "/", label: "Home" },
+    { href: "/categories", label: "Categories" },
+    { href: "/about", label: "About" },
+  ];
 </script>
 
-<svelte:head>
-	<title>Kceva - 100+ Free Online Calculators & Converters | Finance, Health, Math Tools</title>
-	<meta name="description" content="Access 100+ free online calculators and converters at Kceva.com. Finance calculators, health tools, math solvers, unit converters, and more. Fast, accurate, mobile-friendly." />
-	<meta name="keywords" content="Kceva, calculator, converter, finance calculator, health calculator, math calculator, unit converter, free tools, online calculator, BMI calculator, loan calculator, percentage calculator" />
-	<link rel="canonical" href="https://kceva.com" />
-</svelte:head>
+<header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40" role="banner">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="flex justify-between items-center h-16" role="navigation" aria-label="Main navigation">
+      <!-- Logo and Brand -->
+      <div class="flex items-center space-x-4">
+        <a href="/" class="flex items-center space-x-2" aria-label="Kceva homepage - 100+ free calculators">
+          <div
+            class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"
+            aria-hidden="true"
+          >
+            <span class="text-white font-bold text-lg">🧮</span>
+          </div>
+          <span class="text-xl font-bold text-gray-900 hidden sm:block">
+            Kceva
+          </span>
+        </a>
+      </div>
 
-<!-- Hero Section -->
-<section class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-12 lg:py-16">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<header class="text-center">
-			<h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-				<span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-					100+ Calculators
-				</span>
-				<br />
-				<span class="text-gray-700">All in One Place</span>
-			</h1>
-			
-			<p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-				From financial planning to health metrics, unit conversions to mathematical formulas - 
-				find the perfect calculator for any task. Fast, accurate, and completely free.
-			</p>
-			
-			<!-- Hero Search -->
-			<div class="max-w-2xl mx-auto mb-8">
-				<SearchBar on:select={handleSearchSelect} aria-label="Search for calculators and tools" />
-			</div>
-			
-			<!-- CTA Buttons -->
-			<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-				<Button variant="primary" size="lg" href="/categories">
-					Browse All Categories
-				</Button>
-				<Button variant="outline" size="lg" href="/featured">
-					Explore Featured Calculators
-				</Button>
-			</div>
-		</header>
-	</div>
-</section>
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8" role="navigation" aria-label="Primary navigation">
+        {#each navItems as item}
+          <a
+            href={item.href}
+            class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded {$page
+              .url.pathname === item.href
+              ? 'text-blue-600 border-b-2 border-blue-600'
+              : ''}"
+          >
+            {item.label}
+          </a>
+        {/each}
+      </nav>
 
-<!-- Stats Section -->
-<section class="py-8 lg:py-12 bg-white" aria-label="Website statistics">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
-			<div class="text-center" role="group" aria-label="Number of calculators available">
-				<div class="text-3xl font-bold text-blue-600 mb-2">100+</div>
-				<div class="text-gray-600">Calculators</div>
-			</div>
-			<div class="text-center" role="group" aria-label="Number of calculator categories">
-				<div class="text-3xl font-bold text-green-600 mb-2">10</div>
-				<div class="text-gray-600">Categories</div>
-			</div>
-			<div class="text-center" role="group" aria-label="All tools are free">
-				<div class="text-3xl font-bold text-purple-600 mb-2">100%</div>
-				<div class="text-gray-600">Free</div>
-			</div>
-			<div class="text-center" role="group" aria-label="No advertisements">
-				<div class="text-3xl font-bold text-orange-600 mb-2">0</div>
-				<div class="text-gray-600">Ads</div>
-			</div>
-		</div>
-	</div>
-</section>
+      <!-- Search Bar -->
+      <div class="flex-1 max-w-lg mx-8 hidden lg:block">
+        <SearchBar on:select={handleSearchSelect} />
+      </div>
 
-<!-- Featured Calculators -->
-<section class="py-8 lg:py-12 bg-gray-50">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<header class="text-center mb-8 lg:mb-12">
-			<h2 class="text-3xl font-bold text-gray-900 mb-4">Featured Calculators</h2>
-			<p class="text-lg text-gray-600 max-w-2xl mx-auto">
-				Our most popular and useful calculators, handpicked for everyday use
-			</p>
-		</header>
-		
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-6 lg:mb-8">
-			{#each featuredCalculators as calculator}
-				<CalculatorCard {calculator} featured={true} />
-			{/each}
-		</div>
-		
-		<div class="text-center">
-			<Button variant="outline" href="/categories">
-				Browse All Calculator Categories
-			</Button>
-		</div>
-	</div>
-</section>
+      <!-- User Actions -->
+      <div class="flex items-center space-x-4">
+        <!-- Search Button for Mobile -->
+        <button
+          type="button"
+          class="lg:hidden p-2 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
+          aria-label="Search"
+        >
+          <svg
+            class="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </button>
 
-<!-- Categories Section -->
-<section class="py-8 lg:py-16 bg-white">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<header class="text-center mb-8 lg:mb-12">
-			<h2 class="text-3xl font-bold text-gray-900 mb-4">Browse by Category</h2>
-			<p class="text-lg text-gray-600 max-w-2xl mx-auto">
-				Explore our comprehensive collection of calculators organized by category
-			</p>
-		</header>
-		
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
-			{#each CALCULATOR_CATEGORIES as category}
-				<CategoryCard {category} />
-			{/each}
-		</div>
-	</div>
-</section>
+        <!-- Mobile Menu Button -->
+        <button
+          type="button"
+          class="md:hidden p-2 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
+          on:click={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            {#if mobileMenuOpen}
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            {:else}
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            {/if}
+          </svg>
+        </button>
+      </div>
+    </div>
 
-<!-- Features Section -->
-<section class="py-8 lg:py-12 bg-gradient-to-br from-indigo-50 to-blue-50">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<header class="text-center mb-8 lg:mb-12">
-			<h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Kceva?</h2>
-		</header>
-		
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-			<div class="text-center p-6">
-				<div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-					<span class="text-2xl">⚡</span>
-				</div>
-				<h3 class="text-xl font-semibold text-gray-900 mb-2">Lightning Fast</h3>
-				<p class="text-gray-600">All calculations run instantly in your browser. No waiting, no delays.</p>
-			</div>
-			
-			<div class="text-center p-6">
-				<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-					<span class="text-2xl">🔒</span>
-				</div>
-				<h3 class="text-xl font-semibold text-gray-900 mb-2">Privacy First</h3>
-				<p class="text-gray-600">Your data stays on your device. We don't store or track your calculations.</p>
-			</div>
-			
-			<div class="text-center p-6">
-				<div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-					<span class="text-2xl">📱</span>
-				</div>
-				<h3 class="text-xl font-semibold text-gray-900 mb-2">Mobile Friendly</h3>
-				<p class="text-gray-600">Works perfectly on all devices - desktop, tablet, and mobile.</p>
-			</div>
-			
-			<div class="text-center p-6">
-				<div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-					<span class="text-2xl">🎯</span>
-				</div>
-				<h3 class="text-xl font-semibold text-gray-900 mb-2">Accurate Results</h3>
-				<p class="text-gray-600">Thoroughly tested formulas ensure precise calculations every time.</p>
-			</div>
-			
-			<div class="text-center p-6">
-				<div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-					<span class="text-2xl">🆓</span>
-				</div>
-				<h3 class="text-xl font-semibold text-gray-900 mb-2">Completely Free</h3>
-				<p class="text-gray-600">No subscriptions, no hidden fees. All tools are free to use forever.</p>
-			</div>
-			
-			<div class="text-center p-6">
-				<div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-					<span class="text-2xl">🔍</span>
-				</div>
-				<h3 class="text-xl font-semibold text-gray-900 mb-2">Easy to Find</h3>
-				<p class="text-gray-600">Powerful search and organized categories help you find the right tool quickly.</p>
-			</div>
-		</div>
-	</div>
-</section>
+    <!-- Mobile Menu -->
+    {#if mobileMenuOpen}
+      <div class="md:hidden border-t border-gray-200 py-4">
+        <!-- Mobile Search -->
+        <div class="px-4 mb-4 lg:hidden">
+          <SearchBar on:select={handleSearchSelect} />
+        </div>
 
-<!-- CTA Section -->
-<section class="py-8 lg:py-12 bg-blue-600">
-	<div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-		<h2 class="text-3xl font-bold text-white mb-4">
-			Ready to Calculate?
-		</h2>
-		<p class="text-xl text-blue-200 mb-8">
-			Join thousands of users who trust Kceva for their daily calculations
-		</p>
-		<div class="flex flex-col sm:flex-row gap-4 justify-center">
-			<Button variant="secondary" size="lg" href="/categories">
-				Browse Calculator Categories
-			</Button>
-			<Button variant="outline" size="lg" href="/about" className="border-white text-white hover:bg-white hover:text-blue-600">
-				Learn About Kceva Platform
-			</Button>
-		</div>
-	</div>
-</section>
+        <!-- Mobile Navigation -->
+        <nav class="space-y-1">
+          {#each navItems as item}
+            <a
+              href={item.href}
+              class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200 {$page
+                .url.pathname === item.href
+                ? 'text-blue-600 bg-blue-50'
+                : ''}"
+              on:click={() => (mobileMenuOpen = false)}
+            >
+              {item.label}
+            </a>
+          {/each}
+        </nav>
+
+        <!-- Mobile Auth Buttons -->
+        <div
+          class="px-4 pt-4 border-t border-gray-200 mt-4 space-y-2 sm:hidden"
+        >
+          <Button
+            variant="ghost"
+            size="sm"
+            href="/login"
+            className="w-full justify-center"
+          >
+            Sign In
+          </Button>
+          <Button
+            variant="primary"
+            size="sm"
+            href="/register"
+            className="w-full justify-center"
+          >
+            Sign Up
+          </Button>
+        </div>
+      </div>
+    {/if}
+  </div>
+</header>

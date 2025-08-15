@@ -406,7 +406,7 @@
 			<div class="space-x-4">
 				{#if category}
 					<Button variant="primary" href="/category/{category.id}">
-						Browse {category.name}
+						Explore All Calculators
 					</Button>
 				{/if}
 				<Button variant="outline" href="/categories">
@@ -429,7 +429,7 @@
 			</p>
 			<div class="space-x-4">
 				<Button variant="primary" href="/categories">
-					Browse Calculators
+					Explore All Calculators
 				</Button>
 				<Button variant="outline" href="/">Go Home</Button>
 			</div>

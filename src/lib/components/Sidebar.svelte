@@ -1,6 +1,6 @@
 <script>
   /**
-   * Enhanced Left Sidebar Component with Widgets
+   * Modern Compact Sidebar Component
    * @component
    */
   
@@ -33,59 +33,156 @@
   
   // Comprehensive currency list with flags (50+ currencies)
   const currencies = [
-    { value: 'USD', symbol: '$', flag: '🇺🇸' },
-    { value: 'EUR', symbol: '€', flag: '🇪🇺' },
-    { value: 'GBP', symbol: '£', flag: '🇬🇧' },
-    { value: 'JPY', symbol: '¥', flag: '🇯🇵' },
-    { value: 'CHF', symbol: 'CHF', flag: '🇨🇭' },
-    { value: 'CAD', symbol: 'C$', flag: '🇨🇦' },
-    { value: 'AUD', symbol: 'A$', flag: '🇦🇺' },
-    { value: 'CNY', symbol: '¥', flag: '🇨🇳' },
-    { value: 'INR', symbol: '₹', flag: '🇮🇳' },
-    { value: 'KRW', symbol: '₩', flag: '🇰🇷' },
-    { value: 'SGD', symbol: 'S$', flag: '🇸🇬' },
-    { value: 'HKD', symbol: 'HK$', flag: '🇭🇰' },
-    { value: 'SEK', symbol: 'kr', flag: '🇸🇪' },
-    { value: 'NOK', symbol: 'kr', flag: '🇳🇴' },
-    { value: 'DKK', symbol: 'kr', flag: '🇩🇰' },
-    { value: 'PLN', symbol: 'zł', flag: '🇵🇱' },
-    { value: 'CZK', symbol: 'Kč', flag: '🇨🇿' },
-    { value: 'HUF', symbol: 'Ft', flag: '🇭🇺' },
-    { value: 'RUB', symbol: '₽', flag: '🇷🇺' },
-    { value: 'BRL', symbol: 'R$', flag: '🇧🇷' },
-    { value: 'MXN', symbol: '$', flag: '🇲🇽' },
-    { value: 'ZAR', symbol: 'R', flag: '🇿🇦' },
-    { value: 'TRY', symbol: '₺', flag: '🇹🇷' },
-    { value: 'ILS', symbol: '₪', flag: '🇮🇱' },
-    { value: 'AED', symbol: 'د.إ', flag: '🇦🇪' },
-    { value: 'SAR', symbol: '﷼', flag: '🇸🇦' },
-    { value: 'EGP', symbol: 'E£', flag: '🇪🇬' },
-    { value: 'THB', symbol: '฿', flag: '🇹🇭' },
-    { value: 'MYR', symbol: 'RM', flag: '🇲🇾' },
-    { value: 'IDR', symbol: 'Rp', flag: '🇮🇩' },
-    { value: 'PHP', symbol: '₱', flag: '🇵🇭' },
-    { value: 'VND', symbol: '₫', flag: '🇻🇳' },
-    { value: 'GEL', symbol: '₾', flag: '🇬🇪' },
-    { value: 'UAH', symbol: '₴', flag: '🇺🇦' },
-    { value: 'BGN', symbol: 'лв', flag: '🇧🇬' },
-    { value: 'RON', symbol: 'lei', flag: '🇷🇴' },
-    { value: 'HRK', symbol: 'kn', flag: '🇭🇷' },
-    { value: 'ISK', symbol: 'kr', flag: '🇮🇸' },
-    { value: 'NZD', symbol: 'NZ$', flag: '🇳🇿' },
-    { value: 'CLP', symbol: '$', flag: '🇨🇱' },
-    { value: 'COP', symbol: '$', flag: '🇨🇴' },
-    { value: 'PEN', symbol: 'S/', flag: '🇵🇪' },
-    { value: 'UYU', symbol: '$U', flag: '🇺🇾' },
-    { value: 'ARS', symbol: '$', flag: '🇦🇷' },
-    { value: 'BOB', symbol: 'Bs', flag: '🇧🇴' },
-    { value: 'PYG', symbol: '₲', flag: '🇵🇾' },
-    { value: 'LKR', symbol: 'Rs', flag: '🇱🇰' },
-    { value: 'PKR', symbol: 'Rs', flag: '🇵🇰' },
-    { value: 'BDT', symbol: '৳', flag: '🇧🇩' },
-    { value: 'NPR', symbol: 'Rs', flag: '🇳🇵' },
-    { value: 'MMK', symbol: 'K', flag: '🇲🇲' },
-    { value: 'KHR', symbol: '៛', flag: '🇰🇭' },
-    { value: 'LAK', symbol: '₭', flag: '🇱🇦' }
+    { value: 'USD', flag: '🇺🇸' },
+    { value: 'EUR', flag: '🇪🇺' },
+    { value: 'GBP', flag: '🇬🇧' },
+    { value: 'JPY', flag: '🇯🇵' },
+    { value: 'GEL', flag: '🇬🇪' },
+    { value: 'CHF', flag: '🇨🇭' },
+    { value: 'CAD', flag: '🇨🇦' },
+    { value: 'AUD', flag: '🇦🇺' },
+    { value: 'CNY', flag: '🇨🇳' },
+    { value: 'INR', flag: '🇮🇳' },
+    { value: 'KRW', flag: '🇰🇷' },
+    { value: 'SGD', flag: '🇸🇬' },
+    { value: 'HKD', flag: '🇭🇰' },
+    { value: 'SEK', flag: '🇸🇪' },
+    { value: 'NOK', flag: '🇳🇴' },
+    { value: 'DKK', flag: '🇩🇰' },
+    { value: 'PLN', flag: '🇵🇱' },
+    { value: 'CZK', flag: '🇨🇿' },
+    { value: 'HUF', flag: '🇭🇺' },
+    { value: 'RUB', flag: '🇷🇺' },
+    { value: 'BRL', flag: '🇧🇷' },
+    { value: 'MXN', flag: '🇲🇽' },
+    { value: 'ZAR', flag: '🇿🇦' },
+    { value: 'TRY', flag: '🇹🇷' },
+    { value: 'ILS', flag: '🇮🇱' },
+    { value: 'AED', flag: '🇦🇪' },
+    { value: 'SAR', flag: '🇸🇦' },
+    { value: 'EGP', flag: '🇪🇬' },
+    { value: 'THB', flag: '🇹🇭' },
+    { value: 'MYR', flag: '🇲🇾' },
+    { value: 'IDR', flag: '🇮🇩' },
+    { value: 'PHP', flag: '🇵🇭' },
+    { value: 'VND', flag: '🇻🇳' },
+    { value: 'UAH', flag: '🇺🇦' },
+    { value: 'BGN', flag: '🇧🇬' },
+    { value: 'RON', flag: '🇷🇴' },
+    { value: 'HRK', flag: '🇭🇷' },
+    { value: 'ISK', flag: '🇮🇸' },
+    { value: 'NZD', flag: '🇳🇿' },
+    { value: 'CLP', flag: '🇨🇱' },
+    { value: 'COP', flag: '🇨🇴' },
+    { value: 'PEN', flag: '🇵🇪' },
+    { value: 'UYU', flag: '🇺🇾' },
+    { value: 'ARS', flag: '🇦🇷' },
+    { value: 'BOB', flag: '🇧🇴' },
+    { value: 'PYG', flag: '🇵🇾' },
+    { value: 'LKR', flag: '🇱🇰' },
+    { value: 'PKR', flag: '🇵🇰' },
+    { value: 'BDT', flag: '🇧🇩' },
+    { value: 'NPR', flag: '🇳🇵' },
+    { value: 'MMK', flag: '🇲🇲' },
+    { value: 'KHR', flag: '🇰🇭' },
+    { value: 'LAK', flag: '🇱🇦' },
+    { value: 'AMD', flag: '🇦🇲' },
+    { value: 'AZN', flag: '🇦🇿' },
+    { value: 'BYN', flag: '🇧🇾' },
+    { value: 'KZT', flag: '🇰🇿' },
+    { value: 'KGS', flag: '🇰🇬' },
+    { value: 'TJS', flag: '🇹🇯' },
+    { value: 'TMT', flag: '🇹🇲' },
+    { value: 'UZS', flag: '🇺🇿' },
+    { value: 'AFN', flag: '🇦🇫' },
+    { value: 'ALL', flag: '🇦🇱' },
+    { value: 'DZD', flag: '🇩🇿' },
+    { value: 'AOA', flag: '🇦🇴' },
+    { value: 'XCD', flag: '🏴' },
+    { value: 'AWG', flag: '🇦🇼' },
+    { value: 'BSD', flag: '🇧🇸' },
+    { value: 'BHD', flag: '🇧🇭' },
+    { value: 'BBD', flag: '🇧🇧' },
+    { value: 'BZD', flag: '🇧🇿' },
+    { value: 'BMD', flag: '🇧🇲' },
+    { value: 'BTN', flag: '🇧🇹' },
+    { value: 'BWP', flag: '🇧🇼' },
+    { value: 'BND', flag: '🇧🇳' },
+    { value: 'BIF', flag: '🇧🇮' },
+    { value: 'CVE', flag: '🇨🇻' },
+    { value: 'XAF', flag: '🌍' },
+    { value: 'XOF', flag: '🌍' },
+    { value: 'KMF', flag: '🇰🇲' },
+    { value: 'CDF', flag: '🇨🇩' },
+    { value: 'CRC', flag: '🇨🇷' },
+    { value: 'CUP', flag: '🇨🇺' },
+    { value: 'DJF', flag: '🇩🇯' },
+    { value: 'DOP', flag: '🇩🇴' },
+    { value: 'ERN', flag: '🇪🇷' },
+    { value: 'SZL', flag: '🇸🇿' },
+    { value: 'ETB', flag: '🇪🇹' },
+    { value: 'FKP', flag: '🇫🇰' },
+    { value: 'FJD', flag: '🇫🇯' },
+    { value: 'GMD', flag: '🇬🇲' },
+    { value: 'GHS', flag: '🇬🇭' },
+    { value: 'GIP', flag: '🇬🇮' },
+    { value: 'GTQ', flag: '🇬🇹' },
+    { value: 'GGP', flag: '🇬🇬' },
+    { value: 'GNF', flag: '🇬🇳' },
+    { value: 'GYD', flag: '🇬🇾' },
+    { value: 'HTG', flag: '🇭🇹' },
+    { value: 'HNL', flag: '🇭🇳' },
+    { value: 'IRR', flag: '🇮🇷' },
+    { value: 'IQD', flag: '🇮🇶' },
+    { value: 'JMD', flag: '🇯🇲' },
+    { value: 'JOD', flag: '🇯🇴' },
+    { value: 'KES', flag: '🇰🇪' },
+    { value: 'KWD', flag: '🇰🇼' },
+    { value: 'LBP', flag: '🇱🇧' },
+    { value: 'LSL', flag: '🇱🇸' },
+    { value: 'LRD', flag: '🇱🇷' },
+    { value: 'LYD', flag: '🇱🇾' },
+    { value: 'MOP', flag: '🇲🇴' },
+    { value: 'MKD', flag: '🇲🇰' },
+    { value: 'MGA', flag: '🇲🇬' },
+    { value: 'MWK', flag: '🇲🇼' },
+    { value: 'MVR', flag: '🇲🇻' },
+    { value: 'MRU', flag: '🇲🇷' },
+    { value: 'MUR', flag: '🇲🇺' },
+    { value: 'MDL', flag: '🇲🇩' },
+    { value: 'MNT', flag: '🇲🇳' },
+    { value: 'MAD', flag: '🇲🇦' },
+    { value: 'MZN', flag: '🇲🇿' },
+    { value: 'NAD', flag: '🇳🇦' },
+    { value: 'NIO', flag: '🇳🇮' },
+    { value: 'NGN', flag: '🇳🇬' },
+    { value: 'OMR', flag: '🇴🇲' },
+    { value: 'PAB', flag: '🇵🇦' },
+    { value: 'PGK', flag: '🇵🇬' },
+    { value: 'QAR', flag: '🇶🇦' },
+    { value: 'RWF', flag: '🇷🇼' },
+    { value: 'SHP', flag: '🇸🇭' },
+    { value: 'WST', flag: '🇼🇸' },
+    { value: 'STN', flag: '🇸🇹' },
+    { value: 'RSD', flag: '🇷🇸' },
+    { value: 'SCR', flag: '🇸🇨' },
+    { value: 'SLL', flag: '🇸🇱' },
+    { value: 'SBD', flag: '🇸🇧' },
+    { value: 'SOS', flag: '🇸🇴' },
+    { value: 'SSP', flag: '🇸🇸' },
+    { value: 'SRD', flag: '🇸🇷' },
+    { value: 'SYP', flag: '🇸🇾' },
+    { value: 'TWD', flag: '🇹🇼' },
+    { value: 'TZS', flag: '🇹🇿' },
+    { value: 'TOP', flag: '🇹🇴' },
+    { value: 'TTD', flag: '🇹🇹' },
+    { value: 'TND', flag: '🇹🇳' },
+    { value: 'UGX', flag: '🇺🇬' },
+    { value: 'VUV', flag: '🇻🇺' },
+    { value: 'VES', flag: '🇻🇪' },
+    { value: 'YER', flag: '🇾🇪' },
+    { value: 'ZMW', flag: '🇿🇲' },
+    { value: 'ZWL', flag: '🇿🇼' }
   ];
   
   // Update time every second
@@ -176,8 +273,17 @@
   
   // Get currency symbol
   function getCurrencySymbol(currency) {
-    const currencyData = currencies.find(c => c.value === currency);
-    return currencyData?.symbol || currency;
+    const symbols = {
+      'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'GEL': '₾',
+      'CHF': 'CHF', 'CAD': 'C$', 'AUD': 'A$', 'CNY': '¥',
+      'INR': '₹', 'KRW': '₩', 'SGD': 'S$', 'HKD': 'HK$',
+      'SEK': 'kr', 'NOK': 'kr', 'DKK': 'kr', 'PLN': 'zł',
+      'CZK': 'Kč', 'HUF': 'Ft', 'RUB': '₽', 'BRL': 'R$',
+      'MXN': '$', 'ZAR': 'R', 'TRY': '₺', 'ILS': '₪',
+      'AED': 'د.إ', 'SAR': '﷼', 'EGP': 'E£', 'THB': '฿',
+      'MYR': 'RM', 'IDR': 'Rp', 'PHP': '₱', 'VND': '₫'
+    };
+    return symbols[currency] || currency;
   }
   
   onMount(() => {
@@ -282,7 +388,7 @@
             placeholder="100"
             min="0.01"
             step="0.01"
-            class="w-full text-sm px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full text-sm px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             aria-label="Enter amount to convert"
           />
           
@@ -291,7 +397,7 @@
             <select
               id="from-currency"
               bind:value={fromCurrency}
-              class="text-xs px-1 py-1 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+              class="text-xs px-1 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               aria-label="Select source currency"
             >
               {#each currencies as currency}
@@ -303,7 +409,7 @@
             <select
               id="to-currency"
               bind:value={toCurrency}
-              class="text-xs px-1 py-1 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+              class="text-xs px-1 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               aria-label="Select target currency"
             >
               {#each currencies as currency}

@@ -121,7 +121,7 @@
 							This category doesn't have any calculators yet. Check back soon!
 						</p>
 						<Button variant="primary" href="/categories">
-							Browse Other Categories
+							Explore Other Calculator Categories
 						</Button>
 					</div>
 				{/if}

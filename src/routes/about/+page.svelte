@@ -240,7 +240,7 @@
 					Explore Calculator Categories
 				</Button>
 				<Button variant="outline" size="lg" href="/contact">
-					Contact Kceva Support Team
+					Get Help and Support
 				</Button>
 			</div>
 		</div>

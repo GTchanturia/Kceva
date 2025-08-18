@@ -103,6 +103,9 @@
 	import AsciiToTextConverter from "$lib/calculators/AsciiToTextConverter.svelte";
 	import TextToAsciiConverter from "$lib/calculators/TextToAsciiConverter.svelte";
 	import IpAddressLookup from "$lib/calculators/IpAddressLookup.svelte";
+	import RoiCalculator from "$lib/calculators/RoiCalculator.svelte";
+	import BudgetPlanner from "$lib/calculators/BudgetPlanner.svelte";
+	import NetWorth from "$lib/calculators/NetWorth.svelte";
 
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;
@@ -206,7 +209,7 @@
 		"aspect-ratio": AspectRatioCalculator,
 		"date-add-subtract": DateAddSubtractCalculator,
 		"countdown-timer": CountdownTimer,
-		"stopwatch": Stopwatch,
+		stopwatch: Stopwatch,
 		"work-days-calculator": WorkDaysCalculator,
 		"world-clock": WorldClock,
 		"meeting-time-planner": MeetingTimePlanner,
@@ -232,6 +235,10 @@
 		"ascii-to-text": AsciiToTextConverter,
 		"text-to-ascii": TextToAsciiConverter,
 		"ip-address-lookup": IpAddressLookup,
+		"roi-calculator": RoiCalculator,
+		"budget-planner": BudgetPlanner,
+		"net-worth": NetWorth,
+
 		// Add more calculator components as they are created
 	};
 
@@ -249,31 +256,36 @@
 		/>
 		<meta
 			name="keywords"
-			content="Kceva, {calculator.keywords.join(', ')}, calculator, free, online, {calculator.name.toLowerCase()}"
+			content="Kceva, {calculator.keywords.join(
+				', ',
+			)}, calculator, free, online, {calculator.name.toLowerCase()}"
 		/>
-		<link rel="canonical" href="https://kceva.com/calculator/{calculator.id}" />
-		
+		<link
+			rel="canonical"
+			href="https://kceva.com/calculator/{calculator.id}"
+		/>
+
 		<!-- Structured Data for Calculator -->
 		<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "WebApplication",
-			"name": "{calculator.name}",
-			"description": "{calculator.description}",
-			"url": "https://kceva.com/calculator/{calculator.id}",
-			"applicationCategory": "UtilityApplication",
-			"operatingSystem": "Any",
-			"offers": {
-				"@type": "Offer",
-				"price": "0",
-				"priceCurrency": "USD"
-			},
-			"publisher": {
-				"@type": "Organization",
-				"name": "Kceva",
-				"url": "https://kceva.com"
+			{
+				"@context": "https://schema.org",
+				"@type": "WebApplication",
+				"name": "{calculator.name}",
+				"description": "{calculator.description}",
+				"url": "https://kceva.com/calculator/{calculator.id}",
+				"applicationCategory": "UtilityApplication",
+				"operatingSystem": "Any",
+				"offers": {
+					"@type": "Offer",
+					"price": "0",
+					"priceCurrency": "USD"
+				},
+				"publisher": {
+					"@type": "Organization",
+					"name": "Kceva",
+					"url": "https://kceva.com"
+				}
 			}
-		}
 		</script>
 	{:else}
 		<title>Calculator Not Found | Kceva - Free Online Calculators</title>

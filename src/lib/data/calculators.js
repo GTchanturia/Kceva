@@ -1102,6 +1102,207 @@ export const CALCULATORS = [
     icon: '😂',
     featured: false,
     requiresApi: false
+  },
+  // new calculators 
+  {
+    id: 'roi-calculator',
+    name: 'ROI Calculator',
+    description: 'Calculate Return on Investment for projects and investments',
+    category: 'finance',
+    keywords: ['roi', 'return', 'investment', 'profit', 'percentage'],
+    icon: '📈',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'budget-planner',
+    name: 'Budget Planner',
+    description: 'Create and track monthly budgets and expenses',
+    category: 'finance',
+    keywords: ['budget', 'planner', 'expenses', 'income', 'tracking'],
+    icon: '💼',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'net-worth',
+    name: 'Net Worth Calculator',
+    description: 'Calculate personal net worth from assets and liabilities',
+    category: 'finance',
+    keywords: ['net', 'worth', 'assets', 'liabilities', 'wealth'],
+    icon: '🏦',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'tdee-calculator',
+    name: 'TDEE Calculator',
+    description: 'Calculate Total Daily Energy Expenditure for weight management',
+    category: 'health',
+    keywords: ['tdee', 'energy', 'expenditure', 'calories', 'weight'],
+    icon: '⚡',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'macro-nutrient',
+    name: 'Macro Nutrient Calculator',
+    description: 'Calculate macronutrient ratios for diet plans',
+    category: 'health',
+    keywords: ['macro', 'nutrient', 'protein', 'carbs', 'fats'],
+    icon: '🍗',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'one-rep-max',
+    name: 'One Rep Max Calculator',
+    description: 'Estimate maximum weight for one repetition in exercises',
+    category: 'health',
+    keywords: ['one', 'rep', 'max', 'strength', 'fitness'],
+    icon: '🏋️',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'quadratic-solver',
+    name: 'Quadratic Equation Solver',
+    description: 'Solve quadratic equations and find roots',
+    category: 'math',
+    keywords: ['quadratic', 'equation', 'solver', 'roots', 'math'],
+    icon: '🧮',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'exponent-calculator',
+    name: 'Exponent Calculator',
+    description: 'Calculate exponents and powers of numbers',
+    category: 'math',
+    keywords: ['exponent', 'power', 'calculate', 'math', 'base'],
+    icon: '^',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'logarithm-calculator',
+    name: 'Logarithm Calculator',
+    description: 'Calculate logarithms with different bases',
+    category: 'math',
+    keywords: ['logarithm', 'log', 'base', 'math', 'calculate'],
+    icon: '📐',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'area-converter',
+    name: 'Area Converter',
+    description: 'Convert between square meters, acres, and other area units',
+    category: 'conversion',
+    keywords: ['area', 'convert', 'square', 'meter', 'acre'],
+    icon: '📏',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'force-converter',
+    name: 'Force Converter',
+    description: 'Convert between Newtons, pounds-force, and other force units',
+    category: 'conversion',
+    keywords: ['force', 'convert', 'newton', 'pound', 'physics'],
+    icon: '💪',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'timezone-converter',
+    name: 'Timezone Converter',
+    description: 'Convert times between different time zones',
+    category: 'datetime',
+    keywords: ['timezone', 'convert', 'time', 'utc', 'international'],
+    icon: '🕒',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'week-number',
+    name: 'Week Number Calculator',
+    description: 'Find the week number of a given date',
+    category: 'datetime',
+    keywords: ['week', 'number', 'date', 'calendar', 'iso'],
+    icon: '📅',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'permutation-calculator',
+    name: 'Permutation Calculator',
+    description: 'Calculate permutations of items',
+    category: 'education',
+    keywords: ['permutation', 'calculate', 'math', 'arrangement', 'factorial'],
+    icon: '🔀',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'probability-calculator',
+    name: 'Probability Calculator',
+    description: 'Calculate basic probabilities and odds',
+    category: 'education',
+    keywords: ['probability', 'odds', 'chance', 'statistics', 'math'],
+    icon: '🎲',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'hash-generator',
+    name: 'Hash Generator',
+    description: 'Generate hashes like MD5, SHA for text',
+    category: 'tech',
+    keywords: ['hash', 'generator', 'md5', 'sha', 'security'],
+    icon: '🔒',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'subnet-calculator',
+    name: 'Subnet Calculator',
+    description: 'Calculate IP subnets and network addresses',
+    category: 'tech',
+    keywords: ['subnet', 'ip', 'network', 'cidr', 'address'],
+    icon: '🌐',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'pixel-to-em',
+    name: 'Pixel to EM Converter',
+    description: 'Convert pixels to EM units for web design',
+    category: 'design',
+    keywords: ['pixel', 'em', 'convert', 'css', 'typography'],
+    icon: '📐',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'carbon-footprint',
+    name: 'Carbon Footprint Calculator',
+    description: 'Estimate personal carbon footprint from lifestyle',
+    category: 'lifestyle',
+    keywords: ['carbon', 'footprint', 'environment', 'emission', 'calculate'],
+    icon: '🌿',
+    featured: false,
+    requiresApi: false
+  },
+  {
+    id: 'wedding-budget',
+    name: 'Wedding Budget Calculator',
+    description: 'Plan and track wedding expenses and budget',
+    category: 'lifestyle',
+    keywords: ['wedding', 'budget', 'expenses', 'planning', 'marriage'],
+    icon: '💒',
+    featured: false,
+    requiresApi: false
   }
 ];
 

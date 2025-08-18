@@ -5,6 +5,8 @@
 	import Button from "$lib/components/ui/Button.svelte";
 
 	// Import calculator components
+	import ExponentCalculator from "$lib/calculators/ExponentCalculator.svelte";
+	import TdeeCalculator from "$lib/calculators/TDEECalculator.svelte";
 	import LoanCalculator from "$lib/calculators/LoanCalculator.svelte";
 	import BMICalculator from "$lib/calculators/BMICalculator.svelte";
 	import BMRCalculator from "$lib/calculators/BMRCalculator.svelte";
@@ -106,6 +108,7 @@
 	import RoiCalculator from "$lib/calculators/RoiCalculator.svelte";
 	import BudgetPlanner from "$lib/calculators/BudgetPlanner.svelte";
 	import NetWorth from "$lib/calculators/NetWorth.svelte";
+	import QuadraticCalculator from "$lib/calculators/QuadraticCalculator.svelte";
 
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;
@@ -238,7 +241,9 @@
 		"roi-calculator": RoiCalculator,
 		"budget-planner": BudgetPlanner,
 		"net-worth": NetWorth,
-
+		"tdee-calculator": TdeeCalculator,
+		"quadratic-solver": QuadraticCalculator,
+		"exponent-calculator": ExponentCalculator,
 		// Add more calculator components as they are created
 	};
 

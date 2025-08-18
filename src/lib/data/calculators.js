@@ -1144,6 +1144,7 @@ export const CALCULATORS = [
     featured: false,
     requiresApi: false
   },
+  //missing for future will be added
   {
     id: 'macro-nutrient',
     name: 'Macro Nutrient Calculator',
@@ -1164,6 +1165,7 @@ export const CALCULATORS = [
     featured: false,
     requiresApi: false
   },
+  // between 
   {
     id: 'quadratic-solver',
     name: 'Quadratic Equation Solver',

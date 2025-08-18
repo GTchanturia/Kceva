@@ -26,6 +26,11 @@
     }
   }
 
+  function closeSidebar() {
+    sidebarOpen = false;
+    sidebarEl.classList.add("-translate-x-full");
+  }
+
   // Currency converter state
   let currencyAmount = 100;
   let fromCurrency = "USD";
@@ -376,16 +381,69 @@
   }
 </script>
 
+<!-- Toggle button for mobile -->
+<button
+  on:click={toggleSidebar}
+  class="sm:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-white shadow-md text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  aria-label="Toggle sidebar"
+>
+  <svg
+    class="h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4 6h16M4 12h16M4 18h16"
+    />
+  </svg>
+</button>
+
+<!-- Backdrop for mobile when open -->
+{#if sidebarOpen}
+  <div
+    on:click={closeSidebar}
+    class="sm:hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-40 transition-opacity duration-300"
+    aria-hidden="true"
+  ></div>
+{/if}
+
 <aside
   class="bg-white border-r border-gray-100 overflow-y-auto shadow-sm
-         w-64 lg:w-64 md:w-72 sm:w-full
-         fixed sm:relative sm:h-auto h-screen
+         w-64 lg:w-64 md:w-72 sm:w-80 xs:w-full
+         fixed sm:relative sm:h-auto h-screen top-0 left-0
          transform sm:translate-x-0 -translate-x-full
          transition-transform duration-300 ease-in-out z-50"
   aria-label="Sidebar widgets"
   bind:this={sidebarEl}
 >
-  <div class="p-3 space-y-3">
+  <div class="relative h-full p-3 space-y-3">
+    <!-- Close button for mobile inside sidebar -->
+    <button
+      on:click={closeSidebar}
+      class="sm:hidden absolute top-4 right-4 p-1 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      aria-label="Close sidebar"
+    >
+      <svg
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+
     <!-- Time & Date Widget -->
     <Card>
       <div class="p-3" role="region" aria-label="Current time and date">

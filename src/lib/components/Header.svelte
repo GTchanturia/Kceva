@@ -63,10 +63,7 @@
         {/each}
       </nav>
 
-      <!-- Search Bar -->
-      <div class="flex-1 max-w-lg mx-8 hidden lg:block">
-        <SearchBar on:select={handleSearchSelect} />
-      </div>
+      <!-- Removed search bar - keeping only in hero section -->
 
       <!-- User Actions -->
       <div class="flex items-center space-x-4">

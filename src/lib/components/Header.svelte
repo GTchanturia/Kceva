@@ -11,12 +11,6 @@
   /** @type {boolean} */
   let mobileMenuOpen = false;
 
-  // Handle search result selection
-  function handleSearchSelect(event) {
-    const calculator = event.detail;
-    goto(`/calculator/${calculator.id}`);
-  }
-
   // Toggle mobile menu
   function toggleMobileMenu() {
     mobileMenuOpen = !mobileMenuOpen;

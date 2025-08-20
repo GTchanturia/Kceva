@@ -1,6 +1,6 @@
 <script>
   /**
-   * Modern Compact Sidebar Component
+   * Modern Minimalist Sidebar Component
    * @component
    */
 
@@ -48,158 +48,28 @@
   let screenResolution = "Unknown";
   let timezone = "Unknown";
 
-  // Comprehensive currency list with flags (50+ currencies)
+  // Essential currency list with flags
   const currencies = [
-    { value: "USD", flag: "🇺🇸" },
-    { value: "EUR", flag: "🇪🇺" },
-    { value: "GBP", flag: "🇬🇧" },
-    { value: "JPY", flag: "🇯🇵" },
-    { value: "GEL", flag: "🇬🇪" },
-    { value: "CHF", flag: "🇨🇭" },
-    { value: "CAD", flag: "🇨🇦" },
-    { value: "AUD", flag: "🇦🇺" },
-    { value: "CNY", flag: "🇨🇳" },
-    { value: "INR", flag: "🇮🇳" },
-    { value: "KRW", flag: "🇰🇷" },
-    { value: "SGD", flag: "🇸🇬" },
-    { value: "HKD", flag: "🇭🇰" },
-    { value: "SEK", flag: "🇸🇪" },
-    { value: "NOK", flag: "🇳🇴" },
-    { value: "DKK", flag: "🇩🇰" },
-    { value: "PLN", flag: "🇵🇱" },
-    { value: "CZK", flag: "🇨🇿" },
-    { value: "HUF", flag: "🇭🇺" },
-    { value: "RUB", flag: "🇷🇺" },
-    { value: "BRL", flag: "🇧🇷" },
-    { value: "MXN", flag: "🇲🇽" },
-    { value: "ZAR", flag: "🇿🇦" },
-    { value: "TRY", flag: "🇹🇷" },
-    { value: "ILS", flag: "🇮🇱" },
-    { value: "AED", flag: "🇦🇪" },
-    { value: "SAR", flag: "🇸🇦" },
-    { value: "EGP", flag: "🇪🇬" },
-    { value: "THB", flag: "🇹🇭" },
-    { value: "MYR", flag: "🇲🇾" },
-    { value: "IDR", flag: "🇮🇩" },
-    { value: "PHP", flag: "🇵🇭" },
-    { value: "VND", flag: "🇻🇳" },
-    { value: "UAH", flag: "🇺🇦" },
-    { value: "BGN", flag: "🇧🇬" },
-    { value: "RON", flag: "🇷🇴" },
-    { value: "HRK", flag: "🇭🇷" },
-    { value: "ISK", flag: "🇮🇸" },
-    { value: "NZD", flag: "🇳🇿" },
-    { value: "CLP", flag: "🇨🇱" },
-    { value: "COP", flag: "🇨🇴" },
-    { value: "PEN", flag: "🇵🇪" },
-    { value: "UYU", flag: "🇺🇾" },
-    { value: "ARS", flag: "🇦🇷" },
-    { value: "BOB", flag: "🇧🇴" },
-    { value: "PYG", flag: "🇵🇾" },
-    { value: "LKR", flag: "🇱🇰" },
-    { value: "PKR", flag: "🇵🇰" },
-    { value: "BDT", flag: "🇧🇩" },
-    { value: "NPR", flag: "🇳🇵" },
-    { value: "MMK", flag: "🇲🇲" },
-    { value: "KHR", flag: "🇰🇭" },
-    { value: "LAK", flag: "🇱🇦" },
-    { value: "AMD", flag: "🇦🇲" },
-    { value: "AZN", flag: "🇦🇿" },
-    { value: "BYN", flag: "🇧🇾" },
-    { value: "KZT", flag: "🇰🇿" },
-    { value: "KGS", flag: "🇰🇬" },
-    { value: "TJS", flag: "🇹🇯" },
-    { value: "TMT", flag: "🇹🇲" },
-    { value: "UZS", flag: "🇺🇿" },
-    { value: "AFN", flag: "🇦🇫" },
-    { value: "ALL", flag: "🇦🇱" },
-    { value: "DZD", flag: "🇩🇿" },
-    { value: "AOA", flag: "🇦🇴" },
-    { value: "XCD", flag: "🏴" },
-    { value: "AWG", flag: "🇦🇼" },
-    { value: "BSD", flag: "🇧🇸" },
-    { value: "BHD", flag: "🇧🇭" },
-    { value: "BBD", flag: "🇧🇧" },
-    { value: "BZD", flag: "🇧🇿" },
-    { value: "BMD", flag: "🇧🇲" },
-    { value: "BTN", flag: "🇧🇹" },
-    { value: "BWP", flag: "🇧🇼" },
-    { value: "BND", flag: "🇧🇳" },
-    { value: "BIF", flag: "🇧🇮" },
-    { value: "CVE", flag: "🇨🇻" },
-    { value: "XAF", flag: "🌍" },
-    { value: "XOF", flag: "🌍" },
-    { value: "KMF", flag: "🇰🇲" },
-    { value: "CDF", flag: "🇨🇩" },
-    { value: "CRC", flag: "🇨🇷" },
-    { value: "CUP", flag: "🇨🇺" },
-    { value: "DJF", flag: "🇩🇯" },
-    { value: "DOP", flag: "🇩🇴" },
-    { value: "ERN", flag: "🇪🇷" },
-    { value: "SZL", flag: "🇸🇿" },
-    { value: "ETB", flag: "🇪🇹" },
-    { value: "FKP", flag: "🇫🇰" },
-    { value: "FJD", flag: "🇫🇯" },
-    { value: "GMD", flag: "🇬🇲" },
-    { value: "GHS", flag: "🇬🇭" },
-    { value: "GIP", flag: "🇬🇮" },
-    { value: "GTQ", flag: "🇬🇹" },
-    { value: "GGP", flag: "🇬🇬" },
-    { value: "GNF", flag: "🇬🇳" },
-    { value: "GYD", flag: "🇬🇾" },
-    { value: "HTG", flag: "🇭🇹" },
-    { value: "HNL", flag: "🇭🇳" },
-    { value: "IRR", flag: "🇮🇷" },
-    { value: "IQD", flag: "🇮🇶" },
-    { value: "JMD", flag: "🇯🇲" },
-    { value: "JOD", flag: "🇯🇴" },
-    { value: "KES", flag: "🇰🇪" },
-    { value: "KWD", flag: "🇰🇼" },
-    { value: "LBP", flag: "🇱🇧" },
-    { value: "LSL", flag: "🇱🇸" },
-    { value: "LRD", flag: "🇱🇷" },
-    { value: "LYD", flag: "🇱🇾" },
-    { value: "MOP", flag: "🇲🇴" },
-    { value: "MKD", flag: "🇲🇰" },
-    { value: "MGA", flag: "🇲🇬" },
-    { value: "MWK", flag: "🇲🇼" },
-    { value: "MVR", flag: "🇲🇻" },
-    { value: "MRU", flag: "🇲🇷" },
-    { value: "MUR", flag: "🇲🇺" },
-    { value: "MDL", flag: "🇲🇩" },
-    { value: "MNT", flag: "🇲🇳" },
-    { value: "MAD", flag: "🇲🇦" },
-    { value: "MZN", flag: "🇲🇿" },
-    { value: "NAD", flag: "🇳🇦" },
-    { value: "NIO", flag: "🇳🇮" },
-    { value: "NGN", flag: "🇳🇬" },
-    { value: "OMR", flag: "🇴🇲" },
-    { value: "PAB", flag: "🇵🇦" },
-    { value: "PGK", flag: "🇵🇬" },
-    { value: "QAR", flag: "🇶🇦" },
-    { value: "RWF", flag: "🇷🇼" },
-    { value: "SHP", flag: "🇸🇭" },
-    { value: "WST", flag: "🇼🇸" },
-    { value: "STN", flag: "🇸🇹" },
-    { value: "RSD", flag: "🇷🇸" },
-    { value: "SCR", flag: "🇸🇨" },
-    { value: "SLL", flag: "🇸🇱" },
-    { value: "SBD", flag: "🇸🇧" },
-    { value: "SOS", flag: "🇸🇴" },
-    { value: "SSP", flag: "🇸🇸" },
-    { value: "SRD", flag: "🇸🇷" },
-    { value: "SYP", flag: "🇸🇾" },
-    { value: "TWD", flag: "🇹🇼" },
-    { value: "TZS", flag: "🇹🇿" },
-    { value: "TOP", flag: "🇹🇴" },
-    { value: "TTD", flag: "🇹🇹" },
-    { value: "TND", flag: "🇹🇳" },
-    { value: "UGX", flag: "🇺🇬" },
-    { value: "VUV", flag: "🇻🇺" },
-    { value: "VES", flag: "🇻🇪" },
-    { value: "YER", flag: "🇾🇪" },
-    { value: "ZMW", flag: "🇿🇲" },
-    { value: "ZWL", flag: "🇿🇼" },
+    { value: "USD", flag: "🇺🇸", name: "US Dollar" },
+    { value: "EUR", flag: "🇪🇺", name: "Euro" },
+    { value: "GBP", flag: "🇬🇧", name: "British Pound" },
+    { value: "JPY", flag: "🇯🇵", name: "Japanese Yen" },
+    { value: "GEL", flag: "🇬🇪", name: "Georgian Lari" },
+    { value: "CHF", flag: "🇨🇭", name: "Swiss Franc" },
+    { value: "CAD", flag: "🇨🇦", name: "Canadian Dollar" },
+    { value: "AUD", flag: "🇦🇺", name: "Australian Dollar" },
+    { value: "CNY", flag: "🇨🇳", name: "Chinese Yuan" },
+    { value: "INR", flag: "🇮🇳", name: "Indian Rupee" },
+    { value: "KRW", flag: "🇰🇷", name: "South Korean Won" },
+    { value: "SGD", flag: "🇸🇬", name: "Singapore Dollar" },
+    { value: "HKD", flag: "🇭🇰", name: "Hong Kong Dollar" },
+    { value: "SEK", flag: "🇸🇪", name: "Swedish Krona" },
+    { value: "NOK", flag: "🇳🇴", name: "Norwegian Krone" },
+    { value: "DKK", flag: "🇩🇰", name: "Danish Krone" },
+    { value: "PLN", flag: "🇵🇱", name: "Polish Zloty" },
+    { value: "CZK", flag: "🇨🇿", name: "Czech Koruna" },
+    { value: "RUB", flag: "🇷🇺", name: "Russian Ruble" },
+    { value: "BRL", flag: "🇧🇷", name: "Brazilian Real" }
   ];
 
   // Update time every second
@@ -207,7 +77,7 @@
     currentTime = new Date();
   }
 
-  // Get user's IP and location
+  // Get user's IP and location with IPv6 handling
   async function getUserInfo() {
     try {
       const response = await fetch("https://ipapi.co/json/");
@@ -218,7 +88,6 @@
       
       // Check if IP is IPv6 format and try to get IPv4
       if (displayIP.includes(':')) {
-        // Try to get IPv4 version
         try {
           const ipv4Response = await fetch("https://api4.ipify.org?format=json");
           const ipv4Data = await ipv4Response.json();
@@ -334,21 +203,8 @@
       DKK: "kr",
       PLN: "zł",
       CZK: "Kč",
-      HUF: "Ft",
       RUB: "₽",
       BRL: "R$",
-      MXN: "$",
-      ZAR: "R",
-      TRY: "₺",
-      ILS: "₪",
-      AED: "د.إ",
-      SAR: "﷼",
-      EGP: "E£",
-      THB: "฿",
-      MYR: "RM",
-      IDR: "Rp",
-      PHP: "₱",
-      VND: "₫",
     };
     return symbols[currency] || currency;
   }
@@ -399,253 +255,219 @@
   }
 </script>
 
-<!-- Toggle button for mobile -->
+<!-- Mobile Toggle Button -->
 <button
   on:click={toggleSidebar}
-  class="sm:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-white shadow-md text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  class="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-white shadow-lg border border-gray-200 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
   aria-label="Toggle sidebar"
 >
-  <svg
-    class="h-6 w-6"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    aria-hidden="true"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M4 6h16M4 12h16M4 18h16"
-    />
+  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
   </svg>
 </button>
 
-<!-- Backdrop for mobile when open -->
+<!-- Mobile Backdrop -->
 {#if sidebarOpen}
   <div
     on:click={closeSidebar}
-    class="sm:hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-40 transition-opacity duration-300"
+    class="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40 transition-opacity duration-300"
     aria-hidden="true"
   ></div>
 {/if}
 
+<!-- Sidebar -->
 <aside
-  class="bg-white border-r border-gray-100 overflow-y-auto shadow-sm
-         w-64 lg:w-64 md:w-72 sm:w-80 xs:w-full
-         fixed sm:relative sm:h-auto h-screen top-0 left-0
-         transform sm:translate-x-0 -translate-x-full
-         transition-transform duration-300 ease-in-out z-50"
-  aria-label="Sidebar widgets"
+  class="bg-white border-r border-gray-100 overflow-y-auto
+         w-80 lg:w-72 xl:w-80
+         fixed lg:relative lg:h-auto h-screen top-0 left-0
+         transform lg:translate-x-0 -translate-x-full
+         transition-transform duration-300 ease-in-out z-50
+         shadow-xl lg:shadow-none"
+  aria-label="Information panel"
   bind:this={sidebarEl}
 >
-  <div class="relative h-full p-3 space-y-3">
-    <!-- Close button for mobile inside sidebar -->
+  <div class="relative h-full p-6 space-y-6">
+    <!-- Close Button (Mobile) -->
     <button
       on:click={closeSidebar}
-      class="sm:hidden absolute top-4 right-4 p-1 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      class="lg:hidden absolute top-4 right-4 p-1.5 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
       aria-label="Close sidebar"
     >
-      <svg
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        aria-hidden="true"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M6 18L18 6M6 6l12 12"
-        />
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
 
-    <!-- Time & Date Widget -->
-    <Card>
-      <div class="p-3" role="region" aria-label="Current time and date">
-        <div class="text-center">
-          <time
-            class="text-xl font-mono font-bold text-blue-600 mb-1 block"
-            datetime={currentTime.toISOString()}
-          >
-            {formatTime(currentTime)}
-          </time>
-          <div class="text-xs text-gray-600">
-            {formatDate(currentTime)}
+    <!-- Time Widget -->
+    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+      <div class="flex items-center space-x-3 mb-3">
+        <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h3 class="font-medium text-gray-900">Current Time</h3>
+      </div>
+      
+      <div class="text-center space-y-1">
+        <time class="text-2xl font-mono font-bold text-blue-600 block" datetime={currentTime.toISOString()}>
+          {formatTime(currentTime)}
+        </time>
+        <div class="text-sm text-gray-600">{formatDate(currentTime)}</div>
+        <div class="text-xs text-gray-400">{timezone.split("/").pop() || "Local"}</div>
+      </div>
+    </div>
+
+    <!-- Location Widget -->
+    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+      <div class="flex items-center space-x-3 mb-3">
+        <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <h3 class="font-medium text-gray-900">Your Location</h3>
+      </div>
+
+      {#if loadingIP}
+        <div class="text-center py-2">
+          <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-500 mx-auto mb-2"></div>
+          <div class="text-sm text-gray-500">Detecting location...</div>
+        </div>
+      {:else}
+        <div class="space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-600">IP Address:</span>
+            <span class="text-sm font-mono font-medium text-green-600">{userIP}</span>
           </div>
-          <div class="text-xs text-gray-400 mt-1">
-            {timezone.split("/").pop() || "Local"}
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-600">Location:</span>
+            <span class="text-sm font-medium text-gray-900">{userLocation}</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-600">Browser:</span>
+            <span class="text-sm text-gray-700">{browserName}</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-600">Screen:</span>
+            <span class="text-sm text-gray-700">{screenResolution}</span>
           </div>
         </div>
-      </div>
-    </Card>
+      {/if}
+    </div>
 
-    <!-- IP Address Widget -->
-    <Card>
-      <div
-        class="p-3"
-        role="region"
-        aria-label="IP address and location information"
-      >
-        {#if loadingIP}
-          <div class="text-center">
-            <div
-              class="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500 mx-auto mb-2"
-              aria-hidden="true"
-            ></div>
-            <div class="text-xs text-gray-500">Detecting location...</div>
+    <!-- Currency Converter Widget -->
+    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+      <div class="flex items-center space-x-3 mb-4">
+        <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+        </svg>
+        <h3 class="font-medium text-gray-900">Quick Convert</h3>
+      </div>
+
+      <div class="space-y-3">
+        <input
+          type="number"
+          bind:value={currencyAmount}
+          placeholder="100"
+          min="0.01"
+          step="0.01"
+          class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          aria-label="Enter amount to convert"
+        />
+
+        <div class="grid grid-cols-2 gap-2">
+          <select
+            bind:value={fromCurrency}
+            class="px-2 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            aria-label="Select source currency"
+          >
+            {#each currencies as currency}
+              <option value={currency.value}>{currency.flag} {currency.value}</option>
+            {/each}
+          </select>
+
+          <select
+            bind:value={toCurrency}
+            class="px-2 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            aria-label="Select target currency"
+          >
+            {#each currencies as currency}
+              <option value={currency.value}>{currency.flag} {currency.value}</option>
+            {/each}
+          </select>
+        </div>
+
+        {#if loadingCurrency}
+          <div class="text-center py-2">
+            <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500 mx-auto mb-1"></div>
+            <div class="text-xs text-gray-500">Converting...</div>
           </div>
         {:else}
-          <div class="space-y-1">
-            <div class="text-center">
-              <div
-                class="text-sm font-mono font-bold text-green-600"
-                aria-label="Your IP address"
-              >
-                {userIP}
-              </div>
-              <div class="text-xs text-gray-600" aria-label="Your location">
-                {userLocation}
-              </div>
-              <div class="text-xs text-gray-400 mt-1">
-                Browser: {browserName}
-              </div>
-              <div class="text-xs text-gray-400">
-                Screen: {screenResolution}
-              </div>
+          <div class="bg-white p-3 rounded-lg border border-gray-200">
+            <div class="text-lg font-bold text-blue-600 text-center">
+              {getCurrencySymbol(toCurrency)}{formatNumber(convertedAmount, 2)}
             </div>
+            <div class="text-xs text-gray-600 text-center mt-1">
+              1 {fromCurrency} = {formatNumber(exchangeRate, 4)} {toCurrency}
+            </div>
+            {#if lastCurrencyUpdate}
+              <div class="text-xs text-gray-400 text-center mt-1">
+                Updated: {lastCurrencyUpdate}
+              </div>
+            {/if}
           </div>
         {/if}
       </div>
-    </Card>
+    </div>
 
-    <!-- Currency Converter Widget -->
-    <Card>
-      <div class="p-3" role="region" aria-label="Quick currency converter">
-        <div class="space-y-2">
-          <label for="currency-amount" class="sr-only">Amount to convert</label>
-          <input
-            id="currency-amount"
-            type="number"
-            bind:value={currencyAmount}
-            placeholder="100"
-            min="0.01"
-            step="0.01"
-            class="w-full text-sm px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            aria-label="Enter amount to convert"
-          />
-
-          <div class="grid grid-cols-2 gap-1">
-            <label for="from-currency" class="sr-only"
-              >Convert from currency</label
-            >
-            <select
-              id="from-currency"
-              bind:value={fromCurrency}
-              class="text-xs px-1 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              aria-label="Select source currency"
-            >
-              {#each currencies as currency}
-                <option value={currency.value}
-                  >{currency.flag} {currency.value}</option
-                >
-              {/each}
-            </select>
-
-            <label for="to-currency" class="sr-only">Convert to currency</label>
-            <select
-              id="to-currency"
-              bind:value={toCurrency}
-              class="text-xs px-1 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              aria-label="Select target currency"
-            >
-              {#each currencies as currency}
-                <option value={currency.value}
-                  >{currency.flag} {currency.value}</option
-                >
-              {/each}
-            </select>
-          </div>
-
-          {#if loadingCurrency}
-            <div class="text-center">
-              <div
-                class="animate-spin rounded-full h-3 w-3 border-b-2 border-blue-500 mx-auto mb-1"
-                aria-hidden="true"
-              ></div>
-              <div class="text-xs text-gray-500">Converting...</div>
-            </div>
-          {:else}
-            <div
-              class="text-center p-2 bg-blue-50 border border-blue-200 rounded"
-            >
-              <div
-                class="text-sm font-bold text-blue-600"
-                aria-label="Conversion result"
-              >
-                {getCurrencySymbol(toCurrency)}{formatNumber(
-                  convertedAmount,
-                  2,
-                )}
-              </div>
-              <div class="text-xs text-gray-600" aria-label="Exchange rate">
-                1 {fromCurrency} = {formatNumber(exchangeRate, 4)}
-                {toCurrency}
-              </div>
-              {#if lastCurrencyUpdate}
-                <div class="text-xs text-gray-400 mt-1">
-                  {lastCurrencyUpdate}
-                </div>
-              {/if}
-            </div>
-          {/if}
-        </div>
+    <!-- Quick Access -->
+    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+      <div class="flex items-center space-x-3 mb-4">
+        <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+        <h3 class="font-medium text-gray-900">Popular Tools</h3>
       </div>
-    </Card>
 
-    <!-- Quick Calculator Links -->
-    <Card>
-      <nav class="p-3" aria-label="Quick access to popular calculators">
-        <div class="space-y-1">
-          <a
-            href="/calculator/bmi-calculator"
-            class="block p-2 text-xs text-gray-700 hover:bg-gray-50 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-            aria-label="Access BMI calculator to calculate body mass index"
-          >
-            BMI Calculator
-          </a>
-          <a
-            href="/calculator/loan-calculator"
-            class="block p-2 text-xs text-gray-700 hover:bg-gray-50 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-            aria-label="Access loan calculator for monthly payment calculations"
-          >
-            Loan Calculator
-          </a>
-          <a
-            href="/calculator/percentage-calculator"
-            class="block p-2 text-xs text-gray-700 hover:bg-gray-50 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-            aria-label="Access percentage calculator for mathematical percentage calculations"
-          >
-            Percentage Calculator
-          </a>
-          <a
-            href="/calculator/tip-calculator"
-            class="block p-2 text-xs text-gray-700 hover:bg-gray-50 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-            aria-label="Access tip calculator for restaurant bill calculations"
-          >
-            Tip Calculator
-          </a>
-          <a
-            href="/calculator/currency-converter"
-            class="block p-2 text-xs text-gray-700 hover:bg-gray-50 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-            aria-label="Access full currency converter with live exchange rates"
-          >
-            Currency Converter
-          </a>
-        </div>
+      <nav class="space-y-1">
+        <a
+          href="/calculator/bmi-calculator"
+          class="flex items-center space-x-3 p-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-lg transition-all"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          <span>BMI Calculator</span>
+        </a>
+        
+        <a
+          href="/calculator/loan-calculator"
+          class="flex items-center space-x-3 p-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-lg transition-all"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+          </svg>
+          <span>Loan Calculator</span>
+        </a>
+        
+        <a
+          href="/calculator/percentage-calculator"
+          class="flex items-center space-x-3 p-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-lg transition-all"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          <span>Percentage Calculator</span>
+        </a>
+        
+        <a
+          href="/calculator/currency-converter"
+          class="flex items-center space-x-3 p-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-lg transition-all"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17v4a2 2 0 002 2h4M15 5l-4 4" />
+          </svg>
+          <span>Currency Converter</span>
+        </a>
       </nav>
-    </Card>
+    </div>
   </div>
 </aside>

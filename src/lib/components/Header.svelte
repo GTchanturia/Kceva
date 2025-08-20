@@ -5,7 +5,6 @@
    */
 
   import { page } from "$app/stores";
-  import SearchBar from "./SearchBar.svelte";
   import Button from "./ui/Button.svelte";
   import { goto } from "$app/navigation";
 

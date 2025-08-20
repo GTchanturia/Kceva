@@ -105,10 +105,7 @@
     <!-- Mobile Menu -->
     {#if mobileMenuOpen}
       <div class="md:hidden border-t border-gray-200 py-4">
-        <!-- Mobile Search -->
-        <div class="px-4 mb-4 lg:hidden">
-          <SearchBar on:select={handleSearchSelect} />
-        </div>
+        <!-- Removed mobile search - available in hero section -->
 
         <!-- Mobile Navigation -->
         <nav class="space-y-1">

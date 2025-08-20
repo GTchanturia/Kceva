@@ -213,7 +213,25 @@
       const response = await fetch("https://ipapi.co/json/");
       const data = await response.json();
 
-      userIP = data.ip || "Unknown";
+      // Handle IPv6 to IPv4 conversion if needed
+      let displayIP = data.ip || "Unknown";
+      
+      // Check if IP is IPv6 format and try to get IPv4
+      if (displayIP.includes(':')) {
+        // Try to get IPv4 version
+        try {
+          const ipv4Response = await fetch("https://api4.ipify.org?format=json");
+          const ipv4Data = await ipv4Response.json();
+          if (ipv4Data.ip && !ipv4Data.ip.includes(':')) {
+            displayIP = ipv4Data.ip;
+          }
+        } catch (ipv4Error) {
+          // If IPv4 fetch fails, show simplified IPv6
+          displayIP = `IPv6: ${displayIP.split(':').slice(0, 3).join(':')}...`;
+        }
+      }
+
+      userIP = displayIP;
       userLocation =
         data.city && data.country_name
           ? `${data.city}, ${data.country_name}`

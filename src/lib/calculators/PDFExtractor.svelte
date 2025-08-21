@@ -281,7 +281,7 @@
 </script>
 
 <div class="container">
-    <h2>PDF Embedded File Extractor</h2>
+    <h2>📑 PDF Embedded File Extractor</h2>
 
     <div
         class="drop-area"
@@ -292,7 +292,9 @@
         on:click={triggerFileInput}
         on:keydown={(e) => e.key === "Enter" && triggerFileInput()}
     >
-        <div>📄 Drag & drop PDF files here or click to select</div>
+        <p class="drop-text">Drag & drop PDF files here</p>
+        <p class="or">or</p>
+        <button class="select-btn">Select PDF Files</button>
         <input
             bind:this={fileInput}
             type="file"
@@ -310,111 +312,235 @@
             <ul>
                 {#each pdfFiles as file, i}
                     <li>
-                        {file.name}
-                        <button on:click={() => removeFile(i)}>×</button>
+                        <span>{file.name}</span>
+                        <button
+                            class="remove-btn"
+                            on:click={() => removeFile(i)}>✖</button
+                        >
                     </li>
                 {/each}
             </ul>
         {/if}
     </div>
 
-    <button on:click={() => extractFiles(false)} disabled={isExtracting}>
-        Extract Embedded Files
-    </button>
-    <button on:click={extractCSVFiles} disabled={isExtracting}>
-        Extract CSV Files Only
-    </button>
-    <button on:click={clearAll}>Clear All</button>
+    <div class="actions">
+        <button
+            class="primary"
+            on:click={() => extractFiles(false)}
+            disabled={isExtracting}
+        >
+            📂 Extract All Files
+        </button>
+        <button
+            class="secondary"
+            on:click={extractCSVFiles}
+            disabled={isExtracting}
+        >
+            📊 Extract CSV Only
+        </button>
+        <button class="danger" on:click={clearAll}>🗑 Clear All</button>
+    </div>
 
     {#if extractedFiles.length > 0}
         <div class="download-all">
-            <button on:click={() => downloadAll("text/csv")}>
-                Download All CSV (ZIP)
-            </button>
+            <h3>⬇️ Bulk Download</h3>
+            <button on:click={() => downloadAll("text/csv")}
+                >Download All CSV (ZIP)</button
+            >
             {#if !csvOnlyMode}
-                <button on:click={() => downloadAll("text/html")}>
-                    Download All HTML (ZIP)
-                </button>
-                <button
-                    on:click={() => downloadAll("application/octet-stream")}
+                <button on:click={() => downloadAll("text/html")}
+                    >Download All HTML (ZIP)</button
                 >
-                    Download All Others (ZIP)
-                </button>
+                <button on:click={() => downloadAll("application/octet-stream")}
+                    >Download All Others (ZIP)</button
+                >
             {/if}
         </div>
 
         <div class="extracted-list">
-            <h3>Extracted {csvOnlyMode ? "CSV " : ""}Files</h3>
+            <h3>📂 Extracted {csvOnlyMode ? "CSV " : ""}Files</h3>
             {#each extractedFiles.filter( (f) => (csvOnlyMode ? f.type === "text/csv" : true), ) as file}
                 <div class="extracted-file">
                     <span
-                        >{file.name} ({file.type}, {file.data.length} bytes)</span
+                        >{file.name}
+                        <small>({file.type}, {file.data.length} bytes)</small
+                        ></span
                     >
-                    <button on:click={() => downloadFile(file)}>Download</button
+                    <button
+                        class="download-btn"
+                        on:click={() => downloadFile(file)}>⬇️ Download</button
                     >
                 </div>
             {/each}
         </div>
     {/if}
 
-    <div class="log-area"><pre>{outputLog}</pre></div>
+    <div class="log-area">
+        <h3>📝 Log</h3>
+        <pre>{outputLog}</pre>
+    </div>
 </div>
 
 <style>
     .container {
         max-width: 900px;
-        margin: 0 auto;
-        font-family: sans-serif;
+        margin: 2rem auto;
+        font-family: system-ui, sans-serif;
         padding: 20px;
+        background: #fff;
     }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.6rem;
+        color: #2c3e50;
+    }
+
+    /* Drop Zone */
     .drop-area {
         border: 2px dashed #3498db;
-        padding: 30px;
+        border-radius: 12px;
+        padding: 40px;
         text-align: center;
-        cursor: pointer;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
+        background: #f9fbfd;
+        transition:
+            background 0.2s,
+            border 0.2s;
     }
-    .file-list,
-    .extracted-list,
-    .log-area,
-    .download-all {
-        border: 1px solid #ccc;
-        padding: 10px;
+    .drop-area:hover {
+        background: #eef7ff;
+        border-color: #2980b9;
+    }
+    .drop-text {
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+    .or {
+        margin: 8px 0;
+        color: #666;
+    }
+    .select-btn {
+        padding: 8px 16px;
         border-radius: 6px;
-        margin-bottom: 15px;
+        border: none;
+        background: #3498db;
+        color: white;
+        cursor: pointer;
     }
-    .download-all button {
-        margin-right: 5px;
+    .select-btn:hover {
+        background: #2980b9;
     }
-    .no-files {
-        color: #777;
-        text-align: center;
+
+    /* File List */
+    .file-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .file-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 10px;
+        margin: 5px 0;
+        background: #f4f6f8;
+        border-radius: 6px;
+    }
+    .remove-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        color: #e74c3c;
+    }
+
+    /* Buttons */
+    .actions {
+        margin: 15px 0;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
     }
     button {
-        margin: 5px 5px 5px 0;
-        padding: 6px 12px;
-        border: none;
-        border-radius: 4px;
+        padding: 8px 14px;
+        border-radius: 6px;
         cursor: pointer;
+        font-size: 14px;
+        border: none;
+        transition: 0.2s;
+    }
+    button.primary {
+        background: #3498db;
+        color: white;
+    }
+    button.primary:hover {
+        background: #2980b9;
+    }
+    button.secondary {
+        background: #2ecc71;
+        color: white;
+    }
+    button.secondary:hover {
+        background: #27ae60;
+    }
+    button.danger {
+        background: #e74c3c;
+        color: white;
+    }
+    button.danger:hover {
+        background: #c0392b;
+    }
+
+    /* Downloads */
+    .download-all,
+    .extracted-list,
+    .log-area {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        background: #fafafa;
+    }
+    .download-all h3,
+    .extracted-list h3,
+    .log-area h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+        color: #34495e;
     }
     .extracted-file {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        padding: 6px 10px;
         margin-bottom: 5px;
-        padding: 4px 6px;
-        background: #f9f9f9;
-        border-radius: 4px;
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 6px;
     }
-    .extracted-file span {
-        flex: 1;
-        margin-right: 10px;
-        word-break: break-word;
+    .download-btn {
+        background: #9b59b6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 5px 10px;
     }
+    .download-btn:hover {
+        background: #8e44ad;
+    }
+
+    /* Log Area */
     .log-area {
-        max-height: 200px;
+        background: #1e1e1e;
+        color: #dcdcdc;
+        font-size: 13px;
+        max-height: 250px;
         overflow-y: auto;
-        background: #f4f4f4;
-        padding: 10px;
+    }
+    .log-area pre {
+        margin: 0;
+        white-space: pre-wrap;
     }
 </style>

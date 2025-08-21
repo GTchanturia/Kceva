@@ -24,7 +24,7 @@ export const CALCULATOR_CATEGORIES = [
     id: 'Extra',
     name: 'Extra',
     description: 'Every Day working tools',
-    icon: '',
+    icon: '📄',
     color: 'teal'
   },
   {

@@ -1307,6 +1307,16 @@ export const CALCULATORS = [
     requiresApi: false
   },
   {
+    id: 'image-improvement',
+    name: 'Image Improvement Tool',
+    description: 'Enhance and improve image quality using AI',
+    category: 'Extra',
+    keywords: ['image', 'improvement', 'enhance', 'ai', 'photo'],
+    icon: '🖼️',
+    featured: false,
+    requiresApi: false
+  },
+  {
     id: 'wedding-budget',
     name: 'Wedding Budget Calculator',
     description: 'Plan and track wedding expenses and budget',

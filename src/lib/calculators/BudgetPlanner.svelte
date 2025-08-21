@@ -79,6 +79,7 @@
 
     <!-- Budget Input -->
     <div class="bg-white shadow-md rounded-2xl p-6 mb-6">
+        <!-- svelte-ignore a11y_label_has_associated_control -->
         <label class="font-semibold">Monthly Budget (€)</label>
         <input
             type="number"
@@ -94,6 +95,7 @@
                 <span>Remaining: €{remaining}</span>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-4">
+                <!-- svelte-ignore element_invalid_self_closing_tag -->
                 <div
                     class={`h-4 rounded-full transition-all duration-500 ${
                         percentUsed < 75
@@ -175,7 +177,4 @@
 </div>
 
 <style>
-    body {
-        background: #f9fafb;
-    }
 </style>

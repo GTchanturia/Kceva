@@ -8,6 +8,7 @@
     let extractedFiles: { name: string; data: Uint8Array; type: string }[] = [];
     let outputLog = "";
     let isExtracting = false;
+    let csvOnlyMode = false; // Flag to track CSV-only extraction
 
     let pdfjsLib: any;
     let fileInput: HTMLInputElement;
@@ -54,6 +55,7 @@
         pdfFiles = [];
         extractedFiles = [];
         outputLog = "";
+        csvOnlyMode = false;
     }
 
     function detectType(data: Uint8Array, name: string) {
@@ -98,7 +100,6 @@
     }
 
     function ensureExtension(name: string, type: string) {
-        // Preserve original name, only add extension if missing
         if (type === "text/csv" && !name.toLowerCase().endsWith(".csv")) {
             return name + ".csv";
         }
@@ -113,7 +114,6 @@
         pdfName: string,
         type: string,
     ) {
-        // If the embedded name is generic, use PDF name + "_details_facture.csv" for CSVs
         const genericPatterns = ["fichier", "attachment", "embedded"];
         if (
             type === "text/csv" &&
@@ -140,7 +140,7 @@
         return newName;
     }
 
-    async function extractFiles() {
+    async function extractFiles(csvOnly: boolean = false) {
         if (!pdfjsLib) {
             outputLog += "PDF.js not loaded yet.\n";
             return;
@@ -152,7 +152,8 @@
 
         extractedFiles = [];
         isExtracting = true;
-        outputLog += `Starting extraction of files from ${pdfFiles.length} PDF(s)...\n`;
+        csvOnlyMode = csvOnly;
+        outputLog += `Starting extraction of ${csvOnly ? "CSV files" : "files"} from ${pdfFiles.length} PDF(s)...\n`;
 
         for (const file of pdfFiles) {
             try {
@@ -174,6 +175,10 @@
                     const content = (attach as any).content as Uint8Array;
                     if (content) {
                         let type = detectType(content, name);
+                        if (csvOnly && type !== "text/csv") {
+                            outputLog += `  ℹ️ Skipped non-CSV file: ${name} (${type})\n`;
+                            continue;
+                        }
                         let fileName = deriveFileName(name, file.name, type);
                         fileName = handleDuplicateName(fileName);
                         extractedFiles = [
@@ -202,6 +207,10 @@
                                         new Uint8Array(embedded),
                                         name,
                                     );
+                                    if (csvOnly && type !== "text/csv") {
+                                        outputLog += `  ℹ️ Skipped non-CSV annotation: ${name} (${type})\n`;
+                                        continue;
+                                    }
                                     name = deriveFileName(
                                         name,
                                         file.name,
@@ -232,10 +241,14 @@
         }
 
         outputLog += extractedFiles.length
-            ? `\n✅ Extraction complete! ${extractedFiles.length} file(s) extracted.\n`
-            : "\n🔍 No embedded files found.\n";
+            ? `\n✅ Extraction complete! ${extractedFiles.length} ${csvOnly ? "CSV " : ""}file(s) extracted.\n`
+            : `\n🔍 No ${csvOnly ? "CSV " : ""}files found.\n`;
 
         isExtracting = false;
+    }
+
+    function extractCSVFiles() {
+        extractFiles(true); // Trigger CSV-only extraction
     }
 
     function downloadFile(file: {
@@ -305,27 +318,34 @@
         {/if}
     </div>
 
-    <button on:click={extractFiles} disabled={isExtracting}
-        >Extract Embedded Files</button
-    >
+    <button on:click={() => extractFiles(false)} disabled={isExtracting}>
+        Extract Embedded Files
+    </button>
+    <button on:click={extractCSVFiles} disabled={isExtracting}>
+        Extract CSV Files Only
+    </button>
     <button on:click={clearAll}>Clear All</button>
 
     {#if extractedFiles.length > 0}
         <div class="download-all">
-            <button on:click={() => downloadAll("text/csv")}
-                >Download All CSV (ZIP)</button
-            >
-            <button on:click={() => downloadAll("text/html")}
-                >Download All HTML (ZIP)</button
-            >
-            <button on:click={() => downloadAll("application/octet-stream")}
-                >Download All Others (ZIP)</button
-            >
+            <button on:click={() => downloadAll("text/csv")}>
+                Download All CSV (ZIP)
+            </button>
+            {#if !csvOnlyMode}
+                <button on:click={() => downloadAll("text/html")}>
+                    Download All HTML (ZIP)
+                </button>
+                <button
+                    on:click={() => downloadAll("application/octet-stream")}
+                >
+                    Download All Others (ZIP)
+                </button>
+            {/if}
         </div>
 
         <div class="extracted-list">
-            <h3>Extracted Files</h3>
-            {#each extractedFiles as file}
+            <h3>Extracted {csvOnlyMode ? "CSV " : ""}Files</h3>
+            {#each extractedFiles.filter( (f) => (csvOnlyMode ? f.type === "text/csv" : true), ) as file}
                 <div class="extracted-file">
                     <span
                         >{file.name} ({file.type}, {file.data.length} bytes)</span

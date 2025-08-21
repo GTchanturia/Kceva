@@ -58,41 +58,86 @@
 
     function detectType(data: Uint8Array, name: string) {
         const text = new TextDecoder()
-            .decode(data.slice(0, 500))
+            .decode(data.slice(0, 2000))
             .trim()
             .toLowerCase();
-        // Improved CSV detection: commas, semicolons, tabs, or line breaks
-        const csvIndicators = [",", ";", "\t", "\n"];
-        if (
-            name.toLowerCase().endsWith(".csv") ||
-            csvIndicators.some((c) => text.includes(c))
-        )
-            return "text/csv";
+
+        // Check for HTML first to prioritize it
         if (
             name.toLowerCase().endsWith(".html") ||
             text.startsWith("<!doctype html") ||
-            text.startsWith("<html")
-        )
+            text.startsWith("<html") ||
+            text.includes("<body") ||
+            text.includes("<div") ||
+            text.includes("<p>")
+        ) {
+            outputLog += `  ℹ️ Detected HTML based on ${name.toLowerCase().endsWith(".html") ? "filename" : "content markers"}: ${text.slice(0, 50)}...\n`;
             return "text/html";
+        }
+
+        // Check for CSV after HTML to avoid false positives
+        const csvIndicators = [",", ";", "\t"];
+        if (
+            name.toLowerCase().endsWith(".csv") ||
+            csvIndicators.some((c) => text.includes(c)) ||
+            text
+                .split("\n")
+                .some(
+                    (line) =>
+                        line.includes(",") ||
+                        line.includes(";") ||
+                        line.includes("\t"),
+                )
+        ) {
+            outputLog += `  ℹ️ Detected CSV based on ${name.toLowerCase().endsWith(".csv") ? "filename" : "content markers"}: ${text.slice(0, 50)}...\n`;
+            return "text/csv";
+        }
+
+        outputLog += `  ℹ️ Detected binary/other: ${text.slice(0, 50)}...\n`;
         return "application/octet-stream";
     }
 
     function ensureExtension(name: string, type: string) {
-        name = name.replace(/\s+/g, "_");
-        if (type === "text/csv" && !name.endsWith(".csv")) return name + ".csv";
-        if (type === "text/html" && !name.endsWith(".html"))
+        // Preserve original name, only add extension if missing
+        if (type === "text/csv" && !name.toLowerCase().endsWith(".csv")) {
+            return name + ".csv";
+        }
+        if (type === "text/html" && !name.toLowerCase().endsWith(".html")) {
             return name + ".html";
+        }
         return name;
     }
 
-    function makeUniqueName(name: string) {
+    function deriveFileName(
+        originalName: string,
+        pdfName: string,
+        type: string,
+    ) {
+        // If the embedded name is generic, use PDF name + "_details_facture.csv" for CSVs
+        const genericPatterns = ["fichier", "attachment", "embedded"];
+        if (
+            type === "text/csv" &&
+            genericPatterns.some((pattern) =>
+                originalName.toLowerCase().includes(pattern),
+            )
+        ) {
+            const pdfBaseName = pdfName.replace(/\.pdf$/i, "");
+            outputLog += `  ℹ️ Generic filename detected (${originalName}), using PDF-based name: ${pdfBaseName}_details_facture.csv\n`;
+            return `${pdfBaseName}_details_facture.csv`;
+        }
+        return ensureExtension(originalName, type);
+    }
+
+    function handleDuplicateName(name: string) {
         let counter = 1;
         let base = name.replace(/(\.\w+)?$/, "");
         let ext = name.match(/(\.\w+)$/)?.[0] || "";
-        while (extractedFiles.find((f) => f.name === name)) {
-            name = `${base}(${counter++})${ext}`;
+        let newName = name;
+        while (extractedFiles.find((f) => f.name === newName)) {
+            newName = `${base}_${counter++}${ext}`;
+            outputLog += `  ⚠️ Duplicate filename detected, renamed to: ${newName}\n`;
         }
-        return name;
+        return newName;
     }
 
     async function extractFiles() {
@@ -107,11 +152,11 @@
 
         extractedFiles = [];
         isExtracting = true;
-        outputLog += "Starting extraction...\n";
+        outputLog += `Starting extraction of files from ${pdfFiles.length} PDF(s)...\n`;
 
         for (const file of pdfFiles) {
             try {
-                outputLog += `Processing ${file.name}...\n`;
+                outputLog += `Processing: ${file.name}\n`;
                 const arrayBuffer = await file.arrayBuffer();
                 const pdfDoc = await pdfjsLib.getDocument({
                     data: new Uint8Array(arrayBuffer),
@@ -129,13 +174,13 @@
                     const content = (attach as any).content as Uint8Array;
                     if (content) {
                         let type = detectType(content, name);
-                        let fileName = ensureExtension(name, type);
-                        fileName = makeUniqueName(fileName);
+                        let fileName = deriveFileName(name, file.name, type);
+                        fileName = handleDuplicateName(fileName);
                         extractedFiles = [
                             ...extractedFiles,
                             { name: fileName, data: content, type },
                         ];
-                        outputLog += `  ✅ Extracted: ${fileName} (${content.length} bytes)\n`;
+                        outputLog += `  ✅ Extracted: ${fileName} (${type}, ${content.length} bytes, original: ${name})\n`;
                     }
                 }
 
@@ -157,8 +202,12 @@
                                         new Uint8Array(embedded),
                                         name,
                                     );
-                                    name = ensureExtension(name, type);
-                                    name = makeUniqueName(name);
+                                    name = deriveFileName(
+                                        name,
+                                        file.name,
+                                        type,
+                                    );
+                                    name = handleDuplicateName(name);
                                     extractedFiles = [
                                         ...extractedFiles,
                                         {
@@ -167,11 +216,13 @@
                                             type,
                                         },
                                     ];
-                                    outputLog += `  ✅ Extracted from annotation: ${name}\n`;
+                                    outputLog += `  ✅ Extracted from annotation: ${name} (${type}, ${embedded.length} bytes, original: ${annot.fs.fileName || `page${i}_attached.bin`})\n`;
                                 }
                             }
                         }
-                    } catch {}
+                    } catch (err) {
+                        outputLog += `  ⚠️ Failed to process page ${i}: ${(err as Error).message}\n`;
+                    }
                 }
 
                 pdfDoc.destroy();

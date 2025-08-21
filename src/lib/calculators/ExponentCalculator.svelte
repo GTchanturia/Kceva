@@ -72,12 +72,22 @@
 
     <div class="inputs">
         <div class="input-group">
-            <input type="number" bind:value={base} placeholder=" " />
-            <label>Base</label>
+            <input
+                type="number"
+                bind:value={base}
+                placeholder=" "
+                id="base-input"
+            />
+            <label for="base-input">Base</label>
         </div>
         <div class="input-group">
-            <input type="number" bind:value={exponent} placeholder=" " />
-            <label>Exponent</label>
+            <input
+                type="number"
+                bind:value={exponent}
+                placeholder=" "
+                id="exponent-input"
+            />
+            <label for="exponent-input">Exponent</label>
         </div>
     </div>
 

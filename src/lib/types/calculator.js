@@ -21,6 +21,13 @@
 
 export const CALCULATOR_CATEGORIES = [
   {
+    id: 'Extra',
+    name: 'Extra',
+    description: 'Every Day working tools',
+    icon: '',
+    color: 'teal'
+  },
+  {
     id: 'finance',
     name: 'Financial Calculators',
     description: 'Loan, mortgage, interest, and investment calculators',

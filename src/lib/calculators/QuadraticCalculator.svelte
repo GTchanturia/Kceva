@@ -85,14 +85,17 @@
 
     <div class="inputs">
         <div class="input-group">
+            <!-- svelte-ignore a11y_label_has_associated_control -->
             <label>a</label>
             <input type="number" bind:value={a} placeholder="Coefficient a" />
         </div>
         <div class="input-group">
+            <!-- svelte-ignore a11y_label_has_associated_control -->
             <label>b</label>
             <input type="number" bind:value={b} placeholder="Coefficient b" />
         </div>
         <div class="input-group">
+            <!-- svelte-ignore a11y_label_has_associated_control -->
             <label>c</label>
             <input type="number" bind:value={c} placeholder="Coefficient c" />
         </div>

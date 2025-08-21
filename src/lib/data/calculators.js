@@ -1267,6 +1267,16 @@ export const CALCULATORS = [
     requiresApi: false
   },
   {
+    id: 'pdf-extractor',
+    name: 'PDF Extractor',
+    description: 'Extract CSV files from PDF documents',
+    category: 'Extra',
+    keywords: ['pdf', 'extractor', 'csv', 'files', 'document'],
+    icon: '📄',
+    featured: false,
+    requiresApi: false
+  },
+  {
     id: 'subnet-calculator',
     name: 'Subnet Calculator',
     description: 'Calculate IP subnets and network addresses',

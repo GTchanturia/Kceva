@@ -27,12 +27,12 @@
 
     // Work schedule options
     const scheduleOptions = [
-        { value: 40, label: 'Full-time (40 hours/week)' },
-        { value: 35, label: 'Standard (35 hours/week)' },
-        { value: 30, label: 'Part-time (30 hours/week)' },
-        { value: 25, label: 'Part-time (25 hours/week)' },
-        { value: 20, label: 'Part-time (20 hours/week)' },
-        { value: 0, label: 'Custom hours' }
+        { value: 40, label: "Full-time (40 hours/week)" },
+        { value: 35, label: "Standard (35 hours/week)" },
+        { value: 30, label: "Part-time (30 hours/week)" },
+        { value: 25, label: "Part-time (25 hours/week)" },
+        { value: 20, label: "Part-time (20 hours/week)" },
+        { value: 0, label: "Custom hours" },
     ];
 
     // Calculate annual salary
@@ -44,11 +44,16 @@
 
         // Calculate regular hours (up to 40 per week)
         const regularHours = Math.min(hoursPerWeek, 40);
-        const weeklyOvertimeHours = Math.max(hoursPerWeek - 40, 0) + overtimeHours;
+        const weeklyOvertimeHours =
+            Math.max(hoursPerWeek - 40, 0) + overtimeHours;
 
         // Calculate pay components
         regularPay = regularHours * hourlyWage * weeksPerYear;
-        overtimePay = weeklyOvertimeHours * hourlyWage * overtimeMultiplier * weeksPerYear;
+        overtimePay =
+            weeklyOvertimeHours *
+            hourlyWage *
+            overtimeMultiplier *
+            weeksPerYear;
 
         // Calculate totals
         annualSalary = regularPay + overtimePay;
@@ -76,23 +81,24 @@
     function calculateScenarios() {
         const scenarios = [];
         const baseHours = [20, 30, 35, 40, 45, 50];
-        
-        baseHours.forEach(hours => {
+
+        baseHours.forEach((hours) => {
             const regHours = Math.min(hours, 40);
             const otHours = Math.max(hours - 40, 0);
             const regPay = regHours * hourlyWage * weeksPerYear;
-            const otPay = otHours * hourlyWage * overtimeMultiplier * weeksPerYear;
+            const otPay =
+                otHours * hourlyWage * overtimeMultiplier * weeksPerYear;
             const totalPay = regPay + otPay;
-            
+
             scenarios.push({
                 hours,
                 regularPay: regPay,
                 overtimePay: otPay,
                 totalPay,
-                monthlyPay: totalPay / 12
+                monthlyPay: totalPay / 12,
             });
         });
-        
+
         return scenarios;
     }
 
@@ -107,8 +113,9 @@
                 Hourly to Salary Calculator
             </h2>
             <p class="text-gray-600 mb-6">
-                Convert your hourly wage to annual salary. Calculate your potential earnings 
-                based on different work schedules and overtime hours.
+                Convert your hourly wage to annual salary. Calculate your
+                potential earnings based on different work schedules and
+                overtime hours.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -122,15 +129,19 @@
                 />
 
                 <div>
+                    <!-- svelte-ignore a11y_label_has_associated_control -->
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         Work Schedule
                     </label>
-                    <select 
+                    <select
                         class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                         on:change={handleScheduleChange}
                     >
                         {#each scheduleOptions as option}
-                            <option value={option.value} selected={hoursPerWeek === option.value}>
+                            <option
+                                value={option.value}
+                                selected={hoursPerWeek === option.value}
+                            >
                                 {option.label}
                             </option>
                         {/each}
@@ -232,38 +243,67 @@
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <span class="text-gray-600">Hourly Wage:</span>
-                            <span class="font-semibold">{formatCurrency(hourlyWage)}</span>
+                            <span class="font-semibold"
+                                >{formatCurrency(hourlyWage)}</span
+                            >
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Regular Hours/Week:</span>
-                            <span class="font-semibold">{Math.min(hoursPerWeek, 40)} hours</span>
+                            <span class="text-gray-600"
+                                >Regular Hours/Week:</span
+                            >
+                            <span class="font-semibold"
+                                >{Math.min(hoursPerWeek, 40)} hours</span
+                            >
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Overtime Hours/Week:</span>
-                            <span class="font-semibold">{Math.max(hoursPerWeek - 40, 0) + overtimeHours} hours</span>
+                            <span class="text-gray-600"
+                                >Overtime Hours/Week:</span
+                            >
+                            <span class="font-semibold"
+                                >{Math.max(hoursPerWeek - 40, 0) +
+                                    overtimeHours} hours</span
+                            >
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Weeks per Year:</span>
-                            <span class="font-semibold">{weeksPerYear} weeks</span>
+                            <span class="font-semibold"
+                                >{weeksPerYear} weeks</span
+                            >
                         </div>
                     </div>
 
                     <div class="space-y-3">
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Regular Pay (Annual):</span>
-                            <span class="font-semibold text-blue-600">{formatCurrency(regularPay)}</span>
+                            <span class="text-gray-600"
+                                >Regular Pay (Annual):</span
+                            >
+                            <span class="font-semibold text-blue-600"
+                                >{formatCurrency(regularPay)}</span
+                            >
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Overtime Pay (Annual):</span>
-                            <span class="font-semibold text-green-600">{formatCurrency(overtimePay)}</span>
+                            <span class="text-gray-600"
+                                >Overtime Pay (Annual):</span
+                            >
+                            <span class="font-semibold text-green-600"
+                                >{formatCurrency(overtimePay)}</span
+                            >
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Overtime Rate:</span>
-                            <span class="font-semibold">{formatCurrency(hourlyWage * overtimeMultiplier)}/hour</span>
+                            <span class="font-semibold"
+                                >{formatCurrency(
+                                    hourlyWage * overtimeMultiplier,
+                                )}/hour</span
+                            >
                         </div>
                         <div class="flex justify-between border-t pt-3">
-                            <span class="text-gray-900 font-semibold">Total Annual:</span>
-                            <span class="font-bold text-green-600">{formatCurrency(annualSalary)}</span>
+                            <span class="text-gray-900 font-semibold"
+                                >Total Annual:</span
+                            >
+                            <span class="font-bold text-green-600"
+                                >{formatCurrency(annualSalary)}</span
+                            >
                         </div>
                     </div>
                 </div>
@@ -278,28 +318,36 @@
                 </h3>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="text-center p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <div
+                        class="text-center p-4 bg-blue-50 border border-blue-200 rounded-lg"
+                    >
                         <div class="text-lg font-bold text-blue-600 mb-1">
                             {formatCurrency(hourlyWage)}
                         </div>
                         <div class="text-sm text-gray-700">Per Hour</div>
                     </div>
 
-                    <div class="text-center p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <div
+                        class="text-center p-4 bg-green-50 border border-green-200 rounded-lg"
+                    >
                         <div class="text-lg font-bold text-green-600 mb-1">
                             {formatCurrency(hourlyWage * 8)}
                         </div>
                         <div class="text-sm text-gray-700">Per Day (8 hrs)</div>
                     </div>
 
-                    <div class="text-center p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                    <div
+                        class="text-center p-4 bg-purple-50 border border-purple-200 rounded-lg"
+                    >
                         <div class="text-lg font-bold text-purple-600 mb-1">
                             {formatCurrency(weeklyPay)}
                         </div>
                         <div class="text-sm text-gray-700">Per Week</div>
                     </div>
 
-                    <div class="text-center p-4 bg-orange-50 border border-orange-200 rounded-lg">
+                    <div
+                        class="text-center p-4 bg-orange-50 border border-orange-200 rounded-lg"
+                    >
                         <div class="text-lg font-bold text-orange-600 mb-1">
                             {formatCurrency(monthlyPay)}
                         </div>
@@ -320,39 +368,63 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                >
                                     Hours/Week
                                 </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                >
                                     Regular Pay
                                 </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                >
                                     Overtime Pay
                                 </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                >
                                     Annual Total
                                 </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                >
                                     Monthly
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             {#each scenarios as scenario}
-                                <tr class={scenario.hours === hoursPerWeek ? 'bg-blue-50' : ''}>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                <tr
+                                    class={scenario.hours === hoursPerWeek
+                                        ? "bg-blue-50"
+                                        : ""}
+                                >
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                                    >
                                         {scenario.hours}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600">
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-blue-600"
+                                    >
                                         {formatCurrency(scenario.regularPay)}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-green-600"
+                                    >
                                         {formatCurrency(scenario.overtimePay)}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                                    >
                                         {formatCurrency(scenario.totalPay)}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                                    >
                                         {formatCurrency(scenario.monthlyPay)}
                                     </td>
                                 </tr>
@@ -371,43 +443,55 @@
                 </h3>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <div
+                        class="bg-blue-50 border border-blue-200 rounded-lg p-4"
+                    >
                         <h4 class="font-semibold text-blue-900 mb-2">
                             💰 Gross vs Net Income
                         </h4>
                         <p class="text-blue-800 text-sm">
-                            These calculations show gross income before taxes, insurance, and other deductions. 
-                            Your actual take-home pay will be lower.
+                            These calculations show gross income before taxes,
+                            insurance, and other deductions. Your actual
+                            take-home pay will be lower.
                         </p>
                     </div>
 
-                    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <div
+                        class="bg-green-50 border border-green-200 rounded-lg p-4"
+                    >
                         <h4 class="font-semibold text-green-900 mb-2">
                             ⏰ Overtime Laws
                         </h4>
                         <p class="text-green-800 text-sm">
-                            Overtime pay (typically 1.5x regular rate) is required for hours over 40 per week 
-                            for non-exempt employees under federal law.
+                            Overtime pay (typically 1.5x regular rate) is
+                            required for hours over 40 per week for non-exempt
+                            employees under federal law.
                         </p>
                     </div>
 
-                    <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                    <div
+                        class="bg-purple-50 border border-purple-200 rounded-lg p-4"
+                    >
                         <h4 class="font-semibold text-purple-900 mb-2">
                             📅 Time Off Impact
                         </h4>
                         <p class="text-purple-800 text-sm">
-                            This calculation assumes you work every scheduled week. 
-                            Unpaid time off will reduce your actual annual earnings.
+                            This calculation assumes you work every scheduled
+                            week. Unpaid time off will reduce your actual annual
+                            earnings.
                         </p>
                     </div>
 
-                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                    <div
+                        class="bg-orange-50 border border-orange-200 rounded-lg p-4"
+                    >
                         <h4 class="font-semibold text-orange-900 mb-2">
                             🎯 Career Planning
                         </h4>
                         <p class="text-orange-800 text-sm">
-                            Use this information to set income goals, budget effectively, 
-                            and compare job opportunities with different pay structures.
+                            Use this information to set income goals, budget
+                            effectively, and compare job opportunities with
+                            different pay structures.
                         </p>
                     </div>
                 </div>

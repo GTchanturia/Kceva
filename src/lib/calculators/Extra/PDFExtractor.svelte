@@ -281,7 +281,10 @@
 </script>
 
 <div class="container">
-    <h2>📑 PDF Embedded File Extractor</h2>
+    <h2>
+        📑 PDF Embedded File Extractor - This is only Front-end Tool and no data
+        will be saved anywhere
+    </h2>
 
     <div
         class="drop-area"

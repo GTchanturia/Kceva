@@ -317,23 +317,6 @@
 
     <!-- Time Widget -->
     <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
-      <div class="flex items-center space-x-3 mb-3">
-        <svg
-          class="h-5 w-5 text-gray-600"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <h3 class="font-medium text-gray-900">Current Time</h3>
-      </div>
-
       <div class="text-center space-y-1">
         <time
           class="text-2xl font-mono font-bold text-blue-600 block"
@@ -341,8 +324,8 @@
         >
           {formatTime(currentTime)}
         </time>
-        <div class="text-sm text-gray-600">{formatDate(currentTime)}</div>
-        <div class="text-xs text-gray-400">
+        <div class="text-sm text-gray-600">
+          {formatDate(currentTime)}
           {timezone.split("/").pop() || "Local"}
         </div>
       </div>
@@ -375,23 +358,6 @@
 
     <!-- Currency Converter Widget -->
     <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
-      <div class="flex items-center space-x-3 mb-4">
-        <svg
-          class="h-5 w-5 text-gray-600"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
-          />
-        </svg>
-        <h3 class="font-medium text-gray-900">Quick Convert</h3>
-      </div>
-
       <div class="space-y-3">
         <input
           type="number"

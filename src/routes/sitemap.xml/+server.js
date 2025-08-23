@@ -3,7 +3,7 @@ import { CALCULATOR_CATEGORIES } from '$lib/types/calculator.js';
 
 export async function GET() {
   const baseUrl = 'https://kceva.com';
-  
+
   // Static pages
   const staticPages = [
     { url: '', priority: '1.0', changefreq: 'daily' },

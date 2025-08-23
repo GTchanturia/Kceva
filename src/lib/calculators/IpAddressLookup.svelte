@@ -9,33 +9,33 @@
     import Button from "$lib/components/ui/Button.svelte";
 
     // Input values
-    let ipAddress = '';
+    let ipAddress = "";
     let loading = false;
-    let error = '';
+    let error = "";
     let result = null;
 
     // Lookup IP address
     async function lookupIP() {
         if (!ipAddress.trim()) {
-            error = 'Please enter an IP address';
+            error = "Please enter an IP address";
             return;
         }
 
         loading = true;
-        error = '';
+        error = "";
         result = null;
 
         try {
             const response = await fetch(`https://ipapi.co/${ipAddress}/json/`);
-            
+
             if (!response.ok) {
-                throw new Error('Failed to lookup IP address');
+                throw new Error("Failed to lookup IP address");
             }
 
             const data = await response.json();
-            
+
             if (data.error) {
-                throw new Error(data.reason || 'Invalid IP address');
+                throw new Error(data.reason || "Invalid IP address");
             }
 
             result = data;
@@ -49,15 +49,15 @@
     // Get current user's IP
     async function getMyIP() {
         loading = true;
-        error = '';
+        error = "";
 
         try {
-            const response = await fetch('https://ipapi.co/json/');
+            const response = await fetch("https://ipapi.co/json/");
             const data = await response.json();
             ipAddress = data.ip;
             result = data;
         } catch (err) {
-            error = 'Failed to get your IP address';
+            error = "Failed to get your IP address";
         } finally {
             loading = false;
         }
@@ -72,8 +72,8 @@
                 IP Address Lookup
             </h2>
             <p class="text-gray-600 mb-6">
-                Get location and network information for any IP address. 
-                Useful for security analysis and network troubleshooting.
+                Get location and network information for any IP address. Useful
+                for security analysis and network troubleshooting.
             </p>
 
             <div class="space-y-4">
@@ -85,16 +85,16 @@
                 />
 
                 <div class="flex space-x-4">
-                    <Button 
-                        variant="primary" 
+                    <Button
+                        variant="primary"
                         on:click={lookupIP}
                         disabled={loading}
                     >
-                        {loading ? '🔍 Looking up...' : '🔍 Lookup IP'}
+                        {loading ? "🔍 Looking up..." : "🔍 Lookup IP"}
                     </Button>
-                    
-                    <Button 
-                        variant="outline" 
+
+                    <Button
+                        variant="outline"
                         on:click={getMyIP}
                         disabled={loading}
                     >
@@ -124,38 +124,54 @@
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <span class="text-gray-600">IP Address:</span>
-                            <span class="font-semibold font-mono">{result.ip}</span>
+                            <span class="font-semibold font-mono"
+                                >{result.ip}</span
+                            >
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">City:</span>
-                            <span class="font-semibold">{result.city || 'Unknown'}</span>
+                            <span class="font-semibold"
+                                >{result.city || "Unknown"}</span
+                            >
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Region:</span>
-                            <span class="font-semibold">{result.region || 'Unknown'}</span>
+                            <span class="font-semibold"
+                                >{result.region || "Unknown"}</span
+                            >
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Country:</span>
-                            <span class="font-semibold">{result.country_name || 'Unknown'}</span>
+                            <span class="font-semibold"
+                                >{result.country_name || "Unknown"}</span
+                            >
                         </div>
                     </div>
 
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <span class="text-gray-600">ISP:</span>
-                            <span class="font-semibold">{result.org || 'Unknown'}</span>
+                            <span class="font-semibold"
+                                >{result.org || "Unknown"}</span
+                            >
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Timezone:</span>
-                            <span class="font-semibold">{result.timezone || 'Unknown'}</span>
+                            <span class="font-semibold"
+                                >{result.timezone || "Unknown"}</span
+                            >
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Postal Code:</span>
-                            <span class="font-semibold">{result.postal || 'Unknown'}</span>
+                            <span class="font-semibold"
+                                >{result.postal || "Unknown"}</span
+                            >
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Coordinates:</span>
-                            <span class="font-semibold">{result.latitude}, {result.longitude}</span>
+                            <span class="font-semibold"
+                                >{result.latitude}, {result.longitude}</span
+                            >
                         </div>
                     </div>
                 </div>

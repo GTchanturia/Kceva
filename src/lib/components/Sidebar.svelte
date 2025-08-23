@@ -69,7 +69,7 @@
     { value: "PLN", flag: "🇵🇱", name: "Polish Zloty" },
     { value: "CZK", flag: "🇨🇿", name: "Czech Koruna" },
     { value: "RUB", flag: "🇷🇺", name: "Russian Ruble" },
-    { value: "BRL", flag: "🇧🇷", name: "Brazilian Real" }
+    { value: "BRL", flag: "🇧🇷", name: "Brazilian Real" },
   ];
 
   // Update time every second
@@ -85,18 +85,20 @@
 
       // Handle IPv6 to IPv4 conversion if needed
       let displayIP = data.ip || "Unknown";
-      
+
       // Check if IP is IPv6 format and try to get IPv4
-      if (displayIP.includes(':')) {
+      if (displayIP.includes(":")) {
         try {
-          const ipv4Response = await fetch("https://api4.ipify.org?format=json");
+          const ipv4Response = await fetch(
+            "https://api4.ipify.org?format=json",
+          );
           const ipv4Data = await ipv4Response.json();
-          if (ipv4Data.ip && !ipv4Data.ip.includes(':')) {
+          if (ipv4Data.ip && !ipv4Data.ip.includes(":")) {
             displayIP = ipv4Data.ip;
           }
         } catch (ipv4Error) {
           // If IPv4 fetch fails, show simplified IPv6
-          displayIP = `IPv6: ${displayIP.split(':').slice(0, 3).join(':')}...`;
+          displayIP = `IPv6: ${displayIP.split(":").slice(0, 3).join(":")}...`;
         }
       }
 
@@ -262,7 +264,12 @@
   aria-label="Toggle sidebar"
 >
   <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4 6h16M4 12h16M4 18h16"
+    />
   </svg>
 </button>
 
@@ -293,61 +300,74 @@
       class="lg:hidden absolute top-4 right-4 p-1.5 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
       aria-label="Close sidebar"
     >
-      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <svg
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
       </svg>
     </button>
 
     <!-- Time Widget -->
     <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
       <div class="flex items-center space-x-3 mb-3">
-        <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <svg
+          class="h-5 w-5 text-gray-600"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
         </svg>
         <h3 class="font-medium text-gray-900">Current Time</h3>
       </div>
-      
+
       <div class="text-center space-y-1">
-        <time class="text-2xl font-mono font-bold text-blue-600 block" datetime={currentTime.toISOString()}>
+        <time
+          class="text-2xl font-mono font-bold text-blue-600 block"
+          datetime={currentTime.toISOString()}
+        >
           {formatTime(currentTime)}
         </time>
         <div class="text-sm text-gray-600">{formatDate(currentTime)}</div>
-        <div class="text-xs text-gray-400">{timezone.split("/").pop() || "Local"}</div>
+        <div class="text-xs text-gray-400">
+          {timezone.split("/").pop() || "Local"}
+        </div>
       </div>
     </div>
 
     <!-- Location Widget -->
     <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
-      <div class="flex items-center space-x-3 mb-3">
-        <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-        <h3 class="font-medium text-gray-900">Your Location</h3>
-      </div>
-
       {#if loadingIP}
         <div class="text-center py-2">
-          <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-500 mx-auto mb-2"></div>
+          <div
+            class="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-500 mx-auto mb-2"
+          ></div>
           <div class="text-sm text-gray-500">Detecting location...</div>
         </div>
       {:else}
         <div class="space-y-2">
           <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-600">IP Address:</span>
-            <span class="text-sm font-mono font-medium text-green-600">{userIP}</span>
+            <span class="text-sm text-gray-600">IP:</span>
+            <span class="text-sm font-mono font-medium text-green-600"
+              >{userIP}</span
+            >
           </div>
           <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-600">Location:</span>
-            <span class="text-sm font-medium text-gray-900">{userLocation}</span>
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-600">Browser:</span>
-            <span class="text-sm text-gray-700">{browserName}</span>
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-600">Screen:</span>
-            <span class="text-sm text-gray-700">{screenResolution}</span>
+            <span class="text-sm font-medium text-gray-900">{userLocation}</span
+            >
           </div>
         </div>
       {/if}
@@ -356,8 +376,18 @@
     <!-- Currency Converter Widget -->
     <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
       <div class="flex items-center space-x-3 mb-4">
-        <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+        <svg
+          class="h-5 w-5 text-gray-600"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+          />
         </svg>
         <h3 class="font-medium text-gray-900">Quick Convert</h3>
       </div>
@@ -380,7 +410,9 @@
             aria-label="Select source currency"
           >
             {#each currencies as currency}
-              <option value={currency.value}>{currency.flag} {currency.value}</option>
+              <option value={currency.value}
+                >{currency.flag} {currency.value}</option
+              >
             {/each}
           </select>
 
@@ -390,14 +422,18 @@
             aria-label="Select target currency"
           >
             {#each currencies as currency}
-              <option value={currency.value}>{currency.flag} {currency.value}</option>
+              <option value={currency.value}
+                >{currency.flag} {currency.value}</option
+              >
             {/each}
           </select>
         </div>
 
         {#if loadingCurrency}
           <div class="text-center py-2">
-            <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500 mx-auto mb-1"></div>
+            <div
+              class="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500 mx-auto mb-1"
+            ></div>
             <div class="text-xs text-gray-500">Converting...</div>
           </div>
         {:else}
@@ -406,7 +442,8 @@
               {getCurrencySymbol(toCurrency)}{formatNumber(convertedAmount, 2)}
             </div>
             <div class="text-xs text-gray-600 text-center mt-1">
-              1 {fromCurrency} = {formatNumber(exchangeRate, 4)} {toCurrency}
+              1 {fromCurrency} = {formatNumber(exchangeRate, 4)}
+              {toCurrency}
             </div>
             {#if lastCurrencyUpdate}
               <div class="text-xs text-gray-400 text-center mt-1">
@@ -416,58 +453,6 @@
           </div>
         {/if}
       </div>
-    </div>
-
-    <!-- Quick Access -->
-    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
-      <div class="flex items-center space-x-3 mb-4">
-        <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
-        <h3 class="font-medium text-gray-900">Popular Tools</h3>
-      </div>
-
-      <nav class="space-y-1">
-        <a
-          href="/calculator/bmi-calculator"
-          class="flex items-center space-x-3 p-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-lg transition-all"
-        >
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-          <span>BMI Calculator</span>
-        </a>
-        
-        <a
-          href="/calculator/loan-calculator"
-          class="flex items-center space-x-3 p-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-lg transition-all"
-        >
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-          </svg>
-          <span>Loan Calculator</span>
-        </a>
-        
-        <a
-          href="/calculator/percentage-calculator"
-          class="flex items-center space-x-3 p-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-lg transition-all"
-        >
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          </svg>
-          <span>Percentage Calculator</span>
-        </a>
-        
-        <a
-          href="/calculator/currency-converter"
-          class="flex items-center space-x-3 p-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-lg transition-all"
-        >
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17v4a2 2 0 002 2h4M15 5l-4 4" />
-          </svg>
-          <span>Currency Converter</span>
-        </a>
-      </nav>
     </div>
   </div>
 </aside>

@@ -16,7 +16,7 @@
 			dataLayer.push(arguments);
 		}
 		gtag("js", new Date());
-		gtag("config", "G-WN6PNY6HEQ");
+		gtag("config", "G-MVW56X534F");
 	}
 </script>
 

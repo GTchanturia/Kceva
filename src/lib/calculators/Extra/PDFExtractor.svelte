@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
     import { onMount } from "svelte";
     import { browser } from "$app/environment";
     import FileSaver from "file-saver";
@@ -546,4 +546,4 @@
         margin: 0;
         white-space: pre-wrap;
     }
-</style>
+</style> -->

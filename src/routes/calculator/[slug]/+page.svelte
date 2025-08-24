@@ -109,7 +109,7 @@
 	import BudgetPlanner from "$lib/calculators/Finance/BudgetPlanner.svelte";
 	import NetWorth from "$lib/calculators/Finance/NetWorth.svelte";
 	import QuadraticCalculator from "$lib/calculators/Math/QuadraticCalculator.svelte";
-	import PDFExtractor from "$lib/calculators/Extra/PDFExtractor.svelte";
+	// import PDFExtractor from "$lib/calculators/Extra/PDFExtractor.svelte";
 	import ImageImprovement from "$lib/calculators/Extra/ImageImprovement.svelte";
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;
@@ -245,7 +245,7 @@
 		"tdee-calculator": TdeeCalculator,
 		"quadratic-solver": QuadraticCalculator,
 		"exponent-calculator": ExponentCalculator,
-		"pdf-extractor": PDFExtractor, // Newly added PDF Extractor
+		// "pdf-extractor": PDFExtractor, // Newly added PDF Extractor
 		"image-improvement": ImageImprovement,
 
 		// Add more calculator components as they are created

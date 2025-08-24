@@ -1,67 +1,75 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		
-		<!-- Critical font preloading for LCP improvement -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
-		
-		<!-- DNS prefetch for external APIs -->
-		<link rel="dns-prefetch" href="https://api.exchangerate-api.com">
-		<link rel="dns-prefetch" href="https://ipapi.co">
-		<link rel="dns-prefetch" href="https://vitals.vercel-insights.com">
-		
-		<!-- Enhanced meta tags for SEO -->
-		<meta name="description" content="kceva - 100+ free online calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, and mobile-friendly tools with live currency rates including GEL (Georgian Lari)." />
-		<meta name="keywords" content="calculator, converter, finance, health, math, unit conversion, free tools, online calculator, kceva, BMI, loan, percentage, currency, GEL, Georgian Lari, fast calculations, mobile calculators, free conversion tools" />
-		<meta name="author" content="kceva" />
-		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-		<meta name="theme-color" content="#2563eb" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-		<meta name="apple-mobile-web-app-title" content="kceva Calculators" />
-		<meta name="application-name" content="kceva" />
-		<meta name="msapplication-TileColor" content="#2563eb" />
-		
-		<!-- Google Search Console Verification -->
-		<meta name="google-site-verification" content="ShscXJYUm6K66Hgx9kzS59IajAHA9-9OWZmVMoQ7sOw" />
-		
-		<!-- Enhanced Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="kceva" />
-		<meta property="og:title" content="kceva - 100+ Free Online Calculators & Converters" />
-		<meta property="og:description" content="Access 100+ free calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, and mobile-friendly tools with live currency rates." />
-		<meta property="og:url" content="https://kceva.com" />
-		<meta property="og:image" content="https://kceva.com/og-image.png" />
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="kceva - Free Online Calculators and Converters" />
-		<meta property="og:locale" content="en_US" />
-		
-		<!-- Enhanced Twitter Cards -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:site" content="@kceva" />
-		<meta name="twitter:creator" content="@kceva" />
-		<meta name="twitter:title" content="kceva - 100+ Free Online Calculators & Converters" />
-		<meta name="twitter:description" content="Access 100+ free calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, and mobile-friendly tools." />
-		<meta name="twitter:image" content="https://kceva.com/og-image.png" />
-		<meta name="twitter:image:alt" content="kceva - Free Online Calculators and Converters" />
-		
-		<!-- Canonical URL -->
-		<link rel="canonical" href="https://kceva.com" />
-		
-		<!-- Favicon and app icons -->
-		<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
-		<link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="%sveltekit.assets%/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="%sveltekit.assets%/favicon-16x16.png" />
-		<link rel="manifest" href="%sveltekit.assets%/site.webmanifest" />
-		
-		<!-- Enhanced Structured Data -->
-		<script type="application/ld+json">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+	<!-- Critical font preloading for LCP improvement -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+		as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+	</noscript>
+
+	<!-- DNS prefetch for external APIs -->
+	<link rel="dns-prefetch" href="https://api.exchangerate-api.com">
+	<link rel="dns-prefetch" href="https://ipapi.co">
+	<link rel="dns-prefetch" href="https://vitals.vercel-insights.com">
+
+	<!-- Enhanced meta tags for SEO -->
+	<meta name="description"
+		content="kceva - 100+ free online calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, and mobile-friendly tools with live currency rates including GEL (Georgian Lari)." />
+	<meta name="keywords"
+		content="calculator, converter, finance, health, math, unit conversion, free tools, online calculator, kceva, BMI, loan, percentage, currency, GEL, Georgian Lari, fast calculations, mobile calculators, free conversion tools" />
+	<meta name="author" content="kceva" />
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+	<meta name="theme-color" content="#2563eb" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+	<meta name="apple-mobile-web-app-title" content="kceva Calculators" />
+	<meta name="application-name" content="kceva" />
+	<meta name="msapplication-TileColor" content="#2563eb" />
+
+	<!-- Google Search Console Verification -->
+	<meta name="google-site-verification" content="ShscXJYUm6K66Hgx9kzS59IajAHA9-9OWZmVMoQ7sOw" />
+
+	<!-- Enhanced Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="kceva" />
+	<meta property="og:title" content="kceva - 100+ Free Online Calculators & Converters" />
+	<meta property="og:description"
+		content="Access 100+ free calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, and mobile-friendly tools with live currency rates." />
+	<meta property="og:url" content="https://kceva.com" />
+	<meta property="og:image" content="https://kceva.com/og-image.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content="kceva - Free Online Calculators and Converters" />
+	<meta property="og:locale" content="en_US" />
+
+	<!-- Enhanced Twitter Cards -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@kceva" />
+	<meta name="twitter:creator" content="@kceva" />
+	<meta name="twitter:title" content="kceva - 100+ Free Online Calculators & Converters" />
+	<meta name="twitter:description"
+		content="Access 100+ free calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, and mobile-friendly tools." />
+	<meta name="twitter:image" content="https://kceva.com/og-image.png" />
+	<meta name="twitter:image:alt" content="kceva - Free Online Calculators and Converters" />
+
+	<!-- Canonical URL -->
+	<link rel="canonical" href="https://kceva.com" />
+
+	<!-- Favicon and app icons -->
+	<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
+	<link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="%sveltekit.assets%/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="%sveltekit.assets%/favicon-16x16.png" />
+	<link rel="manifest" href="%sveltekit.assets%/site.webmanifest" />
+
+	<!-- Enhanced Structured Data -->
+	<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
 			"@type": "WebSite",
@@ -114,10 +122,12 @@
 			}
 		}
 		</script>
-		
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover" class="font-sans">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+
+	%sveltekit.head%
+</head>
+
+<body data-sveltekit-preload-data="hover" class="font-sans">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
 </html>

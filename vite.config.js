@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import { sveltekit } from '@sveltejs/kit/vite';
-import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
 	plugins: [
@@ -48,7 +48,7 @@ export default defineConfig({
 							cacheName: 'kceva-cache',
 							expiration: {
 								maxEntries: 200,
-								maxAgeSeconds: 60 * 60 * 24 * 30 // 30 დღე
+								maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
 							}
 						}
 					},
@@ -59,7 +59,7 @@ export default defineConfig({
 							cacheName: 'google-fonts-cache',
 							expiration: {
 								maxEntries: 20,
-								maxAgeSeconds: 60 * 60 * 24 * 365 // 1 წელი
+								maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
 							}
 						}
 					}

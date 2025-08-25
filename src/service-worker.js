@@ -1,5 +1,12 @@
 const CACHE_NAME = "kceva-cache-v1";
-const urlsToCache = ["/", "/index.html", "/styles.css", "/favicon.svg"];
+
+// Only reference files as they are served in SvelteKit: from root, not /static
+const urlsToCache = [
+    "/",
+    "/favicon.svg",
+    "/src/app.html",
+    "/src/app.css"
+];
 
 self.addEventListener("install", (event) => {
     event.waitUntil(

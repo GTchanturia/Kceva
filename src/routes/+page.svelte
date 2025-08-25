@@ -2,7 +2,7 @@
 	import {
 		getFeaturedCalculators,
 		getCalculatorsByCategory,
-	} from "$lib/data/calculators.js";
+	} from "$lib/data/calculators/index.js";
 	import { CALCULATOR_CATEGORIES } from "$lib/types/calculator.js";
 	import CalculatorCard from "$lib/components/CalculatorCard.svelte";
 	import CategoryCard from "$lib/components/CategoryCard.svelte";

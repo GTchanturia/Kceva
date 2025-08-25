@@ -29,10 +29,14 @@
     <div class="flex justify-between items-center h-16">
       <!-- Logo and Brand -->
       <div class="flex items-center space-x-4">
-        <a href="/" class="flex items-center space-x-2">
+        <a href="/" class="flex items-center space-x-2" aria-label="Kceva home">
           <img
             src="/logo.png"
-            alt="Kceva Logo"
+            alt="Kceva logo"
+            width="64"
+            height="64"
+            loading="eager"
+            decoding="async"
             class="w-16 h-16 rounded-lg object-cover"
           />
           <span class="text-xl font-bold text-gray-900 hidden sm:block">

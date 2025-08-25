@@ -1,6 +1,6 @@
 <script>
 	import { CALCULATOR_CATEGORIES } from '$lib/types/calculator.js';
-	import { getCalculatorsByCategory } from '$lib/data/calculators.js';
+	import { getCalculatorsByCategory } from '$lib/data/calculators/index.js';
 	import CategoryCard from '$lib/components/CategoryCard.svelte';
 	import CalculatorCard from '$lib/components/CalculatorCard.svelte';
 	
@@ -19,6 +19,36 @@
 	<meta name="description" content="Browse all calculator categories at Kceva.com including finance, health, math, unit conversion, and more. Find the perfect free calculator tool for your needs." />
 	<meta name="keywords" content="Kceva, calculator categories, finance calculators, health tools, math calculators, unit converters, free online tools" />
 	<link rel="canonical" href="https://kceva.com/categories" />
+
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "CollectionPage",
+			"name": "Calculator Categories",
+			"description": "Browse all calculator categories at Kceva.com including finance, health, math, unit conversion, and more.",
+			"url": "https://kceva.com/categories"
+		}
+	</script>
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{
+					"@type": "ListItem",
+					"position": 1,
+					"name": "Home",
+					"item": "https://kceva.com/"
+				},
+				{
+					"@type": "ListItem",
+					"position": 2,
+					"name": "Categories",
+					"item": "https://kceva.com/categories"
+				}
+			]
+		}
+	</script>
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50">

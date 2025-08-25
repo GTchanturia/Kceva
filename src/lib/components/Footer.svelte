@@ -35,10 +35,14 @@
       <!-- Brand Section -->
       <div class="lg:col-span-2">
         <div class="flex items-center space-x-2 mb-4">
-          <a href="/" class="flex items-center space-x-2">
+          <a href="/" class="flex items-center space-x-2" aria-label="Kceva home">
             <img
               src="/logo.png"
-              alt="Kceva Logo"
+              alt="Kceva logo"
+              width="64"
+              height="64"
+              loading="lazy"
+              decoding="async"
               class="w-16 h-16 rounded-lg object-cover"
             />
             <span class="text-xl font-bold text-gray-900 hidden sm:block">

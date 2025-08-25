@@ -41,7 +41,7 @@ body {
   .text-blue-100 {
     color: #ffffff !important;
   }
-  
+
   .text-gray-400 {
     color: #000000 !important;
   }
@@ -49,6 +49,7 @@ body {
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

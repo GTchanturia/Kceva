@@ -1,7 +1,7 @@
 <script>
 	import { page } from "$app/stores";
 	import { CALCULATOR_CATEGORIES } from "$lib/types/calculator.js";
-	import { getCalculatorsByCategory } from "$lib/data/calculators.js";
+	import { getCalculatorsByCategory } from "$lib/data/calculators/index.js";
 	import CalculatorCard from "$lib/components/CalculatorCard.svelte";
 	import Button from "$lib/components/ui/Button.svelte";
 
@@ -36,11 +36,52 @@
 			name="description"
 			content="{category.description} at Kceva.com. Browse {calculators.length} free calculators in the {category.name} category. Fast, accurate, mobile-friendly tools."
 		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="{category.name} - {calculators.length} Free Calculators | Kceva" />
+		<meta property="og:description" content="{category.description}" />
+		<meta property="og:url" content="https://kceva.com/category/{category.id}" />
+		<meta property="og:image" content="https://kceva.com/og-image.png" />
 		<meta
 			name="keywords"
 			content="Kceva, {category.name.toLowerCase()}, calculators, free tools, online calculator, {category.name.toLowerCase()} calculator"
 		/>
 		<link rel="canonical" href="https://kceva.com/category/{category.id}" />
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "CollectionPage",
+				"name": "{category.name}",
+				"description": "{category.description}",
+				"url": "https://kceva.com/category/{category.id}"
+			}
+		</script>
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "BreadcrumbList",
+				"itemListElement": [
+					{
+						"@type": "ListItem",
+						"position": 1,
+						"name": "Home",
+						"item": "https://kceva.com/"
+					},
+					{
+						"@type": "ListItem",
+						"position": 2,
+						"name": "Categories",
+						"item": "https://kceva.com/categories"
+					},
+					{
+						"@type": "ListItem",
+						"position": 3,
+						"name": "{category.name}",
+						"item": "https://kceva.com/category/{category.id}"
+					}
+				]
+			}
+		</script>
 	{:else}
 		<title>Category Not Found | Kceva - Free Online Calculators</title>
 	{/if}
@@ -118,7 +159,7 @@
 								href="/"
 								class="text-gray-500 hover:text-gray-700"
 								>Home</a
-							>
+								>
 						</li>
 						<li>
 							<svg
@@ -138,7 +179,7 @@
 								href="/categories"
 								class="text-gray-500 hover:text-gray-700"
 								>Categories</a
-							>
+								>
 						</li>
 						<li>
 							<svg

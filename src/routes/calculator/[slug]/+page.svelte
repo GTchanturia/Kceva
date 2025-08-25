@@ -1,116 +1,9 @@
 <script>
 	import { page } from "$app/stores";
-	import { getCalculatorById } from "$lib/data/calculators.js";
+	import { getCalculatorById } from "$lib/data/calculators/index.js";
 	import { CALCULATOR_CATEGORIES } from "$lib/types/calculator.js";
 	import Button from "$lib/components/ui/Button.svelte";
-
-	// Import calculator components
-	import ExponentCalculator from "$lib/calculators/Math/ExponentCalculator.svelte";
-	import TdeeCalculator from "$lib/calculators/TDEECalculator.svelte";
-	import LoanCalculator from "$lib/calculators/Finance/LoanCalculator.svelte";
-	import BMICalculator from "$lib/calculators/BMICalculator.svelte";
-	import BMRCalculator from "$lib/calculators/BMRCalculator.svelte";
-	import CalorieIntakeCalculator from "$lib/calculators/CalorieIntakeCalculator.svelte";
-	import MortgageCalculator from "$lib/calculators/Finance/MortgageCalculator.svelte";
-	import CurrencyConverter from "$lib/calculators/Finance/CurrencyConverter.svelte";
-	import CompoundInterestCalculator from "$lib/calculators/Finance/CompoundInterestCalculator.svelte";
-	import SimpleInterestCalculator from "$lib/calculators/Finance/SimpleInterestCalculator.svelte";
-	import SavingsGoalCalculator from "$lib/calculators/SavingsGoalCalculator.svelte";
-	import PercentageCalculator from "$lib/calculators/Math/PercentageCalculator.svelte";
-	import TemperatureConverter from "$lib/calculators/UnitConverters/TemperatureConverter.svelte";
-	import AgeCalculator from "$lib/calculators/Datetime/AgeCalculator.svelte";
-	import TipCalculator from "$lib/calculators/Lifestyle/TipCalculator.svelte";
-	import RandomPasswordGenerator from "$lib/calculators/RandomPasswordGenerator.svelte";
-	import CreditCardPayoffCalculator from "$lib/calculators/CreditCardPayoffCalculator.svelte";
-	import RetirementSavingsCalculator from "$lib/calculators/RetirementSavingsCalculator.svelte";
-	import SalaryToHourlyCalculator from "$lib/calculators/SalaryToHourlyCalculator.svelte";
-	import HourlyToSalaryCalculator from "$lib/calculators/Finance/HourlyToSalaryCalculator.svelte";
-	import QrCodeGenerator from "$lib/calculators/QRCodeGenerator.svelte";
-	import RandomNumberGenerator from "$lib/calculators/RandomNumberGenerator.svelte";
-	import MemeTextGenerator from "$lib/calculators/MemeTextGenerator.svelte";
-	import NameCompatibility from "$lib/calculators/NameCompatibility.svelte";
-	import BarCodeGenerator from "$lib/calculators/BarCodeGenerator.svelte";
-	import FractionToDecimalConverter from "$lib/calculators/Math/FractionToDecimalConverter.svelte";
-	import DecimalToFractionConverter from "$lib/calculators/DecimalToFractionConverter.svelte";
-	import CircleAreaCalculator from "$lib/calculators/Math/CircleAreaCalculator.svelte";
-	import TriangleAreaCalculator from "$lib/calculators/Math/TriangleAreaCalculator.svelte";
-	import GpaCalculator from "$lib/calculators/GpaCalculator.svelte";
-	import LengthConverter from "$lib/calculators/UnitConverters/LengthConverter.svelte";
-	import WeightConverter from "$lib/calculators/UnitConverters/WeightConverter.svelte";
-	import PressureConverter from "$lib/calculators/UnitConverters/PressureConverter.svelte";
-	import VolumeConverter from "$lib/calculators/UnitConverters/VolumeConverter.svelte";
-	import DataStorageConverter from "$lib/calculators/UnitConverters/DataStorageConverter.svelte";
-	import DaysBetweenDatesCalculator from "$lib/calculators/Datetime/DaysBetweenDatesCalculator.svelte";
-	import GradePercentageCalculator from "$lib/calculators/GradePercentageCalculator.svelte";
-	import FuelEfficiencyConverter from "$lib/calculators/UnitConverters/FuelEfficiencyConverter.svelte";
-	import PasswordStrengthChecker from "$lib/calculators/PasswordStrengthChecker.svelte";
-	import Base64EncoderDecoder from "$lib/calculators/Base64EncoderDecoder.svelte";
-	import UrlEncoderDecoder from "$lib/calculators/UrlEncoderDecoder.svelte";
-	import HexToRgbConverter from "$lib/calculators/HexToRgbConverter.svelte";
-	import RgbToHexConverter from "$lib/calculators/RgbToHexConverter.svelte";
-	import BinaryToDecimalConverter from "$lib/calculators/BinaryToDecimalConverter.svelte";
-	import DecimalToBinaryConverter from "$lib/calculators/Math/DecimalToBinaryConverter.svelte";
-	import RectangleAreaCalculator from "$lib/calculators/Math/RectangleAreaCalculator.svelte";
-	import SphereVolumeCalculator from "$lib/calculators/Math/SphereVolumeCalculator.svelte";
-	import CylinderVolumeCalculator from "$lib/calculators/Math/CylinderVolumeCalculator.svelte";
-	import PythagoreanTheoremCalculator from "$lib/calculators/PythagoreanTheoremCalculator.svelte";
-	import SquareRootCalculator from "$lib/calculators/Math/SquareRootCalculator.svelte";
-	import SpeedConverter from "$lib/calculators/UnitConverters/SpeedConverter.svelte";
-	import TimeConverter from "$lib/calculators/UnitConverters/TimeConverter.svelte";
-	import EnergyConverter from "$lib/calculators/UnitConverters/EnergyConverter.svelte";
-	import BodyFatPercentageCalculator from "$lib/calculators/BodyFatPercentageCalculator.svelte";
-	import WaterIntakeCalculator from "$lib/calculators/WaterIntakeCalculator.svelte";
-	import IdealWeightCalculator from "$lib/calculators/IdealWeightCalculator.svelte";
-	import HeartRateZoneCalculator from "$lib/calculators/HeartRateZoneCalculator.svelte";
-	import PregnancyDueDateCalculator from "$lib/calculators/Lifestyle/PregnancyDueDateCalculator.svelte";
-	import OvulationCalculator from "$lib/calculators/OvulationCalculator.svelte";
-	import BloodAlcoholCalculator from "$lib/calculators/BloodAlcoholCalculator.svelte";
-	import SplitBillCalculator from "$lib/calculators/Lifestyle/SplitBillCalculator.svelte";
-	import MarkupMarkdownCalculator from "$lib/calculators/MarkupMarkdownCalculator.svelte";
-	import LoanToValueCalculator from "$lib/calculators/LoanToValueCalculator.svelte";
-	import PrimeNumberChecker from "$lib/calculators/PrimeNumberChecker.svelte";
-	import FactorialCalculator from "$lib/calculators/FactorialCalculator.svelte";
-	import MeanMedianModeCalculator from "$lib/calculators/MeanMedianModeCalculator.svelte";
-	import StandardDeviationCalculator from "$lib/calculators/StandardDeviationCalculator.svelte";
-	import DiceRoller from "$lib/calculators/DiceRoller.svelte";
-	import CoinFlip from "$lib/calculators/CoinFlip.svelte";
-	import LovePercentageCalculator from "$lib/calculators/LovePercentageCalculator.svelte";
-	import ZodiacSignCalculator from "$lib/calculators/ZodiacSignCalculator.svelte";
-	import AspectRatioCalculator from "$lib/calculators/AspectRatioCalculator.svelte";
-	import DateAddSubtractCalculator from "$lib/calculators/Datetime/DateAddSubtractCalculator.svelte";
-	import CountdownTimer from "$lib/calculators/Datetime/CountdownTimer.svelte";
-	import Stopwatch from "$lib/calculators/Datetime/Stopwatch.svelte";
-	import WorkDaysCalculator from "$lib/calculators/Datetime/WorkDaysCalculator.svelte";
-	import WorldClock from "$lib/calculators/Datetime/WorldClock.svelte";
-	import MeetingTimePlanner from "$lib/calculators/Datetime/MeetingTimePlanner.svelte";
-	import TimeUntilBirthdayCalculator from "$lib/calculators/TimeUntilBirthdayCalculator.svelte";
-	import LeapYearChecker from "$lib/calculators/Datetime/LeapYearChecker.svelte";
-	import CookingMeasurementConverter from "$lib/calculators/Lifestyle/CookingMeasurementConverter.svelte";
-	import GoldenRatioCalculator from "$lib/calculators/GoldenRatioCalculator.svelte";
-	import DpiPpiCalculator from "$lib/calculators/DpiPpiCalculator.svelte";
-	import ColorContrastChecker from "$lib/calculators/ColorContrastChecker.svelte";
-	import CssUnitConverter from "$lib/calculators/CssUnitConverter.svelte";
-	import FileSizeEstimator from "$lib/calculators/FileSizeEstimator.svelte";
-	import ResponsiveBreakpointCalculator from "$lib/calculators/ResponsiveBreakpointCalculator.svelte";
-	import AngleConverter from "$lib/calculators/AngleConverter.svelte";
-	import FontSizeConverter from "$lib/calculators/FontSizeConverter.svelte";
-	import RecipePortionAdjuster from "$lib/calculators/Lifestyle/RecipePortionAdjuster.svelte";
-	import FuelCostCalculator from "$lib/calculators/Lifestyle/FuelCostCalculator.svelte";
-	import TravelTimeCalculator from "$lib/calculators/Lifestyle/TravelTimeCalculator.svelte";
-	import BodySurfaceAreaCalculator from "$lib/calculators/Lifestyle/BodySurfaceAreaCalculator.svelte";
-	import PregnancyWeightGainCalculator from "$lib/calculators/PregnancyWeightGainCalculator.svelte";
-	import LoanEmiCalculator from "$lib/calculators/LoanEmiCalculator.svelte";
-	import ElectricityCostCalculator from "$lib/calculators/Lifestyle/ElectricityCostCalculator.svelte";
-	import SolarPanelOutputCalculator from "$lib/calculators/Lifestyle/SolarPanelOutputCalculator.svelte";
-	import AsciiToTextConverter from "$lib/calculators/AsciiToTextConverter.svelte";
-	import TextToAsciiConverter from "$lib/calculators/TextToAsciiConverter.svelte";
-	import IpAddressLookup from "$lib/calculators/IpAddressLookup.svelte";
-	import RoiCalculator from "$lib/calculators/Finance/RoiCalculator.svelte";
-	import BudgetPlanner from "$lib/calculators/Finance/BudgetPlanner.svelte";
-	import NetWorth from "$lib/calculators/Finance/NetWorth.svelte";
-	import QuadraticCalculator from "$lib/calculators/Math/QuadraticCalculator.svelte";
-	// import PDFExtractor from "$lib/calculators/Extra/PDFExtractor.svelte";
-	import ImageImprovement from "$lib/calculators/Extra/ImageImprovement.svelte";
+	import { calculatorComponents } from "$lib/config/component-map.js";
 	// Get calculator from URL parameter
 	$: calculatorId = $page.params.slug;
 	$: calculator = getCalculatorById(calculatorId);
@@ -118,139 +11,7 @@
 		? CALCULATOR_CATEGORIES.find((cat) => cat.id === calculator.category)
 		: null;
 
-	// Component mapping
-	const calculatorComponents = {
-		"loan-calculator": LoanCalculator,
-		"bmi-calculator": BMICalculator,
-		"bmr-calculator": BMRCalculator,
-		"calorie-intake": CalorieIntakeCalculator,
-		"mortgage-calculator": MortgageCalculator,
-		"currency-converter": CurrencyConverter,
-		"compound-interest": CompoundInterestCalculator,
-		"simple-interest": SimpleInterestCalculator,
-		"savings-goal": SavingsGoalCalculator,
-		"percentage-calculator": PercentageCalculator,
-		"temperature-converter": TemperatureConverter,
-		"age-calculator": AgeCalculator,
-		"tip-calculator": TipCalculator,
-		"random-password-generator": RandomPasswordGenerator,
-		"credit-card-payoff": CreditCardPayoffCalculator,
-		"retirement-savings": RetirementSavingsCalculator,
-		"salary-to-hourly": SalaryToHourlyCalculator,
-		"hourly-to-salary": HourlyToSalaryCalculator,
-		"qr-code-generator": QrCodeGenerator,
-		"random-number-generator": RandomNumberGenerator,
-		"meme-text-generator": MemeTextGenerator,
-		"name-compatibility": NameCompatibility,
-		"barcode-generator": BarCodeGenerator,
-		"fraction-to-decimal": FractionToDecimalConverter,
-		"decimal-to-fraction": DecimalToFractionConverter,
-		"circle-area": CircleAreaCalculator,
-		"triangle-area": TriangleAreaCalculator,
-		"gpa-calculator": GpaCalculator,
-		"length-converter": LengthConverter,
-		"weight-converter": WeightConverter,
-		"pressure-converter": PressureConverter,
-		"volume-converter": VolumeConverter,
-		"data-storage-converter": DataStorageConverter,
-		"days-between-dates": DaysBetweenDatesCalculator,
-		"grade-percentage": GradePercentageCalculator,
-		"fuel-efficiency-converter": FuelEfficiencyConverter,
-		"password-strength-checker": PasswordStrengthChecker,
-		"base64-encoder-decoder": Base64EncoderDecoder,
-		"url-encoder-decoder": UrlEncoderDecoder,
-		"hex-to-rgb": HexToRgbConverter,
-		"rgb-to-hex": RgbToHexConverter,
-		"binary-to-decimal": BinaryToDecimalConverter,
-		"decimal-to-binary": DecimalToBinaryConverter,
-		"rectangle-area": RectangleAreaCalculator,
-		"sphere-volume": SphereVolumeCalculator,
-		"cylinder-volume": CylinderVolumeCalculator,
-		"pythagorean-theorem": PythagoreanTheoremCalculator,
-		"square-root": SquareRootCalculator,
-		"speed-converter": SpeedConverter,
-		"time-converter": TimeConverter,
-		"energy-converter": EnergyConverter,
-		"pressure-converter": PressureConverter,
-		"volume-converter": VolumeConverter,
-		"data-storage-converter": DataStorageConverter,
-		"days-between-dates": DaysBetweenDatesCalculator,
-		"grade-percentage": GradePercentageCalculator,
-		"fuel-efficiency-converter": FuelEfficiencyConverter,
-		"password-strength-checker": PasswordStrengthChecker,
-		"base64-encoder-decoder": Base64EncoderDecoder,
-		"url-encoder-decoder": UrlEncoderDecoder,
-		"hex-to-rgb": HexToRgbConverter,
-		"rgb-to-hex": RgbToHexConverter,
-		"binary-to-decimal": BinaryToDecimalConverter,
-		"decimal-to-binary": DecimalToBinaryConverter,
-		"rectangle-area": RectangleAreaCalculator,
-		"sphere-volume": SphereVolumeCalculator,
-		"cylinder-volume": CylinderVolumeCalculator,
-		"pythagorean-theorem": PythagoreanTheoremCalculator,
-		"square-root": SquareRootCalculator,
-		"speed-converter": SpeedConverter,
-		"time-converter": TimeConverter,
-		"energy-converter": EnergyConverter,
-		"body-fat-percentage": BodyFatPercentageCalculator,
-		"water-intake": WaterIntakeCalculator,
-		"ideal-weight": IdealWeightCalculator,
-		"heart-rate-zone": HeartRateZoneCalculator,
-		"pregnancy-due-date": PregnancyDueDateCalculator,
-		"ovulation-calculator": OvulationCalculator,
-		"blood-alcohol": BloodAlcoholCalculator,
-		"split-bill-calculator": SplitBillCalculator,
-		"markup-markdown": MarkupMarkdownCalculator,
-		"loan-to-value": LoanToValueCalculator,
-		"prime-number-checker": PrimeNumberChecker,
-		"factorial-calculator": FactorialCalculator,
-		"mean-median-mode": MeanMedianModeCalculator,
-		"standard-deviation": StandardDeviationCalculator,
-		"dice-roller": DiceRoller,
-		"coin-flip": CoinFlip,
-		"love-percentage": LovePercentageCalculator,
-		"zodiac-sign": ZodiacSignCalculator,
-		"aspect-ratio": AspectRatioCalculator,
-		"date-add-subtract": DateAddSubtractCalculator,
-		"countdown-timer": CountdownTimer,
-		stopwatch: Stopwatch,
-		"work-days-calculator": WorkDaysCalculator,
-		"world-clock": WorldClock,
-		"meeting-time-planner": MeetingTimePlanner,
-		"time-until-birthday": TimeUntilBirthdayCalculator,
-		"leap-year-checker": LeapYearChecker,
-		"cooking-measurement": CookingMeasurementConverter,
-		"golden-ratio": GoldenRatioCalculator,
-		"dpi-ppi-calculator": DpiPpiCalculator,
-		"color-contrast-checker": ColorContrastChecker,
-		"css-unit-converter": CssUnitConverter,
-		"file-size-estimator": FileSizeEstimator,
-		"responsive-breakpoint": ResponsiveBreakpointCalculator,
-		"angle-converter": AngleConverter,
-		"font-size-converter": FontSizeConverter,
-		"recipe-portion-adjuster": RecipePortionAdjuster,
-		"fuel-cost-calculator": FuelCostCalculator,
-		"travel-time-calculator": TravelTimeCalculator,
-		"body-surface-area": BodySurfaceAreaCalculator,
-		"pregnancy-weight-gain": PregnancyWeightGainCalculator,
-		"loan-emi-calculator": LoanEmiCalculator,
-		"electricity-cost": ElectricityCostCalculator,
-		"solar-panel-output": SolarPanelOutputCalculator,
-		"ascii-to-text": AsciiToTextConverter,
-		"text-to-ascii": TextToAsciiConverter,
-		"ip-address-lookup": IpAddressLookup,
-		"roi-calculator": RoiCalculator,
-		"budget-planner": BudgetPlanner,
-		"net-worth": NetWorth,
-		"tdee-calculator": TdeeCalculator,
-		"quadratic-solver": QuadraticCalculator,
-		"exponent-calculator": ExponentCalculator,
-		// "pdf-extractor": PDFExtractor, // Newly added PDF Extractor
-		"image-improvement": ImageImprovement,
-
-		// Add more calculator components as they are created
-	};
-
+	// Component mapping moved to $lib/config/component-map.js
 	$: CalculatorComponent = calculator
 		? calculatorComponents[calculator.id]
 		: null;
@@ -263,6 +24,14 @@
 			name="description"
 			content="{calculator.description} at Kceva.com. Free online calculator with instant results. Fast, accurate, and mobile-friendly."
 		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="{calculator.name} - Free Online Calculator | Kceva" />
+		<meta property="og:description" content="{calculator.description}" />
+		<meta property="og:url" content="https://kceva.com/calculator/{calculator.id}" />
+		<meta property="og:image" content="https://kceva.com/og-image.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="{calculator.name} - Free Online Calculator | Kceva" />
+		<meta name="twitter:description" content="{calculator.description}" />
 		<meta
 			name="keywords"
 			content="Kceva, {calculator.keywords.join(
@@ -284,16 +53,38 @@
 				"url": "https://kceva.com/calculator/{calculator.id}",
 				"applicationCategory": "UtilityApplication",
 				"operatingSystem": "Any",
-				"offers": {
-					"@type": "Offer",
-					"price": "0",
-					"priceCurrency": "USD"
-				},
 				"publisher": {
 					"@type": "Organization",
 					"name": "Kceva",
 					"url": "https://kceva.com"
 				}
+			}
+		</script>
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "BreadcrumbList",
+				"itemListElement": [
+					{
+						"@type": "ListItem",
+						"position": 1,
+						"name": "Home",
+						"item": "https://kceva.com/"
+					},
+					{
+						"@type": "ListItem",
+						"position": 2,
+						"name": "{category ? category.name : 'Category'}",
+						"item": "https://kceva.com/category/{category ? category.id : ''}"
+					},
+					{
+						"@type": "ListItem",
+						"position": 3,
+						"name": "{calculator.name}",
+						"item": "https://kceva.com/calculator/{calculator.id}"
+					}
+				]
 			}
 		</script>
 	{:else}
@@ -314,7 +105,7 @@
 								href="/"
 								class="text-gray-500 hover:text-gray-700"
 								>Home</a
-							>
+								>
 						</li>
 						<li>
 							<svg

@@ -35,12 +35,16 @@
       <!-- Brand Section -->
       <div class="lg:col-span-2">
         <div class="flex items-center space-x-2 mb-4">
-          <div
-            class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"
-          >
-            <span class="text-white font-bold text-lg">🧮</span>
-          </div>
-          <span class="text-xl font-bold text-gray-900">Kceva</span>
+          <a href="/" class="flex items-center space-x-2">
+            <img
+              src="/logo.png"
+              alt="Kceva Logo"
+              class="w-16 h-16 rounded-lg object-cover"
+            />
+            <span class="text-xl font-bold text-gray-900 hidden sm:block">
+              Kceva
+            </span>
+          </a>
         </div>
 
         <p class="text-gray-600 mb-6 max-w-md">

@@ -5,6 +5,15 @@
 	import { dev } from "$app/environment";
 
 	let { children } = $props();
+
+	if ("serviceWorker" in navigator) {
+		window.addEventListener("load", () => {
+			navigator.serviceWorker.register("/service-worker.js").then(
+				(reg) => console.log("Service Worker registered ✅", reg.scope),
+				(err) => console.error("Service Worker failed ❌", err),
+			);
+		});
+	}
 </script>
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

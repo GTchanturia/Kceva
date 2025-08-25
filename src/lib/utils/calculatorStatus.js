@@ -16,7 +16,7 @@ const WORKING_CALCULATORS = [
   'retirement-savings',
   'salary-to-hourly',
   'hourly-to-salary',
-  
+
   // Health & Fitness
   'bmi-calculator',
   'bmr-calculator',
@@ -28,7 +28,7 @@ const WORKING_CALCULATORS = [
   'pregnancy-due-date',
   'ovulation-calculator',
   'blood-alcohol',
-  
+
   // Math & Geometry
   'percentage-calculator',
   'fraction-to-decimal',
@@ -40,7 +40,7 @@ const WORKING_CALCULATORS = [
   'cylinder-volume',
   'pythagorean-theorem',
   'square-root',
-  
+
   // Unit Converters
   'length-converter',
   'weight-converter',
@@ -52,11 +52,11 @@ const WORKING_CALCULATORS = [
   'volume-converter',
   'data-storage-converter',
   'fuel-efficiency-converter',
-  
+
   // Date & Time
   'age-calculator',
   'days-between-dates',
-  
+
   // Education & Learning
   'gpa-calculator',
   'grade-percentage',
@@ -64,7 +64,7 @@ const WORKING_CALCULATORS = [
   'factorial-calculator',
   'mean-median-mode',
   'standard-deviation',
-  
+
   // Technical/IT
   'base64-encoder-decoder',
   'url-encoder-decoder',
@@ -73,7 +73,7 @@ const WORKING_CALCULATORS = [
   'binary-to-decimal',
   'decimal-to-binary',
   'password-strength-checker',
-  
+
   // Design & Graphics
   'aspect-ratio',
   'date-add-subtract',
@@ -104,13 +104,13 @@ const WORKING_CALCULATORS = [
   'ascii-to-text',
   'text-to-ascii',
   'ip-address-lookup',
-  
+
   // Lifestyle & Practical
   'tip-calculator',
   'split-bill-calculator',
   'markup-markdown',
   'loan-to-value',
-  
+
   // Fun Tools
   'random-number-generator',
   'random-password-generator',
@@ -131,7 +131,7 @@ const WORKING_CALCULATORS = [
  */
 export function getCalculatorStatus(calculatorId) {
   const isWorking = WORKING_CALCULATORS.includes(calculatorId);
-  
+
   return {
     working: isWorking,
     status: isWorking ? 'active' : 'development',

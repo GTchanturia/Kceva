@@ -14,23 +14,33 @@
     let green = 130;
     let blue = 246;
 
+    let rgbValues = { r: red, g: green, b: blue }; // ✅ declare inside component
+
+    $: rgbValues = { r: red, g: green, b: blue }; // ✅ reactive update
     // Results
-    let hexColor = '';
+    let hexColor = "";
     let hslValues = { h: 0, s: 0, l: 0 };
     let showResults = false;
 
     // Convert RGB to HEX
     function convertRgbToHex() {
-        if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255) {
+        if (
+            red < 0 ||
+            red > 255 ||
+            green < 0 ||
+            green > 255 ||
+            blue < 0 ||
+            blue > 255
+        ) {
             showResults = false;
             return;
         }
 
         // Convert to hex
-        const r = Math.round(red).toString(16).padStart(2, '0');
-        const g = Math.round(green).toString(16).padStart(2, '0');
-        const b = Math.round(blue).toString(16).padStart(2, '0');
-        
+        const r = Math.round(red).toString(16).padStart(2, "0");
+        const g = Math.round(green).toString(16).padStart(2, "0");
+        const b = Math.round(blue).toString(16).padStart(2, "0");
+
         hexColor = `#${r}${g}${b}`.toUpperCase();
 
         // Convert to HSL
@@ -46,7 +56,9 @@
 
         const max = Math.max(r, g, b);
         const min = Math.min(r, g, b);
-        let h, s, l = (max + min) / 2;
+        let h,
+            s,
+            l = (max + min) / 2;
 
         if (max === min) {
             h = s = 0; // achromatic
@@ -54,9 +66,15 @@
             const d = max - min;
             s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
             switch (max) {
-                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-                case g: h = (b - r) / d + 2; break;
-                case b: h = (r - g) / d + 4; break;
+                case r:
+                    h = (g - b) / d + (g < b ? 6 : 0);
+                    break;
+                case g:
+                    h = (b - r) / d + 2;
+                    break;
+                case b:
+                    h = (r - g) / d + 4;
+                    break;
             }
             h /= 6;
         }
@@ -76,7 +94,7 @@
         try {
             await navigator.clipboard.writeText(value);
         } catch (err) {
-            console.error('Failed to copy:', err);
+            console.error("Failed to copy:", err);
         }
     }
 </script>
@@ -88,8 +106,8 @@
                 RGB to HEX Converter
             </h2>
             <p class="text-gray-600 mb-6">
-                Convert RGB color values to HEX codes and HSL format. 
-                Perfect for web design, CSS styling, and color manipulation.
+                Convert RGB color values to HEX codes and HSL format. Perfect
+                for web design, CSS styling, and color manipulation.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -129,14 +147,16 @@
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         Color Preview
                     </label>
-                    <div 
+                    <div
                         class="w-full h-32 border border-gray-300 rounded-md mb-4"
                         style="background-color: rgb({red}, {green}, {blue})"
                     ></div>
-                    
+
                     {#if showResults}
                         <div class="text-center">
-                            <div class="text-2xl font-mono font-bold text-gray-900">
+                            <div
+                                class="text-2xl font-mono font-bold text-gray-900"
+                            >
                                 {hexColor}
                             </div>
                         </div>
@@ -150,7 +170,9 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card>
                 <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">RGB Values</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">
+                        RGB Values
+                    </h3>
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <span class="text-red-600">Red:</span>
@@ -165,10 +187,11 @@
                             <span class="font-semibold">{rgbValues.b}</span>
                         </div>
                     </div>
-                    <Button 
-                        variant="outline" 
-                        size="sm" 
-                        on:click={() => copyColorValue(`rgb(${red}, ${green}, ${blue})`)}
+                    <Button
+                        variant="outline"
+                        size="sm"
+                        on:click={() =>
+                            copyColorValue(`rgb(${red}, ${green}, ${blue})`)}
                         className="w-full mt-4"
                     >
                         Copy RGB
@@ -178,14 +201,18 @@
 
             <Card>
                 <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">HEX Code</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">
+                        HEX Code
+                    </h3>
                     <div class="text-center">
-                        <div class="text-3xl font-mono font-bold text-gray-900 mb-4">
+                        <div
+                            class="text-3xl font-mono font-bold text-gray-900 mb-4"
+                        >
                             {hexColor}
                         </div>
-                        <Button 
-                            variant="outline" 
-                            size="sm" 
+                        <Button
+                            variant="outline"
+                            size="sm"
                             on:click={() => copyColorValue(hexColor)}
                             className="w-full"
                         >
@@ -197,7 +224,9 @@
 
             <Card>
                 <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">HSL Values</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">
+                        HSL Values
+                    </h3>
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <span class="text-purple-600">Hue:</span>
@@ -212,10 +241,13 @@
                             <span class="font-semibold">{hslValues.l}%</span>
                         </div>
                     </div>
-                    <Button 
-                        variant="outline" 
-                        size="sm" 
-                        on:click={() => copyColorValue(`hsl(${hslValues.h}, ${hslValues.s}%, ${hslValues.l}%)`)}
+                    <Button
+                        variant="outline"
+                        size="sm"
+                        on:click={() =>
+                            copyColorValue(
+                                `hsl(${hslValues.h}, ${hslValues.s}%, ${hslValues.l}%)`,
+                            )}
                         className="w-full mt-4"
                     >
                         Copy HSL

@@ -39,7 +39,7 @@ import PythagoreanTheoremCalculator from "$lib/calculators/PythagoreanTheoremCal
 import SquareRootCalculator from "$lib/calculators/Math/SquareRootCalculator.svelte";
 import QuadraticCalculator from "$lib/calculators/Math/QuadraticCalculator.svelte";
 import ExponentCalculator from "$lib/calculators/Math/ExponentCalculator.svelte";
-import PermutationCalculator from "$lib/calculators/Math/PermutationCalculator.svelte";
+import PermutationCalculator from "$lib/calculators/Education/PermutationCalculator.svelte";
 
 // Converters
 import TemperatureConverter from "$lib/calculators/UnitConverters/TemperatureConverter.svelte";
@@ -68,12 +68,13 @@ import TimeUntilBirthdayCalculator from "$lib/calculators/TimeUntilBirthdayCalcu
 import LeapYearChecker from "$lib/calculators/Datetime/LeapYearChecker.svelte";
 
 // Education
-import GpaCalculator from "$lib/calculators/GpaCalculator.svelte";
-import GradePercentageCalculator from "$lib/calculators/GradePercentageCalculator.svelte";
-import PrimeNumberChecker from "$lib/calculators/PrimeNumberChecker.svelte";
-import FactorialCalculator from "$lib/calculators/FactorialCalculator.svelte";
-import MeanMedianModeCalculator from "$lib/calculators/MeanMedianModeCalculator.svelte";
-import StandardDeviationCalculator from "$lib/calculators/StandardDeviationCalculator.svelte";
+import GpaCalculator from "$lib/calculators/Education/GpaCalculator.svelte";
+import GradePercentageCalculator from "$lib/calculators/Education/GradePercentageCalculator.svelte";
+import PrimeNumberChecker from "$lib/calculators/Education/PrimeNumberChecker.svelte";
+import FactorialCalculator from "$lib/calculators/Education/FactorialCalculator.svelte";
+import MeanMedianModeCalculator from "$lib/calculators/Education/MeanMedianModeCalculator.svelte";
+import StandardDeviationCalculator from "$lib/calculators/Education/StandardDeviationCalculator.svelte";
+import ProbabilityCalculator from "$lib/calculators/Education/ProbabilityCalculator.svelte";
 
 // Tech
 import PasswordStrengthChecker from "$lib/calculators/PasswordStrengthChecker.svelte";

@@ -39,6 +39,7 @@ import PythagoreanTheoremCalculator from "$lib/calculators/PythagoreanTheoremCal
 import SquareRootCalculator from "$lib/calculators/Math/SquareRootCalculator.svelte";
 import QuadraticCalculator from "$lib/calculators/Math/QuadraticCalculator.svelte";
 import ExponentCalculator from "$lib/calculators/Math/ExponentCalculator.svelte";
+import PermutationCalculator from "$lib/calculators/Math/PermutationCalculator.svelte";
 
 // Converters
 import TemperatureConverter from "$lib/calculators/UnitConverters/TemperatureConverter.svelte";
@@ -107,7 +108,7 @@ import SplitBillCalculator from "$lib/calculators/Lifestyle/SplitBillCalculator.
 import TipCalculator from "$lib/calculators/Lifestyle/TipCalculator.svelte";
 
 // Fun
-import RandomPasswordGenerator from "$lib/calculators/RandomPasswordGenerator.svelte";
+import RandomPasswordGenerator from "$lib/calculators/Fun/RandomPasswordGenerator.svelte";
 import RandomNumberGenerator from "$lib/calculators/RandomNumberGenerator.svelte";
 import MemeTextGenerator from "$lib/calculators/MemeTextGenerator.svelte";
 import NameCompatibility from "$lib/calculators/NameCompatibility.svelte";
@@ -222,7 +223,8 @@ export const calculatorComponents = {
   "tdee-calculator": TdeeCalculator,
   "quadratic-solver": QuadraticCalculator,
   "exponent-calculator": ExponentCalculator,
-  "image-improvement": ImageImprovement
+  "image-improvement": ImageImprovement,
+  "permutation-calculator": PermutationCalculator
 };
 
 

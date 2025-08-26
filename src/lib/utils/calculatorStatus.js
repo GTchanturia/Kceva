@@ -40,6 +40,7 @@ const WORKING_CALCULATORS = [
   'cylinder-volume',
   'pythagorean-theorem',
   'square-root',
+  'permutation-calculator',
 
   // Unit Converters
   'length-converter',

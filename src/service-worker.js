@@ -3,7 +3,7 @@ const CACHE_NAME = "kceva-cache-v1";
 // Only reference files as they are served in SvelteKit: from root, not /static
 const urlsToCache = [
     "/",
-    "/favicon.svg",
+    "/favicon.png",
     "/src/app.html",
     "/src/app.css"
 ];

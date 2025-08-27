@@ -17,8 +17,8 @@ import NetWorth from "$lib/calculators/Finance/NetWorth.svelte";
 import BMICalculator from "$lib/calculators/Health/BMICalculator.svelte";
 import BMRCalculator from "$lib/calculators/Health/BMRCalculator.svelte";
 
-import CalorieIntakeCalculator from "$lib/calculators/CalorieIntakeCalculator.svelte";
-import BodyFatPercentageCalculator from "$lib/calculators/BodyFatPercentageCalculator.svelte";
+import CalorieIntakeCalculator from "$lib/calculators/Health/CalorieIntakeCalculator.svelte";
+import BodyFatPercentageCalculator from "$lib/calculators/Health/BodyFatPercentageCalculator.svelte";
 import WaterIntakeCalculator from "$lib/calculators/WaterIntakeCalculator.svelte";
 import IdealWeightCalculator from "$lib/calculators/IdealWeightCalculator.svelte";
 import HeartRateZoneCalculator from "$lib/calculators/HeartRateZoneCalculator.svelte";
@@ -52,7 +52,7 @@ import SpeedConverter from "$lib/calculators/UnitConverters/SpeedConverter.svelt
 import TimeConverter from "$lib/calculators/UnitConverters/TimeConverter.svelte";
 import EnergyConverter from "$lib/calculators/UnitConverters/EnergyConverter.svelte";
 import FuelEfficiencyConverter from "$lib/calculators/UnitConverters/FuelEfficiencyConverter.svelte";
-import AngleConverter from "$lib/calculators/AngleConverter.svelte";
+import AngleConverter from "$lib/calculators/Design/AngleConverter.svelte";
 import FontSizeConverter from "$lib/calculators/FontSizeConverter.svelte";
 
 // Datetime
@@ -78,20 +78,20 @@ import ProbabilityCalculator from "$lib/calculators/Education/ProbabilityCalcula
 
 // Tech
 import PasswordStrengthChecker from "$lib/calculators/PasswordStrengthChecker.svelte";
-import Base64EncoderDecoder from "$lib/calculators/Base64EncoderDecoder.svelte";
+import Base64EncoderDecoder from "$lib/calculators/Tech/Base64EncoderDecoder.svelte";
 import UrlEncoderDecoder from "$lib/calculators/UrlEncoderDecoder.svelte";
 import HexToRgbConverter from "$lib/calculators/HexToRgbConverter.svelte";
 import RgbToHexConverter from "$lib/calculators/RgbToHexConverter.svelte";
-import BinaryToDecimalConverter from "$lib/calculators/BinaryToDecimalConverter.svelte";
-import AsciiToTextConverter from "$lib/calculators/AsciiToTextConverter.svelte";
+import BinaryToDecimalConverter from "$lib/calculators/Tech/BinaryToDecimalConverter.svelte";
+import AsciiToTextConverter from "$lib/calculators/Tech/AsciiToTextConverter.svelte";
 import TextToAsciiConverter from "$lib/calculators/TextToAsciiConverter.svelte";
 import IpAddressLookup from "$lib/calculators/IpAddressLookup.svelte";
 
 // Design & Extra
 import GoldenRatioCalculator from "$lib/calculators/GoldenRatioCalculator.svelte";
 import DpiPpiCalculator from "$lib/calculators/DpiPpiCalculator.svelte";
-import ColorContrastChecker from "$lib/calculators/ColorContrastChecker.svelte";
-import CssUnitConverter from "$lib/calculators/CssUnitConverter.svelte";
+import ColorContrastChecker from "$lib/calculators/Design/ColorContrastChecker.svelte";
+import CssUnitConverter from "$lib/calculators/Design/CssUnitConverter.svelte";
 import FileSizeEstimator from "$lib/calculators/FileSizeEstimator.svelte";
 import ResponsiveBreakpointCalculator from "$lib/calculators/ResponsiveBreakpointCalculator.svelte";
 import ImageImprovement from "$lib/calculators/Extra/ImageImprovement.svelte";
@@ -113,9 +113,9 @@ import RandomPasswordGenerator from "$lib/calculators/Fun/RandomPasswordGenerato
 import RandomNumberGenerator from "$lib/calculators/RandomNumberGenerator.svelte";
 import MemeTextGenerator from "$lib/calculators/MemeTextGenerator.svelte";
 import NameCompatibility from "$lib/calculators/NameCompatibility.svelte";
-import BarCodeGenerator from "$lib/calculators/BarCodeGenerator.svelte";
+import BarCodeGenerator from "$lib/calculators/Fun/BarCodeGenerator.svelte";
 import DiceRoller from "$lib/calculators/DiceRoller.svelte";
-import CoinFlip from "$lib/calculators/CoinFlip.svelte";
+import CoinFlip from "$lib/calculators/Fun/CoinFlip.svelte";
 import LovePercentageCalculator from "$lib/calculators/LovePercentageCalculator.svelte";
 import ZodiacSignCalculator from "$lib/calculators/ZodiacSignCalculator.svelte";
 import QrCodeGenerator from "$lib/calculators/QRCodeGenerator.svelte";

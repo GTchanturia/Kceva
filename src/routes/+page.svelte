@@ -19,19 +19,18 @@
 		const calculator = event.detail;
 		goto(`/calculator/${calculator.id}`);
 	}
+	export let data;
+	const { seo } = data;
 </script>
 
 <svelte:head>
-	<title>kceva - 100+ Free Online Calculators & Converters</title>
-	<meta
-		name="description"
-		content="Access 100+ free online calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, mobile-friendly tools with live currency rates including GEL (Georgian Lari)."
-	/>
-	<meta
-		name="keywords"
-		content="calculator, converter, finance, health, math, unit conversion, free tools, online calculator, kceva, BMI, loan, percentage, currency, GEL, Georgian Lari"
-	/>
-	<link rel="canonical" href="https://kceva.com" />
+	<title>{seo.title}</title>
+	<meta name="description" content={seo.description} />
+	<meta property="og:title" content={seo.title} />
+	<meta property="og:description" content={seo.description} />
+	<meta property="og:image" content={seo.image} />
+	<meta property="og:url" content={seo.url} />
+	<link rel="canonical" href={seo.url} />
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50">

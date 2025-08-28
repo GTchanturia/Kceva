@@ -24,7 +24,6 @@
             showResults = false;
             return;
         }
-        dsadsa;
         // Handle whole numbers
         if (decimal % 1 === 0) {
             numerator = decimal;

@@ -40,7 +40,7 @@
             class="w-16 h-16 rounded-lg object-cover"
           />
           <span class="text-xl font-bold text-gray-900 hidden sm:block">
-            Kceva
+            kceva
           </span>
         </a>
       </div>

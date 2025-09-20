@@ -120,6 +120,9 @@ import LovePercentageCalculator from "$lib/calculators/LovePercentageCalculator.
 import ZodiacSignCalculator from "$lib/calculators/ZodiacSignCalculator.svelte";
 import QrCodeGenerator from "$lib/calculators/QRCodeGenerator.svelte";
 
+//Education
+import RoadMap from "$lib/calculators/RoadMap.svelte";
+
 export const calculatorComponents = {
   "loan-calculator": LoanCalculator,
   "bmi-calculator": BMICalculator,
@@ -225,7 +228,8 @@ export const calculatorComponents = {
   "quadratic-solver": QuadraticCalculator,
   "exponent-calculator": ExponentCalculator,
   "image-improvement": ImageImprovement,
-  "permutation-calculator": PermutationCalculator
+  "permutation-calculator": PermutationCalculator,
+  "roadmap":RoadMap
 };
 
 

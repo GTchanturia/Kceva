@@ -69,6 +69,14 @@ export const CALCULATOR_CATEGORIES = [
     icon: '📚',
     color: 'indigo'
   },
+
+    {
+    id: 'education',
+    name: 'road maps',
+    description: 'Education for smart people',
+    icon: 'X',
+    color: 'Black'
+  },
   {
     id: 'tech',
     name: 'Technical/IT',

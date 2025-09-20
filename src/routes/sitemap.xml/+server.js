@@ -7,7 +7,9 @@ export async function GET() {
   const staticPages = [
     { url: "", priority: "1.0", changefreq: "daily" },
     { url: "/about", priority: "0.8", changefreq: "monthly" },
-    { url: "/categories", priority: "0.9", changefreq: "weekly" }
+    { url: "/categories", priority: "0.9", changefreq: "weekly" },
+    { url: "/education", priority: "0.8", changefreq: "weekly" },
+    { url: "/education/data-science-roadmap", priority: "0.7", changefreq: "monthly" }
   ];
 
   const categoryPages = CALCULATOR_CATEGORIES.map((category) => ({

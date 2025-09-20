@@ -2,36 +2,40 @@
 	import Card from "$lib/components/ui/Card.svelte";
 	import Button from "$lib/components/ui/Button.svelte";
 
-	// Roadmap phases
+	export let data;
+	const { seo } = data;
+
+	// Enhanced roadmap phases with more detail
 	const phases = [
 		{
 			phase: 1,
-			title: "Foundations",
+			title: "Mathematical & Programming Foundations",
 			duration: "2-3 months",
-			description: "Build essential mathematical and programming foundations",
+			description: "Build the essential mathematical and programming skills that form the backbone of data science",
+			color: "blue",
 			topics: [
 				{
 					category: "Mathematics & Statistics",
 					items: [
-						"Linear Algebra: vectors, matrices, transformations",
-						"Statistics: probability theory, distributions, hypothesis testing",
-						"Calculus: derivatives, integrals (basic understanding)"
+						"Linear Algebra: vectors, matrices, eigenvalues, transformations (essential for ML algorithms)",
+						"Statistics: probability theory, distributions, hypothesis testing, regression analysis",
+						"Calculus: derivatives, integrals, optimization (understanding gradients for ML)"
 					]
 				},
 				{
-					category: "Programming (Python recommended)",
+					category: "Programming with Python",
 					items: [
-						"Python fundamentals: data structures, functions, OOP",
-						"NumPy: numerical operations and array manipulation",
-						"Pandas: data manipulation and analysis"
+						"Python fundamentals: data structures, functions, object-oriented programming",
+						"NumPy: numerical operations, array manipulation, broadcasting",
+						"Pandas: data manipulation, cleaning, analysis, and DataFrame operations"
 					]
 				},
 				{
-					category: "Databases (SQL)",
+					category: "Database Management with SQL",
 					items: [
-						"SQL fundamentals: SELECT, JOIN, GROUP BY",
-						"Database design principles",
-						"Data extraction and manipulation"
+						"SQL fundamentals: SELECT, JOIN, GROUP BY, window functions",
+						"Database design principles and normalization",
+						"Data extraction, transformation, and loading (ETL) processes"
 					]
 				}
 			]
@@ -40,30 +44,31 @@
 			phase: 2,
 			title: "Data Processing & Analysis",
 			duration: "2-3 months",
-			description: "Learn to collect, clean, and analyze data effectively",
+			description: "Master the art of collecting, cleaning, and extracting insights from real-world data",
+			color: "green",
 			topics: [
 				{
 					category: "Data Collection & Cleaning",
 					items: [
-						"Data sources: APIs, web scraping, file formats",
-						"Handling missing values and duplicates",
-						"Data validation and quality assessment"
+						"Data acquisition: APIs, web scraping, databases, file formats (CSV, JSON, XML)",
+						"Data cleaning: handling missing values, duplicates, outliers, and inconsistencies",
+						"Data validation, quality assessment, and documentation best practices"
 					]
 				},
 				{
 					category: "Exploratory Data Analysis (EDA)",
 					items: [
-						"Statistical analysis and pattern recognition",
-						"Data profiling and summary statistics",
-						"Correlation analysis and feature relationships"
+						"Statistical analysis: descriptive statistics, distributions, pattern recognition",
+						"Data profiling: understanding data types, ranges, and relationships",
+						"Correlation analysis, feature engineering, and hypothesis generation"
 					]
 				},
 				{
 					category: "Data Visualization",
 					items: [
-						"Matplotlib & Seaborn for static visualizations",
-						"Plotly for interactive charts",
-						"Dashboard creation with Streamlit or Dash"
+						"Static visualizations: Matplotlib, Seaborn for publication-ready charts",
+						"Interactive visualizations: Plotly, Bokeh for dynamic exploration",
+						"Dashboard development: Streamlit, Dash, or Tableau for stakeholder communication"
 					]
 				}
 			]
@@ -72,30 +77,31 @@
 			phase: 3,
 			title: "Machine Learning",
 			duration: "3-4 months",
-			description: "Master machine learning algorithms and model building",
+			description: "Build predictive models and understand the core algorithms that power AI applications",
+			color: "purple",
 			topics: [
 				{
 					category: "ML Fundamentals",
 					items: [
-						"Supervised vs Unsupervised vs Reinforcement Learning",
-						"Model evaluation metrics: accuracy, precision, recall, F1",
-						"Cross-validation and overfitting prevention"
+						"Learning paradigms: Supervised, Unsupervised, and Reinforcement Learning",
+						"Model evaluation: accuracy, precision, recall, F1-score, ROC-AUC, confusion matrices",
+						"Cross-validation, bias-variance tradeoff, and overfitting prevention techniques"
 					]
 				},
 				{
 					category: "Supervised Learning",
 					items: [
-						"Regression: Linear, Logistic, Polynomial",
-						"Classification: Decision Trees, Random Forest, SVM, KNN",
-						"Ensemble methods and model selection"
+						"Regression algorithms: Linear, Logistic, Polynomial, Ridge, Lasso regression",
+						"Classification: Decision Trees, Random Forest, SVM, KNN, Naive Bayes",
+						"Ensemble methods: Bagging, Boosting (XGBoost, AdaBoost), model stacking"
 					]
 				},
 				{
 					category: "Unsupervised Learning",
 					items: [
-						"Clustering: K-Means, Hierarchical clustering",
-						"Dimensionality reduction: PCA, t-SNE",
-						"Association rules and market basket analysis"
+						"Clustering algorithms: K-Means, DBSCAN, Hierarchical clustering",
+						"Dimensionality reduction: PCA, t-SNE, UMAP for data visualization",
+						"Association rules, anomaly detection, and pattern mining"
 					]
 				}
 			]
@@ -104,33 +110,34 @@
 			phase: 4,
 			title: "Advanced Topics & Specialization",
 			duration: "4-6 months",
-			description: "Dive deep into specialized areas and advanced techniques",
+			description: "Specialize in cutting-edge techniques and choose your area of expertise",
+			color: "orange",
 			topics: [
 				{
 					category: "Deep Learning",
 					items: [
-						"Neural Networks: architecture, backpropagation",
-						"CNNs for Computer Vision",
-						"RNNs/LSTMs for sequence data and NLP",
-						"Frameworks: TensorFlow, Keras, PyTorch"
+						"Neural Networks: architecture design, backpropagation, activation functions",
+						"Convolutional Neural Networks (CNNs) for image recognition and computer vision",
+						"Recurrent Neural Networks (RNNs/LSTMs) for time series and natural language",
+						"Deep learning frameworks: TensorFlow, Keras, PyTorch, and model deployment"
 					]
 				},
 				{
 					category: "Natural Language Processing",
 					items: [
-						"Text preprocessing and tokenization",
-						"Sentiment analysis and topic modeling",
-						"Named Entity Recognition (NER)",
-						"Modern NLP: BERT, GPT, Transformers"
+						"Text preprocessing: tokenization, stemming, lemmatization, stop words",
+						"NLP tasks: sentiment analysis, topic modeling, text classification",
+						"Named Entity Recognition (NER) and information extraction",
+						"Modern NLP: BERT, GPT, Transformers, and large language models"
 					]
 				},
 				{
-					category: "Big Data & Cloud",
+					category: "Big Data & Cloud Computing",
 					items: [
-						"Apache Spark for large-scale data processing",
-						"Cloud platforms: AWS, GCP, Azure",
-						"Data pipelines and ETL processes",
-						"Distributed computing concepts"
+						"Big data processing: Apache Spark, Hadoop ecosystem for large datasets",
+						"Cloud platforms: AWS (SageMaker), GCP (BigQuery), Azure (ML Studio)",
+						"Data engineering: ETL pipelines, data warehousing, real-time processing",
+						"MLOps: model versioning, monitoring, automated deployment, CI/CD"
 					]
 				}
 			]
@@ -139,92 +146,162 @@
 			phase: 5,
 			title: "Practice & Portfolio",
 			duration: "Ongoing",
-			description: "Build real-world projects and establish your professional presence",
+			description: "Transform theoretical knowledge into practical skills through projects and professional development",
+			color: "teal",
 			topics: [
 				{
 					category: "Project Development",
 					items: [
-						"End-to-end projects from data collection to deployment",
-						"Kaggle competitions and datasets",
-						"Real-world problem solving",
-						"Model deployment and productionization"
+						"End-to-end projects: from problem definition to model deployment",
+						"Kaggle competitions: practice with real datasets and learn from community",
+						"Industry projects: solve actual business problems with data science",
+						"Model deployment: APIs, web apps, cloud services, and monitoring"
 					]
 				},
 				{
 					category: "Portfolio Building",
 					items: [
-						"GitHub portfolio with documented projects",
-						"Technical blog writing",
-						"Case studies and project presentations",
-						"Open source contributions"
+						"Professional GitHub portfolio with well-documented, reproducible projects",
+						"Technical writing: blog posts, tutorials, and project documentation",
+						"Case studies: detailed analysis of your problem-solving approach",
+						"Open source contributions to data science libraries and tools"
 					]
 				},
 				{
 					category: "Professional Development",
 					items: [
-						"Networking in data science communities",
-						"Conference attendance and presentations",
-						"Continuous learning and staying updated",
-						"Mentoring and knowledge sharing"
+						"Professional networking: LinkedIn, data science meetups, online communities",
+						"Conference participation: attending talks, presenting your work",
+						"Continuous learning: following research papers, industry trends, new tools",
+						"Knowledge sharing: mentoring others, teaching, and building your reputation"
 					]
 				}
 			]
 		}
 	];
 
-	// Success tips
+	// Enhanced success tips
 	const tips = [
 		{
-			title: "Start Small",
-			description: "Don't try to learn everything at once. Focus on one concept at a time.",
-			icon: "🎯"
+			title: "Master the Fundamentals",
+			description: "Strong foundations in math and programming will accelerate your progress in advanced topics. Don't rush through the basics.",
+			icon: "🎯",
+			priority: "high"
 		},
 		{
-			title: "Practice Regularly",
-			description: "Consistent daily practice is more effective than intensive weekend sessions.",
-			icon: "📅"
+			title: "Learn by Doing",
+			description: "Theory without practice is incomplete. Work on projects from day one, even simple ones. Apply concepts immediately.",
+			icon: "🛠️",
+			priority: "high"
 		},
 		{
-			title: "Build Projects",
-			description: "Apply your knowledge to real projects. Learning by doing is most effective.",
-			icon: "🛠️"
+			title: "Join the Community",
+			description: "Data science is collaborative. Join online communities, attend meetups, and learn from others' experiences.",
+			icon: "👥",
+			priority: "medium"
 		},
 		{
-			title: "Join Communities",
-			description: "Connect with other learners and professionals for support and networking.",
-			icon: "👥"
+			title: "Focus on Problem-Solving",
+			description: "Data science is about solving real problems with data. Always start with the business question, not the algorithm.",
+			icon: "💡",
+			priority: "high"
 		},
 		{
-			title: "Stay Updated",
-			description: "Data science evolves rapidly. Follow blogs, papers, and industry trends.",
-			icon: "📰"
+			title: "Build a Portfolio",
+			description: "Document your learning journey. A strong portfolio with diverse projects is your ticket to landing your first role.",
+			icon: "📁",
+			priority: "high"
 		},
 		{
 			title: "Be Patient",
-			description: "Mastery takes time. Celebrate small wins and stay persistent.",
-			icon: "⏳"
+			description: "Data science mastery takes 1-2 years of consistent effort. Celebrate small wins and maintain long-term perspective.",
+			icon: "⏳",
+			priority: "medium"
+		}
+	];
+
+	// Learning resources
+	const learningResources = [
+		{
+			category: "Online Courses",
+			items: [
+				"Coursera: Machine Learning by Andrew Ng",
+				"edX: MIT Introduction to Computer Science",
+				"Udacity: Data Science Nanodegree",
+				"Kaggle Learn: Free micro-courses"
+			]
+		},
+		{
+			category: "Books & References",
+			items: [
+				"'Hands-On Machine Learning' by Aurélien Géron",
+				"'Python for Data Analysis' by Wes McKinney",
+				"'The Elements of Statistical Learning' by Hastie, Tibshirani, Friedman",
+				"'Introduction to Statistical Learning' by James, Witten, Hastie, Tibshirani"
+			]
+		},
+		{
+			category: "Practice Platforms",
+			items: [
+				"Kaggle: Competitions and datasets",
+				"Google Colab: Free GPU/TPU for experiments",
+				"GitHub: Version control and portfolio",
+				"Jupyter Notebooks: Interactive development"
+			]
 		}
 	];
 </script>
 
+<svelte:head>
+	<title>{seo.title}</title>
+	<meta name="description" content={seo.description} />
+	<meta property="og:title" content={seo.title} />
+	<meta property="og:description" content={seo.description} />
+	<meta property="og:image" content={seo.image} />
+	<meta property="og:url" content={seo.url} />
+	<link rel="canonical" href={seo.url} />
+</svelte:head>
+
 <div class="min-h-screen bg-white">
-	<!-- Hero Section -->
-	<section class="bg-gradient-to-br from-slate-50 to-blue-50 py-16 lg:py-20">
-		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-			<div class="text-6xl mb-6">🎓</div>
-			<h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-				Education & Learning Hub
-			</h1>
-			<p class="text-xl text-slate-600 max-w-3xl mx-auto">
-				Comprehensive educational resources, learning roadmaps, and practical guides 
-				to accelerate your journey in data science, finance, and mathematics.
-			</p>
+	<!-- Hero Section with Visual Roadmap -->
+	<section class="bg-gradient-to-br from-slate-50 to-blue-50 py-16 lg:py-24">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12">
+				<div class="text-6xl mb-6">🚀</div>
+				<h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
+					Data Science Roadmap
+				</h1>
+				<p class="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+					Your complete guide to becoming a data scientist. This comprehensive roadmap takes you 
+					from beginner to expert with structured learning phases, practical projects, and industry insights.
+				</p>
+			</div>
+			
+			<!-- Quick Stats -->
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+				<div class="text-center">
+					<div class="text-2xl font-bold text-blue-600">12-18</div>
+					<div class="text-sm text-slate-600">Months to Master</div>
+				</div>
+				<div class="text-center">
+					<div class="text-2xl font-bold text-green-600">5</div>
+					<div class="text-sm text-slate-600">Learning Phases</div>
+				</div>
+				<div class="text-center">
+					<div class="text-2xl font-bold text-purple-600">15+</div>
+					<div class="text-sm text-slate-600">Key Topics</div>
+				</div>
+				<div class="text-center">
+					<div class="text-2xl font-bold text-orange-600">∞</div>
+					<div class="text-sm text-slate-600">Career Opportunities</div>
+				</div>
+			</div>
 		</div>
 	</section>
 
 	<!-- Breadcrumb -->
 	<section class="bg-white border-b border-slate-100 py-4">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 			<nav class="flex" aria-label="Breadcrumb">
 				<ol class="flex items-center space-x-4">
 					<li>
@@ -236,85 +313,124 @@
 						</svg>
 					</li>
 					<li>
-						<span class="text-slate-900 font-medium">Education</span>
+						<a href="/education" class="text-slate-500 hover:text-slate-700">Education</a>
+					</li>
+					<li>
+						<svg class="flex-shrink-0 h-5 w-5 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
+							<path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+						</svg>
+					</li>
+					<li>
+						<span class="text-slate-900 font-medium">Data Science Roadmap</span>
 					</li>
 				</ol>
 			</nav>
 		</div>
 	</section>
 
-	<!-- Learning Paths -->
+	<!-- Introduction -->
+	<section class="py-12 bg-white">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<Card>
+				<div class="p-8 text-center bg-gradient-to-r from-blue-50 to-indigo-50">
+					<h2 class="text-2xl font-bold text-slate-900 mb-4">
+						Welcome to Your Data Science Journey! 🎉
+					</h2>
+					<p class="text-slate-600 leading-relaxed max-w-3xl mx-auto">
+						Data science is one of the most exciting and in-demand fields today. This roadmap provides 
+						a structured, step-by-step approach to mastering data science, from mathematical foundations 
+						to advanced machine learning and real-world applications. Let's begin this transformative journey together!
+					</p>
+				</div>
+			</Card>
+		</div>
+	</section>
+
+	<!-- Roadmap Phases -->
 	<section class="py-16 lg:py-20">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center mb-12">
 				<h2 class="text-3xl font-bold text-slate-900 mb-4">
-					Structured Learning Paths
+					5-Phase Learning Journey
 				</h2>
 				<p class="text-lg text-slate-600 max-w-2xl mx-auto">
-					Choose your learning journey and follow our step-by-step roadmaps
+					Each phase builds upon the previous one, creating a solid foundation for data science mastery
 				</p>
 			</div>
 
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-				{#each learningPaths as path}
-					<Card hover={true} className="transition-all duration-200 hover:shadow-lg">
-						<a href={path.href} class="block p-6 h-full">
-							<div class="flex flex-col h-full">
+			<div class="space-y-12">
+				{#each phases as phase}
+					<Card className="overflow-hidden">
+						<div class="p-8">
+							<!-- Phase Header -->
+							<div class="flex items-center space-x-4 mb-6">
+								<div class="w-12 h-12 bg-{phase.color}-100 text-{phase.color}-700 rounded-full flex items-center justify-center text-xl font-bold border-2 border-{phase.color}-200">
+									{phase.phase}
+								</div>
 								<div class="flex-1">
-									<h3 class="text-xl font-semibold text-slate-900 mb-3">
-										{path.title}
+									<h3 class="text-2xl font-bold text-slate-900 mb-1">
+										Phase {phase.phase}: {phase.title}
 									</h3>
-									<p class="text-slate-600 mb-4 leading-relaxed">
-										{path.description}
-									</p>
-									<div class="space-y-2 text-sm">
-										<div class="flex justify-between">
-											<span class="text-slate-500">Duration:</span>
-											<span class="font-medium text-slate-700">{path.duration}</span>
-										</div>
-										<div class="flex justify-between">
-											<span class="text-slate-500">Level:</span>
-											<span class="font-medium text-slate-700">{path.level}</span>
-										</div>
+									<div class="flex items-center space-x-4 text-sm text-slate-500">
+										<span class="flex items-center">
+											<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+											</svg>
+											{phase.duration}
+										</span>
 									</div>
 								</div>
-								<div class="mt-6 flex items-center text-blue-600 font-medium">
-									<span>Start Learning</span>
-									<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-									</svg>
-								</div>
 							</div>
-						</a>
+							
+							<!-- Phase Description -->
+							<p class="text-slate-600 mb-8 text-lg leading-relaxed">
+								{phase.description}
+							</p>
+							
+							<!-- Topics Grid -->
+							<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+								{#each phase.topics as topic}
+									<div class="bg-slate-50 rounded-lg p-6 border border-slate-100">
+										<h4 class="text-lg font-semibold text-slate-900 mb-4">
+											{topic.category}
+										</h4>
+										<ul class="space-y-3">
+											{#each topic.items as item}
+												<li class="flex items-start">
+													<div class="w-1.5 h-1.5 bg-{phase.color}-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+													<span class="text-sm text-slate-600 leading-relaxed">{item}</span>
+												</li>
+											{/each}
+										</ul>
+									</div>
+								{/each}
+							</div>
+						</div>
 					</Card>
 				{/each}
 			</div>
 		</div>
 	</section>
 
-	<!-- Educational Resources -->
+	<!-- Learning Resources -->
 	<section class="py-16 lg:py-20 bg-slate-50">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center mb-12">
 				<h2 class="text-3xl font-bold text-slate-900 mb-4">
-					Learning Resources
+					Recommended Learning Resources
 				</h2>
 				<p class="text-lg text-slate-600 max-w-2xl mx-auto">
-					Comprehensive guides and references to maximize your learning
+					Curated resources to support your learning journey at every phase
 				</p>
 			</div>
 
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-				{#each resources as resource}
+				{#each learningResources as resource}
 					<Card>
 						<div class="p-6">
-							<div class="text-4xl mb-4">{resource.icon}</div>
-							<h3 class="text-xl font-semibold text-slate-900 mb-3">
-								{resource.title}
+							<h3 class="text-xl font-semibold text-slate-900 mb-4">
+								{resource.category}
 							</h3>
-							<p class="text-slate-600 mb-6">
-								{resource.description}
-							</p>
 							<ul class="space-y-3">
 								{#each resource.items as item}
 									<li class="flex items-start">
@@ -332,24 +448,29 @@
 
 	<!-- Success Tips -->
 	<section class="py-16 lg:py-20 bg-white">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center mb-12">
 				<h2 class="text-3xl font-bold text-slate-900 mb-4">
-					Tips for Success
+					Keys to Success
 				</h2>
 				<p class="text-lg text-slate-600 max-w-2xl mx-auto">
-					Proven strategies to accelerate your learning and achieve your goals
+					Proven strategies from successful data scientists to accelerate your learning
 				</p>
 			</div>
 
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 				{#each tips as tip}
-					<div class="bg-slate-50 rounded-lg p-6 border border-slate-100">
+					<div class="bg-slate-50 rounded-lg p-6 border border-slate-100 {tip.priority === 'high' ? 'ring-2 ring-blue-200' : ''}">
 						<div class="text-3xl mb-4">{tip.icon}</div>
 						<h3 class="text-lg font-semibold text-slate-900 mb-3">
 							{tip.title}
+							{#if tip.priority === 'high'}
+								<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 ml-2">
+									Essential
+								</span>
+							{/if}
 						</h3>
-						<p class="text-slate-600">
+						<p class="text-slate-600 leading-relaxed">
 							{tip.description}
 						</p>
 					</div>
@@ -358,18 +479,63 @@
 		</div>
 	</section>
 
-	<!-- CTA Section -->
+	<!-- Career Outcomes -->
+	<section class="py-16 lg:py-20 bg-slate-50">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<Card>
+				<div class="p-8">
+					<div class="text-center mb-8">
+						<h2 class="text-3xl font-bold text-slate-900 mb-4">
+							Career Opportunities
+						</h2>
+						<p class="text-lg text-slate-600">
+							Data science skills open doors to diverse, high-impact career paths
+						</p>
+					</div>
+					
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+						<div>
+							<h3 class="text-xl font-semibold text-slate-900 mb-4">Popular Roles</h3>
+							<ul class="space-y-3">
+								{#each ['Data Scientist', 'Machine Learning Engineer', 'Data Analyst', 'Research Scientist', 'AI Product Manager', 'Data Engineer'] as role}
+									<li class="flex items-center">
+										<div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+										<span class="text-slate-600">{role}</span>
+									</li>
+								{/each}
+							</ul>
+						</div>
+						
+						<div>
+							<h3 class="text-xl font-semibold text-slate-900 mb-4">Industries</h3>
+							<ul class="space-y-3">
+								{#each ['Technology & Software', 'Healthcare & Pharmaceuticals', 'Finance & Banking', 'E-commerce & Retail', 'Consulting', 'Government & Research'] as industry}
+									<li class="flex items-center">
+										<div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+										<span class="text-slate-600">{industry}</span>
+									</li>
+								{/each}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</Card>
+		</div>
+	</section>
+
+	<!-- Call to Action -->
 	<section class="py-16 bg-blue-600">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 			<h2 class="text-3xl font-bold text-white mb-6">
-				Ready to Begin Your Journey?
+				Start Your Data Science Journey Today
 			</h2>
-			<p class="text-xl text-blue-100 mb-8">
-				Start with our comprehensive Data Science Roadmap and practical calculators
+			<p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+				The best time to start was yesterday. The second best time is now. 
+				Begin with Phase 1 and take the first step toward your data science career.
 			</p>
 			<div class="flex flex-col sm:flex-row gap-4 justify-center">
 				<Button variant="primary" size="lg" href="/calculator/roadmap" className="bg-white text-blue-600 hover:bg-slate-50">
-					View Data Science Roadmap
+					View Interactive Roadmap
 				</Button>
 				<Button variant="outline" size="lg" href="/category/education" className="border-white text-white hover:bg-white hover:text-blue-600">
 					Education Calculators

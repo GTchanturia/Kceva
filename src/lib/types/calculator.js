@@ -106,3 +106,7 @@ export const CALCULATOR_CATEGORIES = [
     color: 'yellow'
   }
 ];
+
+
+
+  

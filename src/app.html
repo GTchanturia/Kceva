@@ -1,30 +1,28 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-	<!-- Critical font preloading for LCP improvement -->
-	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-		as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<noscript>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-	</noscript>
+	<title>Kceva – Free Online Calculators & Converters</title>
 
-	<!-- DNS prefetch for external APIs -->
-	<link rel="dns-prefetch" href="https://api.exchangerate-api.com">
-	<link rel="dns-prefetch" href="https://ipapi.co">
-	<link rel="dns-prefetch" href="https://vitals.vercel-insights.com">
+	<!-- Critical font preloading -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+	<!-- DNS Prefetch for external APIs -->
+	<link rel="dns-prefetch" href="//api.exchangerate-api.com">
+	<link rel="dns-prefetch" href="//ipapi.co">
+	<link rel="dns-prefetch" href="//vitals.vercel-insights.com">
 
 	<!-- Enhanced meta tags for SEO -->
 	<meta name="description"
 		content="Kceva - 100+ free online calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, and mobile-friendly tools with live currency rates including GEL (Georgian Lari)." />
-	<meta name="keywords"
-		content="calculator, converter, finance, health, math, unit conversion, free tools, online calculator, Kceva, BMI, loan, percentage, currency, GEL, Georgian Lari, fast calculations, mobile calculators, free conversion tools" />
 	<meta name="author" content="Kceva" />
 	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+	<!-- Theme and app settings -->
 	<meta name="theme-color" content="#2563eb" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -35,79 +33,74 @@
 	<!-- Google Search Console Verification -->
 	<meta name="google-site-verification" content="E3HGhOGoia7msiHkl_qnyS6LEDz29XkAxlQ1osfWfHg" />
 
-
-
-
 	<!-- Canonical URL -->
-	<link rel="canonical" href="https://Kceva.com" />
+	<link rel="canonical" href="https://kceva.com" />
 
-	<!-- Favicon and app icons -->
+	<!-- Favicons -->
 	<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
 	<link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/apple-touch-icon.png" />
 	<link rel="icon" type="image/png" sizes="32x32" href="%sveltekit.assets%/favicon-32x32.png" />
 	<link rel="icon" type="image/png" sizes="16x16" href="%sveltekit.assets%/favicon-16x16.png" />
 	<link rel="manifest" href="%sveltekit.assets%/site.webmanifest" />
 
-	<!-- Enhanced Structured Data -->
+	<!-- Structured Data -->
 	<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "WebSite",
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"name": "Kceva",
+		"url": "https://kceva.com",
+		"description": "100+ free online calculators and converters for finance, health, math, unit conversion, and more.",
+		"inLanguage": "en-US",
+		"publisher": {
+			"@type": "Organization",
 			"name": "Kceva",
-			"alternateName": "Kceva Calculator Suite",
-			"url": "https://Kceva.com",
-			"description": "100+ free online calculators and converters for finance, health, math, unit conversion, and more",
-			"inLanguage": "en-US",
-			"potentialAction": {
-				"@type": "SearchAction",
-				"target": {
-					"@type": "EntryPoint",
-					"urlTemplate": "https://Kceva.com/search?q={search_term_string}"
-				},
-				"query-input": "required name=search_term_string"
+			"url": "https://kceva.com",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "https://kceva.com/logo.png",
+				"width": 512,
+				"height": 512
 			},
-			"publisher": {
-				"@type": "Organization",
-				"name": "Kceva",
-				"url": "https://Kceva.com",
-				"logo": {
-					"@type": "ImageObject",
-					"url": "https://Kceva.com/logo.png",
-					"width": 512,
-					"height": 512
-				},
-				"sameAs": [
-					"https://twitter.com/Kceva",
-					"https://github.com/Kceva"
-				]
-			},
-			"mainEntity": {
-				"@type": "SoftwareApplication",
-				"name": "Kceva Calculator Suite",
-				"applicationCategory": "UtilityApplication",
-				"operatingSystem": "Any",
-				"offers": {
-					"@type": "Offer",
-					"price": "0",
-					"priceCurrency": "USD",
-					"availability": "https://schema.org/InStock"
-				},
-				"aggregateRating": {
-					"@type": "AggregateRating",
-					"ratingValue": "4.8",
-					"ratingCount": "1250",
-					"bestRating": "5",
-					"worstRating": "1"
-				}
-			}
+			"sameAs": [
+				"https://twitter.com/Kceva",
+				"https://github.com/Kceva"
+			]
+		},
+		"potentialAction": {
+			"@type": "SearchAction",
+			"target": "https://kceva.com/search?q={search_term_string}",
+			"query-input": "required name=search_term_string"
 		}
-		</script>
+	}
+	</script>
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "SoftwareApplication",
+		"name": "Kceva Calculator Suite",
+		"applicationCategory": "UtilityApplication",
+		"operatingSystem": "Any",
+		"offers": {
+			"@type": "Offer",
+			"price": "0",
+			"priceCurrency": "USD",
+			"availability": "https://schema.org/InStock"
+		},
+		"aggregateRating": {
+			"@type": "AggregateRating",
+			"ratingValue": "4.8",
+			"ratingCount": "1250",
+			"bestRating": "5",
+			"worstRating": "1"
+		}
+	}
+	</script>
 
 	%sveltekit.head%
 </head>
-
 <body data-sveltekit-preload-data="hover" class="font-sans">
 	<div style="display: contents">%sveltekit.body%</div>
 </body>
-
 </html>

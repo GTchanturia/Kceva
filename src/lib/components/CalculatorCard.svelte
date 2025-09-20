@@ -28,19 +28,19 @@
     orange: 'bg-orange-50 text-orange-700 border-orange-200',
     red: 'bg-red-50 text-red-700 border-red-200',
     indigo: 'bg-indigo-50 text-indigo-700 border-indigo-200',
-    gray: 'bg-gray-50 text-gray-700 border-gray-200',
+    gray: 'bg-slate-50 text-slate-700 border-slate-200',
     pink: 'bg-pink-50 text-pink-700 border-pink-200',
     teal: 'bg-teal-50 text-teal-700 border-teal-200',
     yellow: 'bg-yellow-50 text-yellow-700 border-yellow-200'
-  }[category.color] || 'bg-gray-50 text-gray-700 border-gray-200' : 'bg-gray-50 text-gray-700 border-gray-200';
+  }[category.color] || 'bg-slate-50 text-slate-700 border-slate-200' : 'bg-slate-50 text-slate-700 border-slate-200';
 </script>
 
-<Card hover={true} className={featured ? 'ring-2 ring-blue-500 ring-opacity-50' : ''}>
+<Card hover={true} className={featured ? 'ring-2 ring-blue-500 ring-opacity-30 shadow-lg' : ''}>
   <a href="/calculator/{calculator.id}" class="block p-6 h-full">
     <div class="flex items-start space-x-4">
       <!-- Calculator Icon -->
       <div class="flex-shrink-0">
-        <div class="w-12 h-12 rounded-lg {colorClasses} flex items-center justify-center text-xl font-semibold border">
+        <div class="w-12 h-12 rounded-xl {colorClasses} flex items-center justify-center text-xl font-semibold border shadow-sm">
           {calculator.icon}
         </div>
       </div>
@@ -48,7 +48,7 @@
       <!-- Calculator Info -->
       <div class="flex-1 min-w-0">
         <div class="flex items-center space-x-2 mb-2">
-          <h3 class="text-lg font-semibold text-gray-900 truncate">
+          <h3 class="text-lg font-semibold text-slate-900 truncate">
             {calculator.name}
           </h3>
           
@@ -70,7 +70,7 @@
           {/if}
         </div>
         
-        <p class="text-sm text-gray-600 mb-3 line-clamp-2">
+        <p class="text-sm text-slate-600 mb-3 line-clamp-2 leading-relaxed">
           {calculator.description}
         </p>
         
@@ -81,7 +81,7 @@
           </span>
           
           <!-- Arrow Icon -->
-          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </div>

@@ -28,49 +28,49 @@
   }[category.color] || 'bg-gray-500 text-white';
   
   $: borderClasses = {
-    emerald: 'border-emerald-200 hover:border-emerald-300',
-    blue: 'border-blue-200 hover:border-blue-300',
-    purple: 'border-purple-200 hover:border-purple-300',
-    orange: 'border-orange-200 hover:border-orange-300',
-    red: 'border-red-200 hover:border-red-300',
-    indigo: 'border-indigo-200 hover:border-indigo-300',
-    gray: 'border-gray-200 hover:border-gray-300',
-    pink: 'border-pink-200 hover:border-pink-300',
-    teal: 'border-teal-200 hover:border-teal-300',
-    yellow: 'border-yellow-200 hover:border-yellow-300'
-  }[category.color] || 'border-gray-200 hover:border-gray-300';
+    emerald: 'border-emerald-200 hover:border-emerald-300 hover:shadow-lg',
+    blue: 'border-blue-200 hover:border-blue-300 hover:shadow-lg',
+    purple: 'border-purple-200 hover:border-purple-300 hover:shadow-lg',
+    orange: 'border-orange-200 hover:border-orange-300 hover:shadow-lg',
+    red: 'border-red-200 hover:border-red-300 hover:shadow-lg',
+    indigo: 'border-indigo-200 hover:border-indigo-300 hover:shadow-lg',
+    gray: 'border-slate-200 hover:border-slate-300 hover:shadow-lg',
+    pink: 'border-pink-200 hover:border-pink-300 hover:shadow-lg',
+    teal: 'border-teal-200 hover:border-teal-300 hover:shadow-lg',
+    yellow: 'border-yellow-200 hover:border-yellow-300 hover:shadow-lg'
+  }[category.color] || 'border-slate-200 hover:border-slate-300 hover:shadow-lg';
 </script>
 
-<Card hover={true} className="transition-all duration-200 {borderClasses}">
+<Card hover={true} className="transition-all duration-300 {borderClasses} group">
   <a href="/category/{category.id}" class="block p-6 h-full">
     <div class="flex items-center space-x-4 mb-4">
       <!-- Category Icon -->
       <div class="flex-shrink-0">
-        <div class="w-16 h-16 rounded-xl {colorClasses} flex items-center justify-center text-2xl font-bold shadow-lg">
+        <div class="w-16 h-16 rounded-xl {colorClasses} flex items-center justify-center text-2xl font-bold shadow-lg group-hover:scale-105 transition-transform duration-200">
           {category.icon}
         </div>
       </div>
       
       <!-- Category Info -->
       <div class="flex-1 min-w-0">
-        <h3 class="text-xl font-bold text-gray-900 mb-1">
+        <h3 class="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
           {category.name}
         </h3>
-        <p class="text-sm text-gray-500">
+        <p class="text-sm text-slate-500">
           {calculatorCount} calculator{calculatorCount !== 1 ? 's' : ''}
         </p>
       </div>
       
       <!-- Arrow Icon -->
       <div class="flex-shrink-0">
-        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 text-slate-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </div>
     </div>
     
     <!-- Category Description -->
-    <p class="text-gray-600 text-sm leading-relaxed">
+    <p class="text-slate-600 text-sm leading-relaxed">
       {category.description}
     </p>
   </a>

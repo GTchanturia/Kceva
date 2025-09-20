@@ -7,7 +7,10 @@
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
-    product: [{ label: "All Calculators", href: "/categories" }],
+    product: [
+      { label: "All Calculators", href: "/categories" },
+      { label: "Education", href: "/education" }
+    ],
     company: [
       { label: "About Us", href: "/about" },
       // { label: "Contact", href: "/contact" },

@@ -50,7 +50,7 @@
         {#each navItems as item}
           <a
             href={item.href}
-            class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 {$page
+            class="text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 {$page
               .url.pathname === item.href
               ? 'text-blue-600 border-b-2 border-blue-600'
               : ''}"
@@ -67,7 +67,7 @@
         <!-- Mobile Menu Button -->
         <button
           type="button"
-          class="md:hidden p-2 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
+          class="md:hidden p-2 text-slate-400 hover:text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
           on:click={toggleMobileMenu}
           aria-label="Toggle menu"
         >
@@ -99,7 +99,7 @@
 
     <!-- Mobile Menu -->
     {#if mobileMenuOpen}
-      <div class="md:hidden border-t border-gray-200 py-4">
+      <div class="md:hidden border-t border-slate-200 py-4">
         <!-- Removed mobile search - available in hero section -->
 
         <!-- Mobile Navigation -->
@@ -107,7 +107,7 @@
           {#each navItems as item}
             <a
               href={item.href}
-              class="block px-4 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200 {$page
+              class="block px-4 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors duration-200 {$page
                 .url.pathname === item.href
                 ? 'text-blue-600 bg-blue-50'
                 : ''}"
@@ -120,7 +120,7 @@
 
         <!-- Mobile Auth Buttons -->
         <div
-          class="px-4 pt-4 border-t border-gray-200 mt-4 space-y-2 sm:hidden"
+          class="px-4 pt-4 border-t border-slate-200 mt-4 space-y-2 sm:hidden"
         >
           <Button
             variant="ghost"

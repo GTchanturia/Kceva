@@ -1065,17 +1065,7 @@ export const CALCULATORS = [
     requiresApi: false
   },
 
-  //Education Pages
-   {
-    id: 'roadmap',
-    name: 'Data Science Roadmap',
-    description: 'Data Science Roadmap',
-    category: 'education',
-    keywords: ['education', 'data science', 'programing', 'math', 'smart'],
-    icon: 'X',
-    featured: false,
-    requiresApi: false
-  },
+
   //missing for future will be added
   {
     id: 'macro-nutrient',

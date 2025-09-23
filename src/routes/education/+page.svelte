@@ -8,14 +8,7 @@
 
 	// Learning paths
 	const learningPaths = [
-		{
-			title: "Data Science Mastery",
-			description: "Complete roadmap from beginner to expert in data science",
-			duration: "6-12 months",
-			level: "Beginner to Advanced",
-			href: "/education/data-science-roadmap",
-			color: "blue"
-		},
+	
 		{
 			title: "Financial Literacy",
 			description: "Master personal finance with our comprehensive calculator guides",
@@ -59,8 +52,8 @@
 
 <svelte:head>
 	<title>Education & Learning Resources - Free Guides & Roadmaps | kceva</title>
-	<meta name="description" content="Explore educational resources, learning roadmaps, and comprehensive guides at kceva. Master data science, financial literacy, and mathematics with our free tools and tutorials." />
-	<meta name="keywords" content="kceva, education, learning, data science roadmap, financial literacy, mathematics, tutorials, guides, free education" />
+	<meta name="description" content="Explore educational resources, learning roadmaps, and comprehensive guides at kceva. Master  financial literacy, and mathematics with our free tools and tutorials." />
+	<meta name="keywords" content="kceva, education, learning,  financial literacy, mathematics, tutorials, guides, free education" />
 	<link rel="canonical" href="https://kceva.com/education" />
 	
 	<script type="application/ld+json">
@@ -68,10 +61,10 @@
 			"@context": "https://schema.org",
 			"@type": "EducationalOrganization",
 			"name": "kceva Education",
-			"description": "Free educational resources and learning paths for data science, finance, and mathematics",
-			"url": "https://kceva.com/education"
+			"description": "Free educational resources and learning paths for finance and mathematics",
+			"url": "https://kceva.com/education"SD
 		}
-	</script>
+	</script>	
 </svelte:head>
 
 <div class="min-h-screen bg-white">
@@ -86,7 +79,7 @@
 				</h1>
 				<p class="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
 					Comprehensive learning resources, roadmaps, and guides to master 
-					data science, finance, mathematics, and more with our free tools.
+					finance, mathematics, and more with our free tools.
 				</p>
 			</div>
 		</div>
@@ -235,9 +228,7 @@
 				our tools and resources are here to support your growth.
 			</p>
 			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<Button variant="primary" size="lg" href="/education/data-science-roadmap" className="bg-white text-blue-600 hover:bg-slate-50">
-					Data Science Roadmap
-				</Button>
+				
 				<Button variant="outline" size="lg" href="/categories" className="border-white text-white hover:bg-white hover:text-blue-600">
 					Browse All Tools
 				</Button>

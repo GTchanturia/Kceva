@@ -15,7 +15,7 @@
   
   // Get color classes
   $: colorClasses = {
-    emerald: 'bg-emerald-500 text-white',
+    emerald: 'bg-green-500 text-white',
     blue: 'bg-blue-500 text-white',
     purple: 'bg-purple-500 text-white',
     orange: 'bg-orange-500 text-white',
@@ -23,20 +23,20 @@
     indigo: 'bg-indigo-500 text-white',
     gray: 'bg-gray-500 text-white',
     pink: 'bg-pink-500 text-white',
-    teal: 'bg-teal-500 text-white',
+    teal: 'bg-cyan-500 text-white',
     yellow: 'bg-yellow-500 text-white'
   }[category.color] || 'bg-gray-500 text-white';
   
   $: borderClasses = {
-    emerald: 'border-emerald-200 hover:border-emerald-300 hover:shadow-lg',
+    emerald: 'border-green-200 hover:border-green-300 hover:shadow-lg',
     blue: 'border-blue-200 hover:border-blue-300 hover:shadow-lg',
     purple: 'border-purple-200 hover:border-purple-300 hover:shadow-lg',
     orange: 'border-orange-200 hover:border-orange-300 hover:shadow-lg',
     red: 'border-red-200 hover:border-red-300 hover:shadow-lg',
     indigo: 'border-indigo-200 hover:border-indigo-300 hover:shadow-lg',
-    gray: 'border-slate-200 hover:border-slate-300 hover:shadow-lg',
+    gray: 'border-gray-200 hover:border-gray-300 hover:shadow-lg',
     pink: 'border-pink-200 hover:border-pink-300 hover:shadow-lg',
-    teal: 'border-teal-200 hover:border-teal-300 hover:shadow-lg',
+    teal: 'border-cyan-200 hover:border-cyan-300 hover:shadow-lg',
     yellow: 'border-yellow-200 hover:border-yellow-300 hover:shadow-lg'
   }[category.color] || 'border-slate-200 hover:border-slate-300 hover:shadow-lg';
 </script>

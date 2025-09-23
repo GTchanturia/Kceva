@@ -10,7 +10,7 @@
   /** @type {boolean} */
   export let hover = false;
   
-  $: cardClasses = `bg-white rounded-lg border border-slate-200 shadow-sm ${hover ? 'hover:shadow-lg hover:border-slate-300 transition-all duration-200' : ''} ${className}`;
+  $: cardClasses = `bg-white rounded-lg border border-gray-200 shadow-sm ${hover ? 'hover:shadow-lg hover:border-gray-300 transition-all duration-200' : ''} ${className}`;
 </script>
 
 <div class={cardClasses}>

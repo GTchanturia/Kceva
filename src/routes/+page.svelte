@@ -10,6 +10,7 @@
 	import Button from "$lib/components/ui/Button.svelte";
 	import Card from "$lib/components/ui/Card.svelte";
 	import { goto } from "$app/navigation";
+	import { onMount } from 'svelte';
 
 	// Get featured calculators and categories
 	$: featuredCalculators = getFeaturedCalculators().slice(0, 6);
@@ -23,6 +24,12 @@
 	
 	export let data;
 	const { seo } = data;
+
+	// Ensure proper page initialization
+	onMount(() => {
+		// Force a reflow to ensure styles are applied
+		document.body.offsetHeight;
+	});
 
 	// Statistics
 	const stats = [

@@ -25,14 +25,14 @@ export const CALCULATOR_CATEGORIES = [
     name: 'Extra',
     description: 'Every Day working tools',
     icon: '📄',
-    color: 'teal'
+    color: 'cyan'
   },
   {
     id: 'finance',
     name: 'Financial Calculators',
     description: 'Loan, mortgage, interest, and investment calculators',
     icon: '📊',
-    color: 'emerald'
+    color: 'green'
   },
   {
     id: 'health',
@@ -70,13 +70,6 @@ export const CALCULATOR_CATEGORIES = [
     color: 'indigo'
   },
 
-    {
-    id: 'education',
-    name: 'road maps',
-    description: 'Education for smart people',
-    icon: 'X',
-    color: 'Black'
-  },
   {
     id: 'tech',
     name: 'Technical/IT',
@@ -96,7 +89,7 @@ export const CALCULATOR_CATEGORIES = [
     name: 'Lifestyle & Practical',
     description: 'Everyday practical calculators',
     icon: '🛠',
-    color: 'teal'
+    color: 'cyan'
   },
   {
     id: 'fun',

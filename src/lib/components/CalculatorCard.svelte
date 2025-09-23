@@ -22,17 +22,17 @@
   
   // Get color classes based on category
   $: colorClasses = category ? {
-    emerald: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    emerald: 'bg-green-50 text-green-700 border-green-200',
     blue: 'bg-blue-50 text-blue-700 border-blue-200',
     purple: 'bg-purple-50 text-purple-700 border-purple-200',
     orange: 'bg-orange-50 text-orange-700 border-orange-200',
     red: 'bg-red-50 text-red-700 border-red-200',
     indigo: 'bg-indigo-50 text-indigo-700 border-indigo-200',
-    gray: 'bg-slate-50 text-slate-700 border-slate-200',
+    gray: 'bg-gray-50 text-gray-700 border-gray-200',
     pink: 'bg-pink-50 text-pink-700 border-pink-200',
-    teal: 'bg-teal-50 text-teal-700 border-teal-200',
+    teal: 'bg-cyan-50 text-cyan-700 border-cyan-200',
     yellow: 'bg-yellow-50 text-yellow-700 border-yellow-200'
-  }[category.color] || 'bg-slate-50 text-slate-700 border-slate-200' : 'bg-slate-50 text-slate-700 border-slate-200';
+  }[category.color] || 'bg-gray-50 text-gray-700 border-gray-200' : 'bg-gray-50 text-gray-700 border-gray-200';
 </script>
 
 <Card hover={true} className={featured ? 'ring-2 ring-blue-500 ring-opacity-30 shadow-lg' : ''}>

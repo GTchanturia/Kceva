@@ -4,10 +4,20 @@
 </script>
 
 <svelte:head>
-	<title>About Kceva - Your Trusted Source for 100+ Free Online Calculators</title>
-	<meta name="description" content="Learn about Kceva.com, your trusted source for 100+ free online calculators and converters. Fast, accurate, privacy-focused tools for finance, health, math, and more." />
-	<meta name="keywords" content="Kceva, about, free calculators, online tools, finance, health, math, converters, privacy-focused" />
-	<link rel="canonical" href="https://kceva.com/about" />
+	<title>About kceva - Your Trusted Source for 100+ Free Online Calculators</title>
+	<meta name="description" content="Learn about kceva.com, your trusted source for 100+ free online calculators and converters. Fast, accurate, privacy-focused tools for finance, health, math, and more." />
+	<meta name="keywords" content="kceva, about, free calculators, online tools, finance, health, math, converters, privacy-focused" />
+	<link rel="canonical" href="https://kceva.com/about/" />
+	
+	<!-- Open Graph -->
+	<meta property="og:title" content="About kceva - Your Trusted Source for 100+ Free Online Calculators" />
+	<meta property="og:description" content="Learn about kceva.com, your trusted source for 100+ free online calculators and converters." />
+	<meta property="og:url" content="https://kceva.com/about/" />
+	<meta property="og:type" content="website" />
+	
+	<!-- Twitter Card -->
+	<meta name="twitter:title" content="About kceva - Your Trusted Source for 100+ Free Online Calculators" />
+	<meta name="twitter:description" content="Learn about kceva.com, your trusted source for 100+ free online calculators and converters." />
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50">

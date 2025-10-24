@@ -57,7 +57,12 @@
                                 "@type": "CollectionPage",
                                 "name": "{category.name}",
                                 "description": "{category.description}",
-                                "url": "https://kceva.com/category/{category.id}"
+                                "url": "https://kceva.com/category/{category.id}/",
+                                "isPartOf": {
+                                        "@type": "WebSite",
+                                        "name": "kceva",
+                                        "url": "https://kceva.com/"
+                                }
                         }
                 </script>
                 <script type="application/ld+json">

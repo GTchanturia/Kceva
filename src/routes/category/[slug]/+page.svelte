@@ -42,6 +42,9 @@
                 <meta property="og:description" content="{category.description}" />
                 <meta property="og:url" content="https://kceva.com/category/{category.id}/" />
                 <meta property="og:image" content="https://kceva.com/og-image.png" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="{category.name} - {calculators.length} Free Calculators | kceva" />
+                <meta name="twitter:description" content="{category.description}" />
                 <meta
                         name="keywords"
                         content="Kceva, {category.name.toLowerCase()}, calculators, free tools, online calculator, {category.name.toLowerCase()} calculator"

@@ -86,7 +86,7 @@
                                                 "@type": "ListItem",
                                                 "position": 3,
                                                 "name": "{category.name}",
-                                                "item": "https://kceva.com/category/{category.id}"
+                                                "item": "https://kceva.com/category/{category.id}/"
                                         }
                                 ]
                         }

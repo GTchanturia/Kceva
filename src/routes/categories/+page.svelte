@@ -15,18 +15,28 @@
 </script>
 
 <svelte:head>
-	<title>Calculator Categories - Browse 100+ Free Tools | Kceva</title>
-	<meta name="description" content="Browse all calculator categories at Kceva.com including finance, health, math, unit conversion, and more. Find the perfect free calculator tool for your needs." />
-	<meta name="keywords" content="Kceva, calculator categories, finance calculators, health tools, math calculators, unit converters, free online tools" />
-	<link rel="canonical" href="https://kceva.com/categories" />
+	<title>Calculator Categories - Browse 100+ Free Tools | kceva</title>
+	<meta name="description" content="Browse all calculator categories at kceva.com including finance, health, math, unit conversion, and more. Find the perfect free calculator tool for your needs." />
+	<meta name="keywords" content="kceva, calculator categories, finance calculators, health tools, math calculators, unit converters, free online tools" />
+	<link rel="canonical" href="https://kceva.com/categories/" />
+	
+	<!-- Open Graph -->
+	<meta property="og:title" content="Calculator Categories - Browse 100+ Free Tools | kceva" />
+	<meta property="og:description" content="Browse all calculator categories at kceva.com including finance, health, math, unit conversion, and more." />
+	<meta property="og:url" content="https://kceva.com/categories/" />
+	<meta property="og:type" content="website" />
+	
+	<!-- Twitter Card -->
+	<meta name="twitter:title" content="Calculator Categories - Browse 100+ Free Tools | kceva" />
+	<meta name="twitter:description" content="Browse all calculator categories at kceva.com including finance, health, math, unit conversion, and more." />
 
 	<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
 			"@type": "CollectionPage",
 			"name": "Calculator Categories",
-			"description": "Browse all calculator categories at Kceva.com including finance, health, math, unit conversion, and more.",
-			"url": "https://kceva.com/categories"
+			"description": "Browse all calculator categories at kceva.com including finance, health, math, unit conversion, and more.",
+			"url": "https://kceva.com/categories/"
 		}
 	</script>
 	<script type="application/ld+json">
@@ -44,7 +54,7 @@
 					"@type": "ListItem",
 					"position": 2,
 					"name": "Categories",
-					"item": "https://kceva.com/categories"
+					"item": "https://kceva.com/categories/"
 				}
 			]
 		}

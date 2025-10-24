@@ -4,32 +4,45 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-	<title>Kceva – Free Online Calculators & Converters</title>
+	<title>kceva – Free Online Calculators & Converters</title>
 
 	<!-- DNS Prefetch for external APIs -->
 	<link rel="dns-prefetch" href="//api.exchangerate-api.com">
 	<link rel="dns-prefetch" href="//ipapi.co">
 	<link rel="dns-prefetch" href="//vitals.vercel-insights.com">
+	<link rel="dns-prefetch" href="//www.google-analytics.com">
+	<link rel="dns-prefetch" href="//www.googletagmanager.com">
 
 	<!-- Enhanced meta tags for SEO -->
 	<meta name="description"
-		content="Kceva - 100+ free online calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, and mobile-friendly tools with live currency rates including GEL (Georgian Lari)." />
-	<meta name="author" content="Kceva" />
+		content="kceva - 100+ free online calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, and mobile-friendly tools with live currency rates including GEL (Georgian Lari)." />
+	<meta name="author" content="kceva" />
 	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+	<meta name="keywords" content="free calculators, online converters, math calculator, finance calculator, health calculator, unit converter, currency converter, percentage calculator, BMI calculator, loan calculator" />
 
 	<!-- Theme and app settings -->
 	<meta name="theme-color" content="#2563eb" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-	<meta name="apple-mobile-web-app-title" content="Kceva Calculators" />
-	<meta name="application-name" content="Kceva" />
+	<meta name="apple-mobile-web-app-title" content="kceva Calculators" />
+	<meta name="application-name" content="kceva" />
 	<meta name="msapplication-TileColor" content="#2563eb" />
 
 	<!-- Google Search Console Verification -->
 	<meta name="google-site-verification" content="E3HGhOGoia7msiHkl_qnyS6LEDz29XkAxlQ1osfWfHg" />
 
-	<!-- Canonical URL -->
-	<link rel="canonical" href="https://kceva.com" />
+	<!-- Canonical URL - FIXED: Added trailing slash for consistency -->
+	<link rel="canonical" href="https://kceva.com/" />
+
+	<!-- Open Graph Meta Tags -->
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="kceva" />
+	<meta property="og:locale" content="en_US" />
+
+	<!-- Twitter Card Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@kceva" />
+	<meta name="twitter:creator" content="@kceva" />
 
 	<!-- Favicons -->
 	<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
@@ -38,45 +51,62 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="%sveltekit.assets%/favicon-16x16.png" />
 	<link rel="manifest" href="%sveltekit.assets%/site.webmanifest" />
 
-	<!-- Structured Data -->
+	<!-- Structured Data - Website -->
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
 		"@type": "WebSite",
-		"name": "Kceva",
-		"url": "https://kceva.com",
+		"name": "kceva",
+		"url": "https://kceva.com/",
 		"description": "100+ free online calculators and converters for finance, health, math, unit conversion, and more.",
 		"inLanguage": "en-US",
 		"publisher": {
 			"@type": "Organization",
-			"name": "Kceva",
-			"url": "https://kceva.com",
+			"name": "kceva",
+			"url": "https://kceva.com/",
 			"logo": {
 				"@type": "ImageObject",
 				"url": "https://kceva.com/logo.png",
 				"width": 512,
 				"height": 512
-			},
-			"sameAs": [
-				"https://twitter.com/Kceva",
-				"https://github.com/Kceva"
-			]
+			}
 		},
 		"potentialAction": {
 			"@type": "SearchAction",
-			"target": "https://kceva.com/search?q={search_term_string}",
+			"target": {
+				"@type": "EntryPoint",
+				"urlTemplate": "https://kceva.com/search?q={search_term_string}"
+			},
 			"query-input": "required name=search_term_string"
 		}
 	}
 	</script>
 
+	<!-- Structured Data - Organization -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"name": "kceva",
+		"url": "https://kceva.com/",
+		"logo": "https://kceva.com/logo.png",
+		"description": "Free online calculators and conversion tools for everyone",
+		"address": {
+			"@type": "PostalAddress",
+			"addressCountry": "US"
+		}
+	}
+	</script>
+
+	<!-- Structured Data - SoftwareApplication -->
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
 		"@type": "SoftwareApplication",
-		"name": "Kceva Calculator Suite",
+		"name": "kceva Calculator Suite",
 		"applicationCategory": "UtilityApplication",
 		"operatingSystem": "Any",
+		"browserRequirements": "Requires JavaScript. Requires HTML5.",
 		"offers": {
 			"@type": "Offer",
 			"price": "0",
@@ -91,6 +121,23 @@
 			"worstRating": "1"
 		}
 	}
+	</script>
+
+	<!-- Google Analytics 4 - SETUP REQUIRED -->
+	<!-- TODO: Replace GA_MEASUREMENT_ID with your actual Google Analytics 4 Measurement ID -->
+	<!-- Get your GA4 ID from: https://analytics.google.com/analytics/web/ -->
+	<!-- Format: G-XXXXXXXXXX -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		// TODO: Replace 'GA_MEASUREMENT_ID' below with your actual GA4 Measurement ID
+		gtag('config', 'GA_MEASUREMENT_ID', {
+			'page_path': window.location.pathname,
+			'send_page_view': true,
+			'anonymize_ip': true
+		});
 	</script>
 
 	%sveltekit.head%

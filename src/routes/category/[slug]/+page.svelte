@@ -34,7 +34,7 @@
 		>
 		<meta
 			name="description"
-			content="{category.description} at Kceva.com. Browse {calculators.length} free calculators in the {category.name} category. Fast, accurate, mobile-friendly tools."
+			content="{category.description} Browse {calculators.length} free calculators in the {category.name} category at kceva.com. Fast, accurate, mobile-friendly tools."
 		/>
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="{category.name} - {calculators.length} Free Calculators | Kceva" />

@@ -92,7 +92,7 @@
                         }
                 </script>
         {:else}
-                <title>Category Not Found | Kceva - Free Online Calculators</title>
+                <title>Category Not Found | kceva - Free Online Calculators</title>
         {/if}
 </svelte:head>
 

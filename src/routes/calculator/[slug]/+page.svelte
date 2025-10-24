@@ -19,28 +19,29 @@
 
 <svelte:head>
 	{#if calculator}
-		<title>{calculator.name} - Free Online Calculator | Kceva</title>
+		<title>{calculator.name} - Free Online Calculator | kceva</title>
 		<meta
 			name="description"
-			content="{calculator.description} at Kceva.com. Free online calculator with instant results. Fast, accurate, and mobile-friendly."
+			content="{calculator.description} Use our free {calculator.name.toLowerCase()} at kceva.com. Get instant, accurate results. Fast, mobile-friendly, and completely free."
 		/>
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="{calculator.name} - Free Online Calculator | Kceva" />
+		<meta property="og:site_name" content="kceva" />
+		<meta property="og:title" content="{calculator.name} - Free Online Calculator | kceva" />
 		<meta property="og:description" content="{calculator.description}" />
-		<meta property="og:url" content="https://kceva.com/calculator/{calculator.id}" />
+		<meta property="og:url" content="https://kceva.com/calculator/{calculator.id}/" />
 		<meta property="og:image" content="https://kceva.com/og-image.png" />
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="{calculator.name} - Free Online Calculator | Kceva" />
+		<meta name="twitter:title" content="{calculator.name} - Free Online Calculator | kceva" />
 		<meta name="twitter:description" content="{calculator.description}" />
 		<meta
 			name="keywords"
-			content="Kceva, {calculator.keywords.join(
+			content="kceva, {calculator.keywords.join(
 				', ',
-			)}, calculator, free, online, {calculator.name.toLowerCase()}"
+			)}, calculator, free, online, {calculator.name.toLowerCase()}, free calculator tool"
 		/>
 		<link
 			rel="canonical"
-			href="https://kceva.com/calculator/{calculator.id}"
+			href="https://kceva.com/calculator/{calculator.id}/"
 		/>
 
 		<!-- Structured Data for Calculator -->

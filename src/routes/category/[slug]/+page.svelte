@@ -40,7 +40,7 @@
                 <meta property="og:site_name" content="kceva" />
                 <meta property="og:title" content="{category.name} - {calculators.length} Free Calculators | kceva" />
                 <meta property="og:description" content="{category.description}" />
-                <meta property="og:url" content="https://kceva.com/category/{category.id}" />
+                <meta property="og:url" content="https://kceva.com/category/{category.id}/" />
                 <meta property="og:image" content="https://kceva.com/og-image.png" />
                 <meta
                         name="keywords"

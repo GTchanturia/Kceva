@@ -47,7 +47,7 @@
                 <meta name="twitter:description" content="{category.description}" />
                 <meta
                         name="keywords"
-                        content="Kceva, {category.name.toLowerCase()}, calculators, free tools, online calculator, {category.name.toLowerCase()} calculator"
+                        content="kceva, {category.name.toLowerCase()}, calculators, free tools, online calculator, {category.name.toLowerCase()} calculator"
                 />
                 <link rel="canonical" href="https://kceva.com/category/{category.id}" />
 

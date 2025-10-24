@@ -51,13 +51,19 @@
 				"@type": "WebApplication",
 				"name": "{calculator.name}",
 				"description": "{calculator.description}",
-				"url": "https://kceva.com/calculator/{calculator.id}",
+				"url": "https://kceva.com/calculator/{calculator.id}/",
 				"applicationCategory": "UtilityApplication",
 				"operatingSystem": "Any",
+				"browserRequirements": "Requires JavaScript. Requires HTML5.",
+				"offers": {
+					"@type": "Offer",
+					"price": "0",
+					"priceCurrency": "USD"
+				},
 				"publisher": {
 					"@type": "Organization",
-					"name": "Kceva",
-					"url": "https://kceva.com"
+					"name": "kceva",
+					"url": "https://kceva.com/"
 				}
 			}
 		</script>
@@ -77,19 +83,19 @@
 						"@type": "ListItem",
 						"position": 2,
 						"name": "{category ? category.name : 'Category'}",
-						"item": "https://kceva.com/category/{category ? category.id : ''}"
+						"item": "https://kceva.com/category/{category ? category.id : ''}/"
 					},
 					{
 						"@type": "ListItem",
 						"position": 3,
 						"name": "{calculator.name}",
-						"item": "https://kceva.com/calculator/{calculator.id}"
+						"item": "https://kceva.com/calculator/{calculator.id}/"
 					}
 				]
 			}
 		</script>
 	{:else}
-		<title>Calculator Not Found | Kceva - Free Online Calculators</title>
+		<title>Calculator Not Found | kceva - Free Online Calculators</title>
 	{/if}
 </svelte:head>
 

@@ -30,7 +30,7 @@
 <svelte:head>
 	{#if category}
 		<title
-			>{category.name} - {calculators.length} Free Calculators | Kceva</title
+			>{category.name} - {calculators.length} Free Calculators | kceva</title
 		>
 		<meta
 			name="description"

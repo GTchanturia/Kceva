@@ -3,19 +3,17 @@ import { getCalculatorsByCategory } from '$lib/data/calculators/index.js';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
-  const categoriesWithCounts = CALCULATOR_CATEGORIES.map(category => ({
-    ...category,
-    calculatorCount: getCalculatorsByCategory(category.id).length
+  const categories = CALCULATOR_CATEGORIES.map(cat => ({
+    ...cat,
+    calculatorCount: getCalculatorsByCategory(cat.id).length
   }));
 
   return {
     seo: {
-      title: 'Calculator Categories — Browse 100+ Free Tools | kceva',
-      description:
-        'Browse all calculator categories at kceva.com including finance, health, math, unit conversion, and more. Find the perfect free calculator tool for your needs.',
-      image: 'https://kceva.com/og-image.png',
+      title: 'Calculator Categories — 100+ Free Tools | kceva',
+      description: 'Browse all calculator categories at kceva.com — finance, health, math, unit conversion, design, tech, and more. Fast, free, mobile-friendly.',
       url: 'https://kceva.com/categories/'
     },
-    categories: categoriesWithCounts
+    categories
   };
 }

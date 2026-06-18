@@ -2,10 +2,8 @@
 export async function load() {
   return {
     seo: {
-      title: 'About kceva — Your Trusted Source for 100+ Free Online Calculators',
-      description:
-        'Learn about kceva.com, your trusted source for 100+ free online calculators and converters. Fast, accurate, privacy-focused tools for finance, health, math, and more.',
-      image: 'https://kceva.com/og-image.png',
+      title: 'About kceva — 100+ Free Online Calculators',
+      description: 'kceva provides 100+ free online calculators for finance, health, math, and unit conversion. No sign-up, no ads, no data collection.',
       url: 'https://kceva.com/about/'
     }
   };

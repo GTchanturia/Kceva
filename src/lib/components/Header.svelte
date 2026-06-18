@@ -1,55 +1,39 @@
 <script>
-  import { page } from "$app/stores";
+  import { page } from '$app/stores';
+  import Icon from '$lib/components/Icon.svelte';
 
   let mobileMenuOpen = false;
 
   const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/categories", label: "Categories" },
-    { href: "/education", label: "Education" },
-    { href: "/about", label: "About" },
+    { href: '/', label: 'Home' },
+    { href: '/categories', label: 'Categories' },
+    { href: '/education', label: 'Education' },
+    { href: '/about', label: 'About' },
   ];
 
-  function toggleMenu() {
-    mobileMenuOpen = !mobileMenuOpen;
-  }
-
-  // Close menu on navigation
   $: if ($page.url.pathname) {
     mobileMenuOpen = false;
   }
 </script>
 
-<header class="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
+<header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
+    <div class="flex items-center justify-between h-14">
 
       <!-- Logo -->
-      <div class="flex items-center">
-        <a href="/" class="flex items-center gap-2.5 group" aria-label="kceva home">
-          <img
-            src="/logo.png"
-            alt="kceva logo"
-            width="32"
-            height="32"
-            loading="eager"
-            decoding="async"
-            class="w-8 h-8 rounded-lg object-cover"
-          />
-          <span class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-            kceva
-          </span>
-        </a>
-      </div>
+      <a href="/" class="flex items-center gap-2 group" aria-label="kceva home">
+        <img src="/logo.png" alt="kceva" width="28" height="28" loading="eager" class="w-7 h-7 rounded object-cover" />
+        <span class="text-base font-bold text-gray-900 group-hover:text-blue-600 transition-colors tracking-tight">kceva</span>
+      </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center" aria-label="Primary">
         {#each navItems as item}
           <a
             href={item.href}
-            class="px-3 py-2 rounded-lg text-sm font-medium transition-colors {
+            class="px-3 py-1.5 text-sm font-medium rounded-md transition-colors {
               $page.url.pathname === item.href
-                ? 'bg-blue-50 text-blue-600'
+                ? 'text-blue-600 bg-blue-50'
                 : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
             }"
             aria-current={$page.url.pathname === item.href ? 'page' : undefined}
@@ -59,36 +43,32 @@
         {/each}
       </nav>
 
-      <!-- Mobile menu button -->
+      <!-- Mobile toggle -->
       <button
         type="button"
-        class="md:hidden p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
-        on:click={toggleMenu}
+        class="md:hidden p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
+        on:click={() => (mobileMenuOpen = !mobileMenuOpen)}
         aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
         aria-expanded={mobileMenuOpen}
         aria-controls="mobile-menu"
       >
         {#if mobileMenuOpen}
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <Icon name="close" size={18} strokeWidth={2} />
         {:else}
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+          <Icon name="menu" size={18} strokeWidth={2} />
         {/if}
       </button>
     </div>
 
-    <!-- Mobile Navigation -->
+    <!-- Mobile Nav -->
     {#if mobileMenuOpen}
-      <nav id="mobile-menu" class="md:hidden border-t border-gray-100 py-3 pb-4 space-y-1" aria-label="Mobile navigation">
+      <nav id="mobile-menu" class="md:hidden border-t border-gray-100 py-2 space-y-0.5" aria-label="Mobile">
         {#each navItems as item}
           <a
             href={item.href}
-            class="block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors {
+            class="block px-3 py-2 text-sm font-medium rounded-md transition-colors {
               $page.url.pathname === item.href
-                ? 'bg-blue-50 text-blue-600'
+                ? 'text-blue-600 bg-blue-50'
                 : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
             }"
             aria-current={$page.url.pathname === item.href ? 'page' : undefined}

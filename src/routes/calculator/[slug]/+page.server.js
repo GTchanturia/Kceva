@@ -1,5 +1,5 @@
-import { getCalculatorById } from '$lib/data/calculators/index.js';
 import { CALCULATOR_CATEGORIES } from '$lib/types/calculator.js';
+import { getCalculatorById } from '$lib/data/calculators/index.js';
 import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageServerLoad} */
@@ -10,17 +10,16 @@ export async function load({ params }) {
     throw error(404, `Calculator "${params.slug}" not found`);
   }
 
-  const category = CALCULATOR_CATEGORIES.find(c => c.id === calculator.category);
+  const category = CALCULATOR_CATEGORIES.find(c => c.id === calculator.category) || null;
 
   return {
     seo: {
       title: `${calculator.name} — Free Online Calculator | kceva`,
-      description: `${calculator.description} Use our free ${calculator.name.toLowerCase()} at kceva.com. Get instant, accurate results. Fast, mobile-friendly, and completely free.`,
-      image: 'https://kceva.com/og-image.png',
-      url: `https://kceva.com/calculator/${calculator.id}/`,
-      keywords: [calculator.name.toLowerCase(), ...calculator.keywords, 'calculator', 'free', 'online'].join(', ')
+      description: `${calculator.description} Use our free ${calculator.name.toLowerCase()} instantly. No sign-up required. Fast, accurate, and mobile-friendly.`,
+      keywords: [calculator.name.toLowerCase(), ...(calculator.keywords || []), 'free', 'calculator', 'online'].join(', '),
+      url: `https://kceva.com/calculator/${calculator.id}/`
     },
     calculator,
-    category: category || null
+    category
   };
 }

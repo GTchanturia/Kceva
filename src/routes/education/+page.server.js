@@ -1,10 +1,10 @@
-export function load() {
-    return {
-        seo: {
-            title: "Education & Learning Resources - Free Guides & Roadmaps | kceva",
-            description: "Explore educational resources and comprehensive guides at kceva. Master  financial literacy, and mathematics with our free tools and tutorials.",
-            image: "/og-image.png",
-            url: "https://kceva.com/education"
-        }
-    };
+/** @type {import('./$types').PageServerLoad} */
+export async function load() {
+  return {
+    seo: {
+      title: 'Education & Learning Resources | kceva',
+      description: 'Free educational calculators and learning resources for finance and mathematics at kceva.com. Structured learning paths for all levels.',
+      url: 'https://kceva.com/education/'
+    }
+  };
 }

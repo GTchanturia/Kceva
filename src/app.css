@@ -2,14 +2,10 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-/* Design tokens */
 :root {
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --color-primary: #2563eb;
-  --color-primary-hover: #1d4ed8;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Base typography */
 html {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -18,75 +14,36 @@ html {
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
-body {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  line-height: 1.6;
-  color: #0f172a;
-}
+/* Consistent heading scale */
+h1 { font-size: 1.75rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+h2 { font-size: 1.25rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; }
+h3 { font-size: 1rem;    font-weight: 600; line-height: 1.4; }
+h4 { font-size: 0.875rem; font-weight: 600; line-height: 1.4; }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
-a, button {
-  transition: all 0.15s ease-in-out;
-}
-
-/* Skip link */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-.sr-only.focus\:not-sr-only:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: inherit;
-  margin: inherit;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
-
-/* Focus styles */
+/* Focus */
 *:focus-visible {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* High contrast support */
-@media (prefers-contrast: high) {
-  body { color: #000; background: #fff; }
+/* Skip link */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0;
+  margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+* { scrollbar-width: thin; scrollbar-color: #d1d5db transparent; }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
-
-/* Print */
-@media print {
-  .no-print { display: none !important; }
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #f1f5f9; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-* { scrollbar-width: thin; scrollbar-color: #cbd5e1 #f1f5f9; }

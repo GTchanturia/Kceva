@@ -1,258 +1,89 @@
 <script>
-	import Button from '$lib/components/ui/Button.svelte';
-	import Card from '$lib/components/ui/Card.svelte';
+  import Icon from '$lib/components/Icon.svelte';
+  export let data;
+  const { seo } = data;
+
+  const principles = [
+    { icon: 'lightning', title: 'No sign-up', desc: 'Every tool works immediately, no account or email required.' },
+    { icon: 'shield', title: 'Privacy first', desc: 'All calculations happen in your browser. We store nothing.' },
+    { icon: 'globe', title: 'Always free', desc: '100+ calculators, free forever. No paywalls, no ads in tools.' },
+    { icon: 'mobile', title: 'Mobile first', desc: 'Designed to work perfectly on any device or screen size.' },
+  ];
+
+  const categories = [
+    'Finance & Investment', 'Health & Fitness', 'Math & Geometry',
+    'Unit Converters', 'Date & Time', 'Education', 'Tech & IT',
+    'Design & Graphics', 'Lifestyle', 'Fun Tools'
+  ];
 </script>
 
 <svelte:head>
-	<title>About kceva - Your Trusted Source for 100+ Free Online Calculators</title>
-	<meta name="description" content="Learn about kceva.com, your trusted source for 100+ free online calculators and converters. Fast, accurate, privacy-focused tools for finance, health, math, and more." />
-	<meta name="keywords" content="kceva, about, free calculators, online tools, finance, health, math, converters, privacy-focused" />
-	<link rel="canonical" href="https://kceva.com/about/" />
-	
-	<!-- Open Graph -->
-	<meta property="og:title" content="About kceva - Your Trusted Source for 100+ Free Online Calculators" />
-	<meta property="og:description" content="Learn about kceva.com, your trusted source for 100+ free online calculators and converters." />
-	<meta property="og:url" content="https://kceva.com/about/" />
-	<meta property="og:type" content="website" />
-	
-	<!-- Twitter Card -->
-	<meta name="twitter:title" content="About kceva - Your Trusted Source for 100+ Free Online Calculators" />
-	<meta name="twitter:description" content="Learn about kceva.com, your trusted source for 100+ free online calculators and converters." />
+  <title>{seo?.title || 'About kceva | Free Online Calculators'}</title>
+  <meta name="description" content={seo?.description} />
+  <link rel="canonical" href="https://kceva.com/about/" />
+  <meta property="og:title" content={seo?.title} />
+  <meta property="og:description" content={seo?.description} />
+  <meta property="og:url" content="https://kceva.com/about/" />
+  <script type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About kceva",
+    "url": "https://kceva.com/about/",
+    "description": "kceva provides 100+ free online calculators and converters for finance, health, math, and more.",
+    "publisher": { "@type": "Organization", "name": "kceva", "url": "https://kceva.com/" }
+  })}</script>
 </svelte:head>
 
-<div class="min-h-screen bg-gray-50">
-	<!-- Hero Section -->
-	<section class="bg-gradient-to-br from-blue-50 to-indigo-50 py-16">
-		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-			<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-				About Kceva
-			</h1>
-			<p class="text-xl text-gray-600 max-w-3xl mx-auto">
-				Your trusted companion for accurate calculations and conversions. 
-				We believe powerful tools should be free, fast, and accessible to everyone.
-			</p>
-		</div>
-	</section>
-	
-	<!-- Mission Section -->
-	<section class="py-16 bg-white">
-		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center mb-12">
-				<h2 class="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
-			</div>
-			
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-				<Card>
-					<div class="p-6 text-center">
-						<div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-							<span class="text-2xl">🎯</span>
-						</div>
-						<h3 class="text-xl font-semibold text-gray-900 mb-2">Accuracy First</h3>
-						<p class="text-gray-600">
-							Every calculator uses thoroughly tested formulas and algorithms to ensure precise results you can trust.
-						</p>
-					</div>
-				</Card>
-				
-				<Card>
-					<div class="p-6 text-center">
-						<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-							<span class="text-2xl">🆓</span>
-						</div>
-						<h3 class="text-xl font-semibold text-gray-900 mb-2">Always Free</h3>
-						<p class="text-gray-600">
-							No subscriptions, no hidden fees, no premium tiers. All our tools are completely free to use forever.
-						</p>
-					</div>
-				</Card>
-				
-				<Card>
-					<div class="p-6 text-center">
-						<div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-							<span class="text-2xl">🔒</span>
-						</div>
-						<h3 class="text-xl font-semibold text-gray-900 mb-2">Privacy Focused</h3>
-						<p class="text-gray-600">
-							Your calculations stay on your device. We don't store, track, or share your personal data.
-						</p>
-					</div>
-				</Card>
-			</div>
-		</div>
-	</section>
-	
-	<!-- Story Section -->
-	<section class="py-16 bg-gray-50">
-		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center mb-12">
-				<h2 class="text-3xl font-bold text-gray-900 mb-4">Our Story</h2>
-			</div>
-			
-			<div class="prose prose-lg mx-auto text-gray-600">
-				<p>
-					Kceva was born from a simple frustration: finding reliable, free calculators online 
-					shouldn't be a treasure hunt through ad-filled websites and questionable results.
-				</p>
-				
-				<p>
-					We noticed that most online calculators were either buried in complex websites, 
-					loaded with advertisements, or required subscriptions for basic functionality. 
-					There had to be a better way.
-				</p>
-				
-				<p>
-					So we built Kceva - a clean, fast, and comprehensive collection of calculators 
-					that puts user experience first. No ads, no tracking, no nonsense. Just the tools 
-					you need, when you need them.
-				</p>
-				
-				<p>
-					Today, Kceva serves thousands of users daily, from students solving math problems 
-					to professionals making financial decisions. We're proud to be a trusted resource 
-					for accurate calculations across 10 different categories.
-				</p>
-			</div>
-		</div>
-	</section>
-	
-	<!-- Features Section -->
-	<section class="py-16 bg-white">
-		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center mb-12">
-				<h2 class="text-3xl font-bold text-gray-900 mb-4">What Makes Us Different</h2>
-			</div>
-			
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-				<div class="flex items-start space-x-4">
-					<div class="flex-shrink-0">
-						<div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-							<span class="text-xl">⚡</span>
-						</div>
-					</div>
-					<div>
-						<h3 class="text-lg font-semibold text-gray-900 mb-2">Lightning Fast</h3>
-						<p class="text-gray-600">
-							All calculations happen instantly in your browser. No server delays, no loading screens.
-						</p>
-					</div>
-				</div>
-				
-				<div class="flex items-start space-x-4">
-					<div class="flex-shrink-0">
-						<div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-							<span class="text-xl">📱</span>
-						</div>
-					</div>
-					<div>
-						<h3 class="text-lg font-semibold text-gray-900 mb-2">Mobile Optimized</h3>
-						<p class="text-gray-600">
-							Perfect experience on any device - desktop, tablet, or smartphone.
-						</p>
-					</div>
-				</div>
-				
-				<div class="flex items-start space-x-4">
-					<div class="flex-shrink-0">
-						<div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-							<span class="text-xl">🔍</span>
-						</div>
-					</div>
-					<div>
-						<h3 class="text-lg font-semibold text-gray-900 mb-2">Easy to Find</h3>
-						<p class="text-gray-600">
-							Powerful search and intuitive categories help you find the right tool quickly.
-						</p>
-					</div>
-				</div>
-				
-				<div class="flex items-start space-x-4">
-					<div class="flex-shrink-0">
-						<div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-							<span class="text-xl">🎨</span>
-						</div>
-					</div>
-					<div>
-						<h3 class="text-lg font-semibold text-gray-900 mb-2">Clean Design</h3>
-						<p class="text-gray-600">
-							Distraction-free interface that focuses on what matters - your calculations.
-						</p>
-					</div>
-				</div>
-				
-				<div class="flex items-start space-x-4">
-					<div class="flex-shrink-0">
-						<div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-							<span class="text-xl">🌐</span>
-						</div>
-					</div>
-					<div>
-						<h3 class="text-lg font-semibold text-gray-900 mb-2">Works Offline</h3>
-						<p class="text-gray-600">
-							Most calculators work without an internet connection once the page loads.
-						</p>
-					</div>
-				</div>
-				
-				<div class="flex items-start space-x-4">
-					<div class="flex-shrink-0">
-						<div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
-							<span class="text-xl">♿</span>
-						</div>
-					</div>
-					<div>
-						<h3 class="text-lg font-semibold text-gray-900 mb-2">Accessible</h3>
-						<p class="text-gray-600">
-							Built with accessibility in mind, ensuring everyone can use our tools effectively.
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<!-- Stats Section -->
-	<section class="py-16 bg-blue-600">
-		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-			<h2 class="text-3xl font-bold text-white mb-12">Kceva by the Numbers</h2>
-			
-			<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-				<div>
-					<div class="text-4xl font-bold text-white mb-2">100+</div>
-					<div class="text-blue-100">Calculators & Converters</div>
-				</div>
-				<div>
-					<div class="text-4xl font-bold text-white mb-2">10</div>
-					<div class="text-blue-100">Categories</div>
-				</div>
-				<div>
-					<div class="text-4xl font-bold text-white mb-2">1M+</div>
-					<div class="text-blue-100">Calculations Performed</div>
-				</div>
-				<div>
-					<div class="text-4xl font-bold text-white mb-2">99.9%</div>
-					<div class="text-blue-100">Uptime</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<!-- CTA Section -->
-	<section class="py-16 bg-gray-50">
-		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-			<h2 class="text-3xl font-bold text-gray-900 mb-4">
-				Ready to Start Calculating?
-			</h2>
-			<p class="text-xl text-gray-600 mb-8">
-				Explore our comprehensive collection of free calculators and converters
-			</p>
-			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<Button variant="primary" size="lg" href="/categories">
-					Explore Calculator Categories
-				</Button>
-				<Button variant="outline" size="lg" href="/contact">
-					Get Help and Support
-				</Button>
-			</div>
-		</div>
-	</section>
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Breadcrumb -->
+  <nav class="text-xs text-gray-500 mb-8 flex items-center gap-1.5" aria-label="Breadcrumb">
+    <a href="/" class="hover:text-gray-900">Home</a>
+    <span>/</span>
+    <span class="text-gray-900">About</span>
+  </nav>
+
+  <!-- Intro -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-4 tracking-tight">About kceva</h1>
+  <p class="text-base text-gray-600 leading-relaxed mb-6">
+    kceva is a free online calculator platform providing accurate, fast tools for everyday calculations.
+    We cover finance, health, mathematics, unit conversion, and more — with no sign-up, no ads inside tools, and no data collection.
+  </p>
+  <p class="text-base text-gray-600 leading-relaxed mb-10">
+    Whether you need to calculate a mortgage payment, convert units, check your BMI, or solve a math problem,
+    kceva gives you a reliable answer in seconds.
+  </p>
+
+  <!-- Principles -->
+  <h2 class="text-lg font-bold text-gray-900 mb-4">Our Principles</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+    {#each principles as p}
+      <div class="flex items-start gap-3 bg-gray-50 rounded-lg p-4 border border-gray-100">
+        <div class="flex-shrink-0 w-8 h-8 bg-blue-50 rounded-md flex items-center justify-center">
+          <Icon name={p.icon} size={16} className="text-blue-600" strokeWidth={1.75} />
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900">{p.title}</h3>
+          <p class="text-xs text-gray-500 mt-0.5 leading-relaxed">{p.desc}</p>
+        </div>
+      </div>
+    {/each}
+  </div>
+
+  <!-- Categories -->
+  <h2 class="text-lg font-bold text-gray-900 mb-4">What We Cover</h2>
+  <div class="flex flex-wrap gap-2 mb-10">
+    {#each categories as cat}
+      <span class="inline-block text-xs font-medium text-gray-600 bg-gray-100 rounded-md px-3 py-1.5">{cat}</span>
+    {/each}
+  </div>
+
+  <!-- Stats -->
+  <div class="grid grid-cols-3 gap-4 border-t border-gray-100 pt-8">
+    {#each [['100+', 'Free tools'],['11', 'Categories'],['Zero', 'Data collected']] as [n, l]}
+      <div class="text-center">
+        <div class="text-2xl font-bold text-gray-900">{n}</div>
+        <div class="text-xs text-gray-500 mt-1">{l}</div>
+      </div>
+    {/each}
+  </div>
 </div>

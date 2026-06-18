@@ -1,164 +1,135 @@
 <script>
-	import Button from "$lib/components/ui/Button.svelte";
-	import LoadingSpinner from "$lib/components/LoadingSpinner.svelte";
-	import { onMount } from "svelte";
+  import Icon from '$lib/components/Icon.svelte';
+  import { CATEGORY_COLORS } from '$lib/types/calculator.js';
+  import { onMount } from 'svelte';
 
-	export let data;
-	const { calculator, category, seo } = data;
+  export let data;
+  const { calculator, category, seo } = data;
 
-	let CalculatorComponent = null;
-	let loadError = false;
+  $: colors = CATEGORY_COLORS[category?.color] || CATEGORY_COLORS.gray;
 
-	// Dynamically import only the needed calculator component
-	onMount(async () => {
-		if (!calculator) return;
-		try {
-			const map = await import("$lib/config/component-map.js");
-			CalculatorComponent = map.calculatorComponents[calculator.id] ?? null;
-		} catch (e) {
-			loadError = true;
-		}
-	});
+  let CalculatorComponent = null;
+  let loadError = false;
+  let loading = true;
+
+  onMount(async () => {
+    if (!calculator) { loading = false; return; }
+    try {
+      const map = await import('$lib/config/component-map.js');
+      CalculatorComponent = map.calculatorComponents[calculator.id] ?? null;
+    } catch {
+      loadError = true;
+    } finally {
+      loading = false;
+    }
+  });
 </script>
 
 <svelte:head>
-	{#if seo}
-		<title>{seo.title}</title>
-		<meta name="description" content={seo.description} />
-		{#if seo.keywords}
-			<meta name="keywords" content={seo.keywords} />
-		{/if}
-		<link rel="canonical" href={seo.url} />
-		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="kceva" />
-		<meta property="og:title" content={seo.title} />
-		<meta property="og:description" content={seo.description} />
-		<meta property="og:url" content={seo.url} />
-		<meta property="og:image" content={seo.image} />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={seo.title} />
-		<meta name="twitter:description" content={seo.description} />
-		<meta name="twitter:image" content={seo.image} />
-	{/if}
-	{#if calculator}
-		<script type="application/ld+json">{JSON.stringify({
-			"@context": "https://schema.org",
-			"@type": "WebApplication",
-			"name": calculator.name,
-			"description": calculator.description,
-			"url": `https://kceva.com/calculator/${calculator.id}/`,
-			"applicationCategory": "UtilityApplication",
-			"operatingSystem": "Any",
-			"browserRequirements": "Requires JavaScript. Requires HTML5.",
-			"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-			"publisher": { "@type": "Organization", "name": "kceva", "url": "https://kceva.com/" }
-		})}</script>
-		<script type="application/ld+json">{JSON.stringify({
-			"@context": "https://schema.org",
-			"@type": "BreadcrumbList",
-			"itemListElement": [
-				{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kceva.com/" },
-				{ "@type": "ListItem", "position": 2, "name": category?.name || "Categories", "item": `https://kceva.com/category/${category?.id || 'categories'}/` },
-				{ "@type": "ListItem", "position": 3, "name": calculator.name, "item": `https://kceva.com/calculator/${calculator.id}/` }
-			]
-		})}</script>
-	{/if}
+  <title>{seo?.title || `${calculator?.name} | kceva`}</title>
+  <meta name="description" content={seo?.description} />
+  {#if seo?.keywords}<meta name="keywords" content={seo.keywords} />{/if}
+  <link rel="canonical" href={seo?.url || `https://kceva.com/calculator/${calculator?.id}/`} />
+  <meta property="og:title" content={seo?.title} />
+  <meta property="og:description" content={seo?.description} />
+  <meta property="og:url" content={seo?.url} />
+  <meta property="og:image" content="https://kceva.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  {#if calculator}
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": calculator.name,
+      "description": calculator.description,
+      "url": `https://kceva.com/calculator/${calculator.id}/`,
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "kceva", "url": "https://kceva.com/" }
+    })}</script>
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kceva.com/" },
+        { "@type": "ListItem", "position": 2, "name": category?.name ?? "Categories", "item": `https://kceva.com/category/${category?.id ?? 'finance'}/` },
+        { "@type": "ListItem", "position": 3, "name": calculator.name, "item": `https://kceva.com/calculator/${calculator.id}/` }
+      ]
+    })}</script>
+  {/if}
 </svelte:head>
 
 {#if calculator}
-	<div class="min-h-screen bg-gray-50">
-		<!-- Calculator Header -->
-		<section class="bg-white border-b border-gray-200 py-8">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<!-- Breadcrumb -->
-				<nav class="flex mb-6" aria-label="Breadcrumb">
-					<ol class="flex items-center gap-2 text-sm">
-						<li><a href="/" class="text-gray-500 hover:text-blue-600 transition-colors">Home</a></li>
-						<li class="text-gray-400">/</li>
-						{#if category}
-							<li><a href="/category/{category.id}" class="text-gray-500 hover:text-blue-600 transition-colors">{category.name}</a></li>
-							<li class="text-gray-400">/</li>
-						{/if}
-						<li><span class="text-gray-900 font-medium">{calculator.name}</span></li>
-					</ol>
-				</nav>
+  <!-- Page shell rendered server-side for SEO -->
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-				<div class="flex items-start gap-4">
-					<div class="flex-shrink-0">
-						<div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-2xl shadow-sm" aria-hidden="true">
-							{calculator.icon}
-						</div>
-					</div>
-					<div class="flex-1 min-w-0">
-						<h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{calculator.name}</h1>
-						<p class="text-gray-600 mb-4 leading-relaxed">{calculator.description}</p>
-						<div class="flex flex-wrap gap-2">
-							{#if category}
-								<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-									<span aria-hidden="true">{category.icon}</span> {category.name}
-								</span>
-							{/if}
-							{#if calculator.requiresApi}
-								<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
-									🌐 Live Data
-								</span>
-							{/if}
-							<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-								✓ Free
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+    <!-- Breadcrumb -->
+    <nav class="text-xs text-gray-500 mb-6 flex items-center gap-1.5" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-gray-900">Home</a>
+      <span>/</span>
+      {#if category}
+        <a href="/category/{category.id}" class="hover:text-gray-900">{category.name}</a>
+        <span>/</span>
+      {/if}
+      <span class="text-gray-900">{calculator.name}</span>
+    </nav>
 
-		<!-- Calculator Content -->
-		<section class="py-8">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				{#if loadError}
-					<div class="text-center py-16">
-						<div class="text-5xl mb-4">⚠️</div>
-						<p class="text-gray-600 mb-6">Failed to load calculator. Please refresh the page.</p>
-						<Button variant="outline" href="/categories">Browse Other Calculators</Button>
-					</div>
-				{:else if CalculatorComponent === null && !loadError}
-					<!-- Loading skeleton -->
-					<div class="max-w-4xl mx-auto">
-						<div class="bg-white rounded-xl border border-gray-200 p-8 flex justify-center">
-							<LoadingSpinner size="lg" message="Loading calculator..." />
-						</div>
-					</div>
-				{:else if CalculatorComponent}
-					<svelte:component this={CalculatorComponent} />
-				{:else}
-					<!-- Component not implemented -->
-					<div class="text-center py-16 max-w-md mx-auto">
-						<div class="text-6xl mb-4">🚧</div>
-						<h2 class="text-2xl font-bold text-gray-900 mb-4">Coming Soon</h2>
-						<p class="text-gray-600 mb-8">
-							The <strong>{calculator.name}</strong> is currently under development.
-						</p>
-						<div class="flex gap-3 justify-center flex-wrap">
-							{#if category}
-								<Button variant="primary" href="/category/{category.id}">Explore {category.name}</Button>
-							{/if}
-							<Button variant="outline" href="/categories">All Categories</Button>
-						</div>
-					</div>
-				{/if}
-			</div>
-		</section>
-	</div>
+    <!-- Calculator header (SSR — visible to crawlers) -->
+    <header class="mb-8">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-lg {colors.light} flex items-center justify-center">
+          <Icon name={category?.icon || 'calculator'} size={20} className={colors.text} strokeWidth={1.5} />
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">{calculator.name}</h1>
+          <p class="text-sm text-gray-500 mt-1 leading-relaxed max-w-2xl">{calculator.description}</p>
+          <div class="flex items-center gap-2 mt-2 flex-wrap">
+            {#if category}
+              <a href="/category/{category.id}" class="inline-flex items-center gap-1 text-xs font-medium {colors.text} {colors.light} px-2 py-0.5 rounded hover:opacity-80 transition-opacity">
+                {category.name}
+              </a>
+            {/if}
+            {#if calculator.requiresApi}
+              <span class="text-xs text-orange-600 font-medium">Live data</span>
+            {/if}
+            <span class="text-xs text-green-600 font-medium">Free</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Calculator widget (client-side) -->
+    <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+      {#if loading}
+        <div class="flex items-center justify-center py-16 gap-3 text-gray-400">
+          <svg class="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+          </svg>
+          <span class="text-sm">Loading calculator…</span>
+        </div>
+      {:else if loadError}
+        <div class="text-center py-16 px-4">
+          <p class="text-sm text-gray-500 mb-4">Failed to load this calculator. Please refresh the page.</p>
+          <a href="/categories" class="text-sm text-blue-600 hover:text-blue-700">Browse all calculators →</a>
+        </div>
+      {:else if CalculatorComponent}
+        <svelte:component this={CalculatorComponent} />
+      {:else}
+        <div class="text-center py-16 px-4">
+          <p class="text-sm font-medium text-gray-900 mb-2">Coming Soon</p>
+          <p class="text-sm text-gray-500 mb-4">{calculator.name} is currently under development.</p>
+          {#if category}
+            <a href="/category/{category.id}" class="text-sm text-blue-600 hover:text-blue-700">Explore {category.name} →</a>
+          {/if}
+        </div>
+      {/if}
+    </div>
+  </div>
 {:else}
-	<div class="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-		<div class="text-center max-w-md mx-auto">
-			<div class="text-6xl mb-4">🔍</div>
-			<h1 class="text-3xl font-bold text-gray-900 mb-4">Calculator Not Found</h1>
-			<p class="text-gray-600 mb-8">The calculator you're looking for doesn't exist or has been moved.</p>
-			<div class="flex gap-3 justify-center">
-				<Button variant="primary" href="/categories">Explore Calculators</Button>
-				<Button variant="outline" href="/">Go Home</Button>
-			</div>
-		</div>
-	</div>
+  <div class="max-w-lg mx-auto px-4 py-20 text-center">
+    <h1 class="text-xl font-bold text-gray-900 mb-2">Calculator Not Found</h1>
+    <p class="text-sm text-gray-500 mb-6">The calculator you're looking for doesn't exist.</p>
+    <a href="/categories" class="text-sm text-blue-600 hover:text-blue-700">Browse all calculators →</a>
+  </div>
 {/if}

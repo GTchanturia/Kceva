@@ -1,201 +1,128 @@
 <script>
-	import { getFeaturedCalculators, getCalculatorsByCategory } from "$lib/data/calculators/index.js";
-	import { CALCULATOR_CATEGORIES } from "$lib/types/calculator.js";
-	import CalculatorCard from "$lib/components/CalculatorCard.svelte";
-	import CategoryCard from "$lib/components/CategoryCard.svelte";
-	import SearchBar from "$lib/components/SearchBar.svelte";
-	import Button from "$lib/components/ui/Button.svelte";
-	import { goto } from "$app/navigation";
+  import { CALCULATOR_CATEGORIES, CATEGORY_COLORS } from '$lib/types/calculator.js';
+  import { getFeaturedCalculators, getCalculatorsByCategory } from '$lib/data/calculators/index.js';
+  import CalculatorCard from '$lib/components/CalculatorCard.svelte';
+  import CategoryCard from '$lib/components/CategoryCard.svelte';
+  import SearchBar from '$lib/components/SearchBar.svelte';
+  import Icon from '$lib/components/Icon.svelte';
+  import Button from '$lib/components/ui/Button.svelte';
+  import { goto } from '$app/navigation';
 
-	export let data;
-	const { seo } = data;
+  export let data;
 
-	const featuredCalculators = getFeaturedCalculators().slice(0, 6);
-	const popularCategories = CALCULATOR_CATEGORIES.slice(0, 8);
+  const featuredCalculators = getFeaturedCalculators().slice(0, 9);
+  const categoriesWithCounts = CALCULATOR_CATEGORIES.map(cat => ({
+    ...cat,
+    calculatorCount: getCalculatorsByCategory(cat.id).length
+  }));
 
-	function handleSearchSelect(event) {
-		const calculator = event.detail;
-		goto(`/calculator/${calculator.id}`);
-	}
+  function handleSearch(e) {
+    goto(`/calculator/${e.detail.id}`);
+  }
 
-	const stats = [
-		{ number: "100+", label: "Free Calculators" },
-		{ number: "10", label: "Categories" },
-		{ number: "Instant", label: "Results" },
-		{ number: "Free", label: "Forever" }
-	];
-
-	const features = [
-		{
-			title: "Lightning Fast",
-			description: "Instant calculations in your browser — no server delays.",
-			icon: "⚡"
-		},
-		{
-			title: "Always Free",
-			description: "No subscriptions or hidden fees. All 100+ tools are free.",
-			icon: "🆓"
-		},
-		{
-			title: "Privacy First",
-			description: "Your data stays on your device. Zero tracking.",
-			icon: "🔒"
-		},
-		{
-			title: "Mobile Ready",
-			description: "Perfect on desktop, tablet, or smartphone.",
-			icon: "📱"
-		}
-	];
+  const features = [
+    { icon: 'lightning', title: 'Instant Results', desc: 'Client-side calculations with zero server latency.' },
+    { icon: 'shield', title: 'Privacy First', desc: 'No data leaves your browser. Zero tracking.' },
+    { icon: 'globe', title: 'Always Free', desc: 'Every tool, forever free. No account required.' },
+    { icon: 'mobile', title: 'Mobile Ready', desc: 'Works perfectly on any screen size.' },
+  ];
 </script>
 
 <svelte:head>
-	{#if seo}
-		<title>{seo.title}</title>
-		<meta name="description" content={seo.description} />
-		<link rel="canonical" href={seo.url} />
-		<meta property="og:title" content={seo.title} />
-		<meta property="og:description" content={seo.description} />
-		<meta property="og:image" content={seo.image} />
-		<meta property="og:url" content={seo.url} />
-	{/if}
-	<script type="application/ld+json">{JSON.stringify({
-		"@context": "https://schema.org",
-		"@type": "WebPage",
-		"name": "kceva — 100+ Free Online Calculators",
-		"url": "https://kceva.com/",
-		"description": "100+ free online calculators and converters for finance, health, math, unit conversion, and more.",
-		"isPartOf": { "@type": "WebSite", "name": "kceva", "url": "https://kceva.com/" }
-	})}</script>
-	<script type="application/ld+json">{JSON.stringify({
-		"@context": "https://schema.org",
-		"@type": "SoftwareApplication",
-		"name": "kceva Calculator Suite",
-		"applicationCategory": "UtilityApplication",
-		"operatingSystem": "Any",
-		"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-	})}</script>
+  <title>{data?.seo?.title || 'kceva — Free Online Calculators'}</title>
+  <meta name="description" content={data?.seo?.description} />
+  <link rel="canonical" href="https://kceva.com/" />
+  <meta property="og:title" content={data?.seo?.title} />
+  <meta property="og:description" content={data?.seo?.description} />
+  <meta property="og:url" content="https://kceva.com/" />
+  <meta property="og:image" content="https://kceva.com/og-image.png" />
+  <script type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "kceva",
+    "url": "https://kceva.com/",
+    "description": "100+ free online calculators and converters for finance, health, math, and more.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": { "@type": "EntryPoint", "urlTemplate": "https://kceva.com/categories/?q={search_term_string}" },
+      "query-input": "required name=search_term_string"
+    }
+  })}</script>
 </svelte:head>
 
-<div class="min-h-screen bg-white">
+<!-- Hero -->
+<section class="border-b border-gray-100 bg-gray-50 py-16 lg:py-20">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+    <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-4">
+      Free Online Calculators<br class="hidden sm:block" /> & Converters
+    </h1>
+    <p class="text-lg text-gray-500 mb-8 max-w-xl mx-auto leading-relaxed">
+      100+ accurate, fast tools for finance, health, math, and unit conversion. No sign-up. No ads.
+    </p>
+    <div class="max-w-sm mx-auto">
+      <SearchBar on:select={handleSearch} />
+    </div>
+  </div>
+</section>
 
-	<!-- Hero Section -->
-	<section class="bg-gradient-to-b from-slate-50 to-white pt-14 pb-16 lg:pt-20 lg:pb-20">
-		<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-			<h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-5 leading-tight tracking-tight">
-				100+ Free Online<br />
-				<span class="text-blue-600">Calculators</span>
-			</h1>
-			<p class="text-lg md:text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-				Fast, accurate, mobile-friendly calculators for finance, health, math, and unit conversion.
-				No ads, no sign-up required.
-			</p>
-
-			<!-- Search Bar -->
-			<div class="max-w-md mx-auto mb-12">
-				<SearchBar on:select={handleSearchSelect} />
-			</div>
-
-			<!-- Trust badges -->
-			<div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-500">
-				<div class="flex items-center gap-2">
-					<div class="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></div>
-					<span>Always Free</span>
-				</div>
-				<div class="flex items-center gap-2">
-					<div class="w-2 h-2 bg-blue-500 rounded-full" aria-hidden="true"></div>
-					<span>Instant Results</span>
-				</div>
-				<div class="flex items-center gap-2">
-					<div class="w-2 h-2 bg-violet-500 rounded-full" aria-hidden="true"></div>
-					<span>Privacy Protected</span>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Stats -->
-	<section class="py-10 border-y border-gray-100 bg-white" aria-label="Statistics">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-				{#each stats as stat}
-					<div>
-						<div class="text-3xl font-bold text-slate-900 mb-1">{stat.number}</div>
-						<div class="text-sm text-slate-500">{stat.label}</div>
-					</div>
-				{/each}
-			</div>
-		</div>
-	</section>
-
-	<!-- Featured Calculators -->
-	<section class="py-16 lg:py-20 bg-slate-50">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center mb-10">
-				<h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-3">Most Popular Calculators</h2>
-				<p class="text-slate-500 max-w-xl mx-auto">Our most trusted and frequently used tools for everyday calculations</p>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-				{#each featuredCalculators as calculator}
-					<CalculatorCard {calculator} featured={true} />
-				{/each}
-			</div>
-			<div class="text-center mt-10">
-				<Button variant="outline" href="/categories" size="lg">View All 100+ Calculators</Button>
-			</div>
-		</div>
-	</section>
-
-	<!-- Categories -->
-	<section class="py-16 lg:py-20 bg-white">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center mb-10">
-				<h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-3">Browse by Category</h2>
-				<p class="text-slate-500 max-w-xl mx-auto">Find the perfect calculator across our organized categories</p>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-				{#each popularCategories as category}
-					<CategoryCard {category} />
-				{/each}
-			</div>
-		</div>
-	</section>
-
-	<!-- Features -->
-	<section class="py-16 lg:py-20 bg-slate-50">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center mb-10">
-				<h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-3">Why Choose kceva?</h2>
-				<p class="text-slate-500 max-w-xl mx-auto">Built with modern web standards and user experience in mind</p>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-				{#each features as feature}
-					<div class="bg-white rounded-xl border border-gray-100 p-6 text-center shadow-sm hover:shadow-md transition-shadow">
-						<div class="text-4xl mb-4" aria-hidden="true">{feature.icon}</div>
-						<h3 class="text-lg font-semibold text-slate-900 mb-2">{feature.title}</h3>
-						<p class="text-slate-500 text-sm leading-relaxed">{feature.description}</p>
-					</div>
-				{/each}
-			</div>
-		</div>
-	</section>
-
-	<!-- CTA -->
-	<section class="py-16 bg-blue-600">
-		<div class="max-w-3xl mx-auto px-4 text-center">
-			<h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Start?</h2>
-			<p class="text-blue-100 text-lg mb-8 max-w-xl mx-auto">
-				Join millions of users who trust kceva for accurate, fast calculations
-			</p>
-			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<Button href="/categories" size="lg" className="bg-white text-blue-600 hover:bg-blue-50 font-semibold">
-					Explore All Categories
-				</Button>
-				<Button href="/education" size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-					Education Resources
-				</Button>
-			</div>
-		</div>
-	</section>
-
+<!-- Stats bar -->
+<div class="border-b border-gray-100 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-4 divide-x divide-gray-100">
+      {#each [['100+','Calculators'],['11','Categories'],['Free','Always'],['Fast','Instant']] as [n, l]}
+        <div class="py-4 text-center">
+          <div class="text-xl font-bold text-gray-900">{n}</div>
+          <div class="text-xs text-gray-500 mt-0.5">{l}</div>
+        </div>
+      {/each}
+    </div>
+  </div>
 </div>
+
+<!-- Featured calculators -->
+<section class="py-12 lg:py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-xl font-bold text-gray-900">Popular Calculators</h2>
+      <a href="/categories" class="text-sm text-blue-600 hover:text-blue-700 font-medium">View all →</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {#each featuredCalculators as calculator}
+        <CalculatorCard {calculator} />
+      {/each}
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="py-12 lg:py-16 border-t border-gray-100 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-xl font-bold text-gray-900">Browse by Category</h2>
+      <a href="/categories" class="text-sm text-blue-600 hover:text-blue-700 font-medium">All categories →</a>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+      {#each categoriesWithCounts as category}
+        <CategoryCard {category} />
+      {/each}
+    </div>
+  </div>
+</section>
+
+<!-- Why kceva -->
+<section class="py-12 lg:py-16 border-t border-gray-100 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-6">Why kceva?</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {#each features as f}
+        <div class="bg-gray-50 rounded-lg p-5 border border-gray-100">
+          <div class="w-8 h-8 bg-blue-50 rounded-md flex items-center justify-center mb-3">
+            <Icon name={f.icon} size={16} className="text-blue-600" strokeWidth={1.75} />
+          </div>
+          <h3 class="text-sm font-semibold text-gray-900 mb-1">{f.title}</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">{f.desc}</p>
+        </div>
+      {/each}
+    </div>
+  </div>
+</section>

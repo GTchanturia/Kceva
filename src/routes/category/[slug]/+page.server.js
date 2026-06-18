@@ -14,9 +14,8 @@ export async function load({ params }) {
 
   return {
     seo: {
-      title: `${category.name} — ${calculators.length} Free Calculators | kceva`,
-      description: `${category.description} Browse ${calculators.length} free calculators in the ${category.name} category at kceva.com. Fast, accurate, mobile-friendly tools.`,
-      image: 'https://kceva.com/og-image.png',
+      title: `${category.name} Calculators — ${calculators.length} Free Tools | kceva`,
+      description: `${category.description} Browse ${calculators.length} free ${category.name.toLowerCase()} calculators at kceva.com. Fast, accurate, mobile-friendly.`,
       url: `https://kceva.com/category/${category.id}/`
     },
     category,

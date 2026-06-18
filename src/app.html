@@ -1,55 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-	<title>kceva – Free Online Calculators & Converters</title>
+  <!-- Default title/description — each page overrides via svelte:head -->
+  <title>kceva — Free Online Calculators & Converters</title>
+  <meta name="description" content="100+ free online calculators for finance, health, math, unit conversion, and more. Fast, accurate, no sign-up required." />
 
-	<!-- DNS Prefetch -->
-	<link rel="dns-prefetch" href="//api.exchangerate-api.com">
-	<link rel="dns-prefetch" href="//ipapi.co">
-	<link rel="dns-prefetch" href="//vitals.vercel-insights.com">
-	<link rel="dns-prefetch" href="//www.google-analytics.com">
-	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <!-- Robots -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-	<!-- Google Fonts: Inter -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <!-- Verification -->
+  <meta name="google-site-verification" content="E3HGhOGoia7msiHkl_qnyS6LEDz29XkAxlQ1osfWfHg" />
 
-	<!-- Meta -->
-	<meta name="description" content="kceva - 100+ free online calculators and converters for finance, health, math, unit conversion, and more. Fast, accurate, and mobile-friendly tools." />
-	<meta name="author" content="kceva" />
-	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-	<meta name="keywords" content="free calculators, online converters, math calculator, finance calculator, health calculator, unit converter, currency converter, percentage calculator, BMI calculator, loan calculator" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
 
-	<!-- Theme -->
-	<meta name="theme-color" content="#2563eb" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-	<meta name="apple-mobile-web-app-title" content="kceva" />
-	<meta name="application-name" content="kceva" />
-	<meta name="msapplication-TileColor" content="#2563eb" />
+  <!-- Favicons -->
+  <link rel="icon" href="%sveltekit.assets%/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="%sveltekit.assets%/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="%sveltekit.assets%/favicon-16x16.png" />
+  <link rel="manifest" href="%sveltekit.assets%/site.webmanifest" />
 
-	<!-- Google Search Console Verification -->
-	<meta name="google-site-verification" content="E3HGhOGoia7msiHkl_qnyS6LEDz29XkAxlQ1osfWfHg" />
+  <meta name="theme-color" content="#2563eb" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="application-name" content="kceva" />
 
-	<!-- Twitter -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:site" content="@kceva" />
-
-	<!-- Favicons -->
-	<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
-	<link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/apple-touch-icon.png" />
-	<link rel="icon" type="image/png" sizes="32x32" href="%sveltekit.assets%/favicon-32x32.png" />
-	<link rel="icon" type="image/png" sizes="16x16" href="%sveltekit.assets%/favicon-16x16.png" />
-	<link rel="manifest" href="%sveltekit.assets%/site.webmanifest" />
-
-	%sveltekit.head%
+  %sveltekit.head%
 </head>
-<body data-sveltekit-preload-data="hover" class="font-sans antialiased">
-	<div style="display: contents">%sveltekit.body%</div>
+<body data-sveltekit-preload-data="hover" class="font-sans antialiased bg-white text-gray-900">
+  <div style="display: contents">%sveltekit.body%</div>
 </body>
 </html>

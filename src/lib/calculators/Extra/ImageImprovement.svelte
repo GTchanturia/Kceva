@@ -101,31 +101,34 @@
     });
 
     function saveState() {
-        transform.subscribe((t) => {
-            filters.subscribe((f) => {
-                resize.subscribe((r) => {
-                    background.subscribe((b) => {
-                        layerOrder.subscribe((lo) => {
-                            if (historyIndex < history.length - 1) {
-                                history = history.slice(0, historyIndex + 1);
-                            }
-                            history.push({
-                                transform: { ...t },
-                                filters: { ...f },
-                                resize: { ...r },
-                                background: { ...b },
-                                layerOrder: lo,
-                            });
-                            historyIndex++;
-                            if (history.length > 50) {
-                                history.shift();
-                                historyIndex--;
-                            }
-                        })();
-                    })();
-                })();
-            })();
-        })();
+        let t: any, f: any, r: any, b: any, lo: any;
+        // Use get-pattern: subscribe and immediately unsubscribe
+        const unsubT = transform.subscribe((v) => (t = v));
+        unsubT();
+        const unsubF = filters.subscribe((v) => (f = v));
+        unsubF();
+        const unsubR = resize.subscribe((v) => (r = v));
+        unsubR();
+        const unsubB = background.subscribe((v) => (b = v));
+        unsubB();
+        const unsubLo = layerOrder.subscribe((v) => (lo = v));
+        unsubLo();
+
+        if (historyIndex < history.length - 1) {
+            history = history.slice(0, historyIndex + 1);
+        }
+        history.push({
+            transform: { ...t },
+            filters: { ...f },
+            resize: { ...r },
+            background: { ...b },
+            layerOrder: lo,
+        });
+        historyIndex++;
+        if (history.length > 50) {
+            history.shift();
+            historyIndex--;
+        }
     }
 
     async function onPersonFile(e: Event) {
@@ -1529,22 +1532,14 @@
                 <h3 class="text-lg font-semibold mb-2">Actions</h3>
                 <div class="flex flex-wrap gap-2">
                     <button
-                        on:click={() =>
-                            transform.update((t) => ({
-                                ...t,
-                                scale: t.scale * 1.05,
-                            }))}
+                        on:click={() => { transform.update((t) => ({ ...t, scale: t.scale * 1.05 })); saveState(); }}
                         class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
-                        on:click={saveState}>Zoom +</button
+                        >Zoom +</button
                     >
                     <button
-                        on:click={() =>
-                            transform.update((t) => ({
-                                ...t,
-                                scale: t.scale / 1.05,
-                            }))}
+                        on:click={() => { transform.update((t) => ({ ...t, scale: t.scale / 1.05 })); saveState(); }}
                         class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
-                        on:click={saveState}>Zoom -</button
+                        >Zoom -</button
                     >
                     <button
                         on:click={undo}

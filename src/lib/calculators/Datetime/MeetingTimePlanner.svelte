@@ -133,9 +133,7 @@
 
                 <!-- Selected Time Zones -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                        Selected Time Zones
-                    </label>
+                    <p class="block text-sm font-medium text-gray-700 mb-2">Selected Time Zones</p>
                     <div class="space-y-2">
                         {#each selectedTimeZones as tzValue}
                             {@const tz = timeZones.find(t => t.value === tzValue)}
@@ -157,9 +155,7 @@
 
                 <!-- Add Time Zone -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                        Add Time Zone
-                    </label>
+                    <p class="block text-sm font-medium text-gray-700 mb-2">Add Time Zone</p>
                     <div class="flex flex-wrap gap-2">
                         {#each timeZones.filter(tz => !selectedTimeZones.includes(tz.value)) as tz}
                             <Button 

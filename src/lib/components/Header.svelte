@@ -1,145 +1,102 @@
 <script>
-  /**
-   * Main Header Component
-   * @component
-   */
-
   import { page } from "$app/stores";
-  import Button from "./ui/Button.svelte";
-  import { goto } from "$app/navigation";
 
-  /** @type {boolean} */
   let mobileMenuOpen = false;
 
-  // Toggle mobile menu
-  function toggleMobileMenu() {
-    mobileMenuOpen = !mobileMenuOpen;
-  }
-
-  // Navigation items
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/categories", label: "Categories" },
+    { href: "/education", label: "Education" },
     { href: "/about", label: "About" },
   ];
+
+  function toggleMenu() {
+    mobileMenuOpen = !mobileMenuOpen;
+  }
+
+  // Close menu on navigation
+  $: if ($page.url.pathname) {
+    mobileMenuOpen = false;
+  }
 </script>
 
-<header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+<header class="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
-      <!-- Logo and Brand -->
-      <div class="flex items-center space-x-4">
-        <a href="/" class="flex items-center space-x-2" aria-label="Kceva home">
+
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center gap-2.5 group" aria-label="kceva home">
           <img
             src="/logo.png"
-            alt="Kceva logo"
-            width="64"
-            height="64"
+            alt="kceva logo"
+            width="32"
+            height="32"
             loading="eager"
             decoding="async"
-            class="w-16 h-16 rounded-lg object-cover"
+            class="w-8 h-8 rounded-lg object-cover"
           />
-          <span class="text-xl font-bold text-gray-900 hidden sm:block">
+          <span class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
             kceva
           </span>
         </a>
       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center space-x-8">
+      <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
         {#each navItems as item}
           <a
             href={item.href}
-            class="text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 {$page
-              .url.pathname === item.href
-              ? 'text-blue-600 border-b-2 border-blue-600'
-              : ''}"
+            class="px-3 py-2 rounded-lg text-sm font-medium transition-colors {
+              $page.url.pathname === item.href
+                ? 'bg-blue-50 text-blue-600'
+                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+            }"
+            aria-current={$page.url.pathname === item.href ? 'page' : undefined}
           >
             {item.label}
           </a>
         {/each}
       </nav>
 
-      <!-- User Actions -->
-      <div class="flex items-center space-x-4">
-        <!-- Removed search button for mobile since search is in hero -->
-
-        <!-- Mobile Menu Button -->
-        <button
-          type="button"
-          class="md:hidden p-2 text-slate-400 hover:text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
-          on:click={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          <svg
-            class="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            {#if mobileMenuOpen}
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            {:else}
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            {/if}
+      <!-- Mobile menu button -->
+      <button
+        type="button"
+        class="md:hidden p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+        on:click={toggleMenu}
+        aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={mobileMenuOpen}
+        aria-controls="mobile-menu"
+      >
+        {#if mobileMenuOpen}
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
-        </button>
-      </div>
+        {:else}
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        {/if}
+      </button>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Navigation -->
     {#if mobileMenuOpen}
-      <div class="md:hidden border-t border-slate-200 py-4">
-        <!-- Removed mobile search - available in hero section -->
-
-        <!-- Mobile Navigation -->
-        <nav class="space-y-1">
-          {#each navItems as item}
-            <a
-              href={item.href}
-              class="block px-4 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors duration-200 {$page
-                .url.pathname === item.href
-                ? 'text-blue-600 bg-blue-50'
-                : ''}"
-              on:click={() => (mobileMenuOpen = false)}
-            >
-              {item.label}
-            </a>
-          {/each}
-        </nav>
-
-        <!-- Mobile Auth Buttons -->
-        <div
-          class="px-4 pt-4 border-t border-slate-200 mt-4 space-y-2 sm:hidden"
-        >
-          <Button
-            variant="ghost"
-            size="sm"
-            href="/login"
-            className="w-full justify-center"
+      <nav id="mobile-menu" class="md:hidden border-t border-gray-100 py-3 pb-4 space-y-1" aria-label="Mobile navigation">
+        {#each navItems as item}
+          <a
+            href={item.href}
+            class="block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors {
+              $page.url.pathname === item.href
+                ? 'bg-blue-50 text-blue-600'
+                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+            }"
+            aria-current={$page.url.pathname === item.href ? 'page' : undefined}
           >
-            Sign In
-          </Button>
-          <Button
-            variant="primary"
-            size="sm"
-            href="/register"
-            className="w-full justify-center"
-          >
-            Sign Up
-          </Button>
-        </div>
-      </div>
+            {item.label}
+          </a>
+        {/each}
+      </nav>
     {/if}
   </div>
 </header>

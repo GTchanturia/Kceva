@@ -9,11 +9,6 @@ const config = {
             $components: 'src/components',
             $lib: 'src/lib',
             $routes: 'src/routes'
-        },
-        serviceWorker: {
-            // აქ შეგიძლია მიუთითო შენი service-worker სქრიპტი
-            register: true,
-            files: (filepath) => !/\.DS_Store/.test(filepath)
         }
     },
     preprocess: vitePreprocess()

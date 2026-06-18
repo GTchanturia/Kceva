@@ -802,16 +802,6 @@ export const CALCULATORS = [
 
   // Lifestyle & Practical (81-90)
   {
-    id: 'cooking-measurement',
-    name: 'Cooking Measurement Converter',
-    description: 'Convert between cups, ml, grams, and cooking units',
-    category: 'lifestyle',
-    keywords: ['cooking', 'measurement', 'convert', 'cups', 'ml', 'grams'],
-    icon: '🥄',
-    featured: false,
-    requiresApi: false
-  },
-  {
     id: 'recipe-portion-adjuster',
     name: 'Recipe Portion Adjuster',
     description: 'Scale recipe ingredients for different serving sizes',
